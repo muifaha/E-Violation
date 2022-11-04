@@ -15,8 +15,12 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('users');
-            $table->foreignId('kelas_id')->references('id')->on('kelas');
+            $table->foreignId('user_id')->references('id')->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->foreignId('kelas_id')->references('id')->on('kelas')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->string('nama', 255);
             $table->char('nisn', 10)->unique();
             $table->string('ttl', 255);

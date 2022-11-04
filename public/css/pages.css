@@ -23,12 +23,12 @@
   padding: 0 8px 0 8px;
 }
 .cord .card {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  /*border-top-left-radius: 0;*/
+  /*border-bottom-left-radius: 0;*/
 }
 .card {
   border-radius: 9px;
-  border: 1px solid rgba(0,0,0,.05);
+  /*border: 1px solid rgba(0,0,0,.05);*/
   background-color: #fff;
   margin-bottom: 25px;
   box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15);
@@ -37,16 +37,32 @@
   border-radius: 9px 9px 0 0;
 }
 .border-left-green {
-  border-left: 6px solid #3cd014;
+  /*border-bottom: 5px solid #3cd014;*/
+  border-left: 5px solid #3cd014;
+  border-top-left-radius: 9px;
+  border-bottom-left-radius: 9px;
+  /*border-bottom-right-radius: 9px;*/
 }
 .border-left-orange {
-  border-left: 6px solid #fb6340;
+  /*border-bottom: 5px solid #fb6340;*/
+  border-left: 5px solid #fb6340;
+  border-top-left-radius: 9px;
+  border-bottom-left-radius: 9px;
+  /*border-bottom-right-radius: 9px;*/
 }
 .border-left-yellow {
-  border-left: 6px solid #ffd600;
+  /*border-bottom: 5px solid #ffd600;*/
+  border-left: 5px solid #ffd600;
+  border-top-left-radius: 9px;
+  border-bottom-left-radius: 9px;
+  /*border-bottom-right-radius: 9px;*/
 }
 .border-left-blue {
-  border-left: 6px solid #11cdef;
+  /*border-bottom: 5px solid #11cdef;*/
+  border-left: 5px solid #11cdef;
+  border-top-left-radius: 9px;
+  border-bottom-left-radius: 9px;
+  /*border-bottom-right-radius: 9px;*/
 }
 .green {
   background-color: #3cd014;
@@ -77,7 +93,7 @@
   justify-content: center;
   align-items: center;
   font-size: 25px;
-  box-shadow: 0 0 2rem 0 rgba(136,152,170,.15)!important;
+  box-shadow: 0 0 2rem 0 rgba(136,152,170,.15);
 }
 .col {
   padding-right: 0;
@@ -88,6 +104,38 @@
 .card-body {
   padding: 1rem 1.25rem;
 }
+.card:hover .col p.hov,
+.card:hover .col i {
+  color: white;
+  text-shadow: 0 0 5px white;
+  transition: all 0.3s ease-in-out;
+}
+.card.dashy,
+.card.dashb {
+  transition: all 0.3s ease-in-out;
+}
+.card.dashy:hover {
+  box-shadow: 0 0 15px #ffd600;
+  background: #ffd600;
+  transition: all 0.3s ease-in-out;
+}
+.card.dashy:hover .yellow {
+  background: white;
+  box-shadow: 0 0 10px white;
+  color: #ffd600;
+  transition: all 0.3s ease-in-out;
+}
+.card.dashb:hover {
+  box-shadow: 0 0 15px #11cdef;
+  background: #11cdef;
+  transition: all 0.3s ease-in-out;
+}
+.card.dashb:hover .blue {
+  background: white;
+  box-shadow: 0 0 10px white;
+  color: #11cdef;
+  transition: all 0.3s ease-in-out;
+}
 td.child ul li {
   display: flex;
 }
@@ -97,6 +145,34 @@ table.dataTable {
   clear: both;
   border-collapse: separate;
   border-spacing: 0;
+}
+tr td a {
+  color: #222;
+  transition: all 0.5s ease-in-out;
+}
+tr td a:hover {
+  color: red;
+  text-shadow: 0 0 10px orange;
+  text-decoration: none;
+  transition: all 0.5s ease-in-out;
+}
+table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before, 
+table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before {
+  top: 18px;
+}
+footer {
+  background: #333;
+  color: white;
+}
+footer.sticky-footer {
+  padding: 2rem 0;
+  flex-shrink: 0;
+}
+footer.sticky-footer .copyright {
+  line-height: 1;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
 }
 @media (min-width: 992px) and ( max-width: 1338px) {
   .dashboard .card {
@@ -114,11 +190,7 @@ table.dataTable {
     padding: 1.25rem .7rem;
   }
 }
-@media (max-width: 768px) {
-  .card {
-    margin-bottom: 20px;
-  }
-}
+
 @media (max-width: 991px) {
   .all-card {
     padding-top: 5px;
@@ -136,127 +208,19 @@ table.dataTable {
     padding: 0 8px 0 0;
   }
 }
-@media only screen and (max-width: 946px) {
-  .c-header-icon {
-    display: none;
-  }
-}
 
-@media (max-width: 299px) {
-  .icon-shape {
-    display: none !important;
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 20px;
   }
-}
-
-@media only screen and (min-width: 769px) {
-  .l-header .none {
-    display: none;
-  }
-}
-@media only screen and (max-width: 768px) {
-  .c-title {
-    display: none;
-  }
-  main.l-main {
-    padding: 70px 0 0;
-  }
-  main.l-main .content-wrapper .page-title-content {
-    display: block;
-  }
-  .l-header{
-    padding-left: 0;
-    top: -2px;
-    background: linear-gradient(#fbcf05, red);
-    z-index: 1000;
-    box-shadow: none;
-  }
-  .l-sidebar {
-    display: none;
-  }
-  .hp-ul {
-    margin: 68px 0 0 4.5px;
-    position: fixed;
-    background: linear-gradient(red, #fbcf05);
-    display: flex;
-    flex-direction: column;
-    list-style-type: none;
-    padding: 0;
-    top: -200%;
-    transition: ease-in-out .5s;
-    z-index: 10
-  }
-  .hp-li {
-    border-right: 1px solid #fff;
-    transition: ease-in-out .3s;
-  }
-  .hp-li:hover {
-    background-color: #fbcf05;
-    text-shadow: 0 3px 5px #000;
-    transition: ease-in-out .3s;
-  }
-  .hp-li:nth-last-child(1) {
-    border-radius: 0 0 40px 40px;
-  }
-  .hp-li:hover:nth-last-child(1) {
-    border-radius: 0 0 40px 40px;
-  }
-  .hp-ul .hp-li a {
-    text-decoration: none;
-    font-size: 18px;
-    color: #fff;
-  }
-  .hp-ul .active.hp-li {
-    background-color: #fbcf05;
-  }
-  .hp-ul .active.hp-li a {
-    text-decoration: none;
-    font-size: 18px;
-    color: #fff;
-    text-shadow: 0 3px 5px #000;
-  }
-  input[type=checkbox]:checked + .hp-ul {
-    top: 0;
-    transition: ease-in-out .5s;
-  }
-  .none #btn {
-    color: #fff;
-  }
-  .bxs-user-circle {
-    color: #fff;
-  }
-  .c-header-icon.js-hamburger {
-    display: none;
-  }
-  .c-header-icon-hp {
-    display: flex;
-    position: relative;
-    flex-shrink: 0;
-    float: left;
-    width: 70px;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border-right: 1px solid #fff;
-    z-index: 500;
-  }
-  .c-header-icon-hp .btn {
-    font-size: 30px;
-  }
-  .cord:nth-child(1) {
-    padding: 0;
-  }
-  .cord:nth-child(2) {
-    padding: 0;
-  }
-  .cord:nth-last-child(1) {
-    padding: 0;
-  }
+  .cord:nth-child(1),
+  .cord:nth-child(2),
+  .cord:nth-last-child(1),
   .cord:nth-last-child(2) {
     padding: 0;
   }
-  
 }
+  
 @media only screen and (max-width: 400px) {
   td.child ul li {
     flex-direction: column;
@@ -272,3 +236,4 @@ table.dataTable {
     padding: 0.5rem;
   }
 }
+

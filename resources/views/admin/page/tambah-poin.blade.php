@@ -1,13 +1,13 @@
 @extends('layouts.main')
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
+    <!-- <div class="container"> -->
+        <!-- <div class="row justify-content-center"> -->
             <div class="card">
-                <h2 class="card-header fw-bolder mt-2">
+                <h3 class="card-header mt-2">
                     Pelanggaran yang dilakukan oleh {{ $siswa->nama }}
-                </h2>
+                </h3>
                 <div class="card-body">
-                    <div class="float-right mb-2">
+                    <!-- <div class="float-right mb-2">
                         <form action="/pelanggaran/tambah/{{ $siswa->nisn }}" class="d-inline-flex">
                             {{-- @if (request('kelas'))
                                 <input type="hidden" name="kelas" value="{{ request('kelas') }}">
@@ -18,14 +18,14 @@
                                 <button class="btn btn-primary btn-active-secondary" type="submit">Search</button>
                             </div>
                         </form>
-                    </div>
+                    </div> -->
                     <form action="/pelanggaran/{{ $siswa->id }}" method="post">
                         @csrf
                         @method('put')
                         <input type="text" name="total" id="total" hidden>
                         <input type="text" name="id_user" id="id_user" value="{{ $siswa->user_id }}" hidden>
 
-                        <table class="table">
+                        <table class="table" id="table_data_user">
                             <thead>
                                 <tr>
                                     <th>No.</th>
@@ -41,11 +41,8 @@
                                         <td>{{ $rule->name }}</td>
                                         <td>{{ $rule->poin }}</td>
                                         <td>
-                                            <input type="checkbox" name="poin" id="poin{{ $rule->id }}"
-                                                value="{{ $rule->poin }}"
-                                                onmousedown="this.form.rule{{ $rule->id }}.disabled=this.checked">
-                                            <input type="text" name="rule[]" id="rule{{ $rule->id }}"
-                                                value="{{ $rule->id }}" disabled hidden>
+                                            <input type="checkbox" name="poin" id="poin{{ $rule->id }}" value="{{ $rule->poin }}" onmousedown="this.form.rule{{ $rule->id }}.disabled=this.checked">
+                                            <input type="text" name="rule[]" id="rule{{ $rule->id }}" value="{{ $rule->id }}" disabled hidden>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -61,8 +58,8 @@
                 </div>
             </div>
 
-        </div>
-    </div>
+        <!-- </div> -->
+    <!-- </div> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
         $('input:checkbox').change(function() {

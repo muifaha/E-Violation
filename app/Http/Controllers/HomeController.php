@@ -19,7 +19,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the application home.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
@@ -28,12 +28,12 @@ class HomeController extends Controller
         if (auth()->user()->is_admin == true) {
             $siswas = Student::all();
             $users = User::all();
-            return view('home', compact('siswas', 'users'));
+            return view('dashboard', compact('siswas', 'users'));
         }
         $siswas = Student::with('user')->take(10)->get()->sortByDesc('poin');
         $siswa = Student::where('user_id', auth()->user()->id)->first();
         $nama = strtok($siswa['nama'], " ");
-        return view('home', compact('siswas', 'siswa', 'nama'));
+        return view('dashboard', compact('siswas', 'siswa', 'nama'));
     }
 
     // public function penanganan()

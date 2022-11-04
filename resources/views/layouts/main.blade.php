@@ -7,15 +7,15 @@
     <title>smart_book</title>
     <link rel="stylesheet" href="../css/nav-side-bar.css">
     <link rel="stylesheet" href="../css/pages.css">
-    <link rel="stylesheet" href="../css/datatables.css">
+    <!-- <link rel="stylesheet" href="../css/datatables.css"> -->
 </head>
 
-<body>
+<body class="sidebar-is-reduced sidebar-is-expanded">
     @if (Auth::user()->info == true)
         @if (Auth::user()->is_admin == true)
             <div class="sidebar-is-reduced">
-                @include('component.admin.navbar')
                 @include('component.admin.sidebar')
+                @include('component.admin.navbar')
             </div>
         @else
             <div class="sidebar-is-reduced">

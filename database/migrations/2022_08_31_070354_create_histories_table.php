@@ -15,8 +15,12 @@ class CreateHistoriesTable extends Migration
     {
         Schema::create('histories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->references('id')->on('students');
-            $table->foreignId('rule_id')->references('id')->on('rules');
+            $table->foreignId('student_id')->references('id')->on('students')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->foreignId('rule_id')->references('id')->on('rules')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->date('tanggal');
             $table->timestamps();
         });

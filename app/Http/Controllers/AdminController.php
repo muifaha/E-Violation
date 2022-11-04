@@ -29,7 +29,7 @@ class AdminController extends Controller
     {
         return view('admin.page.tambah-poin', [
             'siswa' => $siswa,
-            'rules' => Rule::oldest()->filter(request('search'))->paginate(5)
+            'rules' => Rule::oldest()->filter(request('search'))->get()
         ]);
     }
 

@@ -10,18 +10,16 @@
         <nav class="c-menu js-menu">
             <ul class="u-list">
 
-                <li class="c-menu__item {{ request()->is('home') ? 'is-active' : '' }}  has-submenu" data-toggle="tooltip"
-                    title="Dashboard">
+                <li class="c-menu__item {{ request()->is('home*') ? 'is-active' : '' }}  has-submenu" data-toggle="tooltip" title="Dashboard">
                     <a class="c-menu__item__inner" href="/home">
                         <div class="ic">
                             <i class='bx bxs-grid-alt'></i>
                         </div>
-                        <div class="c-menu-item__title"><span>Home</span></div>
+                        <div class="c-menu-item__title"><span>Dashboard</span></div>
                     </a>
                 </li>
 
-                <li class="c-menu__item {{ request()->is('histori-skor') ? 'is-active' : '' }}  has-submenu"
-                    data-toggle="tooltip" title="Histori Skor">
+                <li class="c-menu__item {{ request()->is('histori-skor*') ? 'is-active' : '' }}  has-submenu" data-toggle="tooltip" title="Histori Skor">
                     <a class="c-menu__item__inner" href="/histori-skor">
                         <div class="ic">
                             <i class="fas fa-calendar-alt"></i>
@@ -30,8 +28,7 @@
                     </a>
                 </li>
 
-                {{-- <li class="c-menu__item {{ $title == 'Penanganan' ? 'is-active' : '' }} has-submenu "
-                    data-toggle="tooltip" title="Penanganan">
+                <li class="c-menu__item {{ request()->is('penanganan*') ? 'is-active' : '' }} has-submenu " data-toggle="tooltip" title="Penanganan">
                     <a class="c-menu__item__inner" href="/penanganan">
                         <div class="ic">
                             <i class="fas fa-user-cog"></i>
@@ -40,8 +37,7 @@
                     </a>
                 </li>
 
-                <li class="c-menu__item {{ $title == 'Tata Tertib' ? 'is-active' : '' }} has-submenu"
-                    data-toggle="tooltip" title="Tata Tertib">
+                <li class="c-menu__item {{ request()->is('tata_tertib*') ? 'is-active' : '' }} has-submenu" data-toggle="tooltip" title="Tata Tertib">
                     <a class="c-menu__item__inner" href="/tata-tertib">
                         <div class="ic">
                             <i class="fas fa-chalkboard-teacher"></i>
@@ -50,8 +46,7 @@
                     </a>
                 </li>
 
-                <li class="c-menu__item {{ $title == 'Kontak Sekolah' ? 'is-active' : '' }} has-submenu"
-                    data-toggle="tooltip" title="Kontak Sekolah">
+                <li class="c-menu__item {{ request()->is('kontak-sekolah*') ? 'is-active' : '' }} has-submenu" data-toggle="tooltip" title="Kontak Sekolah">
                     <a class="c-menu__item__inner" href="/kontak-sekolah">
                         <div class="ic">
                             <i class="fas fa-phone"></i>
@@ -60,15 +55,14 @@
                     </a>
                 </li>
 
-                <li class="c-menu__item {{ $title == 'FAQ' ? 'is-active' : '' }} has-submenu" data-toggle="tooltip"
-                    title="FAQ">
+                <!-- <li class="c-menu__item {{ request()->is('faq*') ? 'is-active' : '' }} has-submenu" data-toggle="tooltip" title="FAQ">
                     <a class="c-menu__item__inner" href="/faq">
                         <div class="ic">
                             <i class="fas fa-comments"></i>
                         </div>
                         <div class="c-menu-item__title"><span>FAQ</span></div>
                     </a>
-                </li> --}}
+                </li> -->
 
             </ul>
 

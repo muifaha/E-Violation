@@ -19,7 +19,7 @@ class CreateRulesTable extends Migration
             $table->integer('poin');
             $table->foreignId('rule_type_id')->references('id')->on('rule_types')
                 ->onUpdate('cascade')
-                ->onDelete('cascade');;
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
