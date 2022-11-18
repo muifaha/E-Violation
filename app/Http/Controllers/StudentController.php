@@ -50,17 +50,21 @@ class StudentController extends Controller
             'alamat_ortu' => 'required|max:255',
             'no_telp_rumah' => 'required|numeric|digits_between:5,13',
         ]);
+
         $ttl = $request->ttl . ', ' . $request->date;
+        $kls = $request->kelas;
+        $kls_explode = explode('|', $kls);
+
         $data = [
+            'wali_kelas' => $kls_explode[1],
+            'kelas_id' => $kls_explode[0],
             'nisn' => $request->nisn,
             'nama' => $request->nama,
-            'user_id' => Auth::user()->id,
             'ttl' => $ttl,
             'jk' => $request->jk,
             'agama' => $request->agama,
             'alamat' => $request->alamat,
             'no_telp' => $request->no_telp,
-            'kelas_id' => $request->kelas,
             'n_ayah' => $request->n_ayah,
             'n_ibu' => $request->n_ibu,
             'alamat_ortu' => $request->alamat_ortu,

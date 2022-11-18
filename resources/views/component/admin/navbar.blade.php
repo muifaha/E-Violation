@@ -1,19 +1,19 @@
 <header class="l-header">
-  <div class="l-header__inner clearfix">
-    <div class="c-header-icon js-hamburger" style="border-left: 0; border-right: 1px solid #ccc;">
-      <div class="hamburger-toggle">
-        <span class="bar-top"></span>
-        <span class="bar-mid"></span>
-        <span class="bar-bot"></span>
-      </div>
-    </div>
+    <div class="l-header__inner clearfix">
+        <div class="c-header-icon js-hamburger" style="border-left: 0; border-right: 1px solid #ccc;">
+            <div class="hamburger-toggle">
+                <span class="bar-top"></span>
+                <span class="bar-mid"></span>
+                <span class="bar-bot"></span>
+            </div>
+        </div>
 
-    <div class="c-header-icon lol logo" style="border-left: 0; border-right: 1px solid #fff;">
-      <img src="../img/smkn1.png" width="35">
-    </div>
+        <div class="c-header-icon lol logo" style="border-left: 0; border-right: 1px solid #fff;">
+            <img src="../img/smkn1.png" width="35">
+        </div>
 
         <div class="c-title">
-            <h1>Title</h1>
+            <h1>@yield('title')</h1>
         </div>
 
         <div class="c-search"></div>
@@ -21,10 +21,11 @@
         <ul class="navbar-nav ms-auto p-0">
             <!-- Authentication Links -->
             <li class="nav-item dropdown px-3">
-                <a id="navbarDropdown" class="name-tag nav-link dropdown-toggle c-header-icon userDropdown me-2" href="#"
-                    role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                <a id="navbarDropdown" class="name-tag nav-link dropdown-toggle c-header-icon userDropdown me-2"
+                    href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                    v-pre>
                     <!-- <i class='bx bxs-user-circle'></i> -->
-                    <div class="text-small d-inline-flex ms-1">Admin</div>
+                    <div class="text-small d-inline-flex ms-1">More</div>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-end me-2" aria-labelledby="navbarDropdown">

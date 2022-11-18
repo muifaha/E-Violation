@@ -58,12 +58,13 @@ class LoginController extends Controller
         $request->merge([
             $login_type => $request->input('nisn')
         ]);
+        $remember = $request->has('remember') ? true : false;
 
-        if (Auth::attempt($request->only($login_type, 'password'))) {
+        if (Auth::attempt($request->only($login_type, 'password'), $remember)) {
             return redirect()->intended('/home');
         }
 
-        return back()->with('errors', 'Login failed!');
+        return back()->with('error', 'Login gagal!');
     }
 
     public function logout(Request $request)

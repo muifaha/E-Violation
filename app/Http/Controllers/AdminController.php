@@ -6,6 +6,7 @@ use App\Models\Rule;
 use App\Models\User;
 use App\Models\Kelas;
 use App\Models\History;
+use App\Models\Penanganan;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -48,10 +49,16 @@ class AdminController extends Controller
                 'tanggal' => date('Y-m-d', time())
             ]);
         }
-        $siswa->update([
+        $jmlh_poin = $siswa->update([
             'poin' => $siswa->poin + $request->total
         ]);
-
+        // if ($jmlh_poin >= 30) {
+        //     Penanganan::create([
+        //         'user_id' =>
+        //         'student' => $siswa->id,
+        //         'message' => 'Pesan Pertama'
+        //     ]);
+        // }
 
 
         return redirect()->back()->with('success', 'Poin berhasil ditambahkan');

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'Form Data Siswa')
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -171,7 +171,7 @@
                                         <option disabled value="Pilih" selected>
                                             Pilih kelas</option>
                                         @foreach ($kelas as $item)
-                                            <option value="{{ $item->id }}"
+                                            <option value="{{ $item->id }}|{{ $item->user_id }}"
                                                 @if (old('kelas') == $item->id) {{ 'selected' }} @endif>
                                                 {{ $item->nama_kelas }}</option>
                                         @endforeach

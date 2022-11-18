@@ -1,4 +1,5 @@
 @extends('layouts.main')
+@section('title', 'Daftar Peraturan')
 @section('content')
     <div class="container">
         <div class="row">

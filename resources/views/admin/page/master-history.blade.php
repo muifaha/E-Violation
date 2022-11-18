@@ -1,5 +1,5 @@
 @extends('layouts.main')
-{{-- @dd($siswas) --}}
+@section('title', 'History')
 @section('content')
     <div class="container">
         <div class="row justify-content-center">

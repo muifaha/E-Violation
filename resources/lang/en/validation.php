@@ -149,7 +149,10 @@ return [
         'nisn' => [
             'required' => 'NISN harus diisi!',
             'max' => 'NISN tidak lebih dari :max karakter',
-            'numeric' => 'NISN harus berupa angka'
+            'numeric' => 'NISN harus berupa angka',
+            'digits_between' => 'NISN harus tidak kurang dari :min karakter dan tidak lebih dari :max karakter',
+            'unique' => 'NISN sudah terdaftar!',
+
         ],
         'ttl' => [
             'required' => 'Tempat lahir harus diisi!',
@@ -174,7 +177,7 @@ return [
             'required' => 'Nomor telepon harus diisi!',
             'digits_between' => 'Nomor telepon harus tidak kurang dari :min karakter dan tidak lebih dari :max karakter',
             'numeric' => 'Nomor telepon harus berupa angka',
-            'unique' => 'Nomor telepon sudah digunakan',
+            'unique' => 'Nomor telepon sudah terdaftar!',
         ],
         'jurusan' => [
             'required' => 'Jurusan harus diisi!',
@@ -195,7 +198,14 @@ return [
         'no_telp_rumah' => [
             'required' => 'Nomor telepon rumah harus diisi!',
             'digits_between' => 'Nomor telepon rumah harus tidak kurang dari :min karaketer dan tidak lebih dari :max karakter',
-            'numeric' => 'Nomor telepon rumah harus berupa angka',
+            'numeric' => 'Nomor telepon rumah harus berupa angka!',
+        ],
+
+        'password' => [
+            'required' => 'Nomor telepon rumah harus diisi!',
+            'max' => 'Password tidak lebih dari :max karakter',
+            'min' => 'Password tidak kurang dari :min karakter',
+            'confirmed' => 'Konfirmasi Password tidak cocok!'
         ],
     ],
 

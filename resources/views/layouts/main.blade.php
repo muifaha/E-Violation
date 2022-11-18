@@ -4,7 +4,7 @@
 <head>
     <base href="../../">
     @include('component.head')
-    <title>smart_book</title>
+    <title>@yield('title')</title>
     <link rel="stylesheet" href="../css/nav-side-bar.css">
     <link rel="stylesheet" href="../css/pages.css">
     <!-- <link rel="stylesheet" href="../css/datatables.css"> -->
@@ -12,7 +12,7 @@
 
 <body class="sidebar-is-reduced sidebar-is-expanded">
     @if (Auth::user()->info == true)
-        @if (Auth::user()->is_admin == true)
+        @if (Auth::user()->role != 0)
             <div class="sidebar-is-reduced">
                 @include('component.admin.sidebar')
                 @include('component.admin.navbar')

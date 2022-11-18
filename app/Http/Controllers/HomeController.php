@@ -25,15 +25,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->is_admin == true) {
+        if (auth()->user()->role > 0) {
             $siswas = Student::all();
             $users = User::all();
-            return view('dashboard', compact('siswas', 'users'));
+            return view('home', compact('siswas', 'users'));
         }
         $siswas = Student::with('user')->take(10)->get()->sortByDesc('poin');
-        $siswa = Student::where('user_id', auth()->user()->id)->first();
+        $siswa = Student::where('nisn', auth()->user()->nisn)->first();
         $nama = strtok($siswa['nama'], " ");
-        return view('dashboard', compact('siswas', 'siswa', 'nama'));
+        return view('home', compact('siswas', 'siswa', 'nama'));
     }
 
     // public function penanganan()

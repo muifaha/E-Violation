@@ -31,7 +31,7 @@ class Student extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'wali_kelas');
     }
     public function kelas()
     {
@@ -40,7 +40,8 @@ class Student extends Model
 
     public function rule()
     {
-        return $this->belongsToMany(Rule::class, 'histories')->withPivot('tanggal', 'created_at');
+        return $this->belongsToMany(Rule::class, 'histories')->withPivot('tanggal', 'created_at
+        ');
     }
 
     public function history()
