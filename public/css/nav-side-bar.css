@@ -542,10 +542,10 @@ main.l-main {
 .ch {
   position: fixed;
   opacity: 0;
-  top: 20px;
-  right: -50px;
-  width: 30px;
-  height: 30px;
+  top: 4px;
+  right: -70px;
+  width: 60px;
+  height: 60px;
   z-index: 1001;
 }
 .hp-ul {
@@ -562,10 +562,10 @@ main.l-main {
   align-items: center;
   padding-left: 5px;
 }
-.hp-ul .hp-li a{
+.hp-ul a .hp-li {
   display: flex;
 }
-.hp-ul .hp-li a i {
+.hp-ul a .hp-li i {
   display: flex;
   align-items: center;
   width: 45px;
@@ -610,7 +610,7 @@ main.l-main {
     display: flex;
   }
   .ch {
-    right: 20px;
+    right: 4px;
   }
   .cs {
     border-left: 1px solid #fff;
@@ -658,7 +658,11 @@ main.l-main {
     /*border-right: 1px solid #fff;*/
     transition: ease-in-out .3s;
   }
-  .hp-li:hover {
+  .hp-ul a {
+    text-decoration: none;
+    transition: ease-in-out .3s;
+  }
+  .hp-ul a:hover {
     background-color: #fbcf05;
     text-shadow: 0 3px 5px #000;
     transition: ease-in-out .3s;
@@ -666,10 +670,10 @@ main.l-main {
   /*.hp-li:nth-last-child(1) {
     border-radius: 0 0 40px 40px;
   }*/
-  .hp-li:hover:nth-last-child(1) {
+  .hp-ul a:hover:nth-last-child(1) {
     border-radius: 0 0 9px 9px;
   }
-  .hp-ul .hp-li a {
+  .hp-ul a .hp-li {
     text-decoration: none;
     font-size: 18px;
     color: #fff;
@@ -677,7 +681,7 @@ main.l-main {
   .hp-ul .active.hp-li {
     background-color: #fbcf05;
   }
-  .hp-ul .active.hp-li a {
+  .hp-ul a .active.hp-li {
     text-decoration: none;
     font-size: 18px;
     color: #fff;

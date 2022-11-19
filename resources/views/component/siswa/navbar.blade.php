@@ -50,41 +50,41 @@
 </header>
 
 <input type="checkbox" id="checki" class="ch">
-<ul class="hp-ul" for=checki style="z-index: 1;">
-    <li class="{{ request()->is('home*') ? 'active' : '' }} hp-li" title="Dashboard">
-        <a href="/home">
+<ul class="hp-ul" for=checki style="z-index: 2;">
+    <a href="/home">
+        <li class="{{ request()->is('home*') ? 'active' : '' }} hp-li" title="Dashboard">
             <i class='bx bxs-grid-alt'></i>
-            Home
-        </a>
-    </li>
-    <li class="{{ request()->is('histori-skor*') ? 'active' : '' }} hp-li" title="Histori Skor">
-        <a href="histori-skor">
+            Dashboard
+        </li>
+    </a>
+    <a href="histori-skor">
+        <li class="{{ request()->is('histori-skor*') ? 'active' : '' }} hp-li" title="Histori Skor">
             <i class="fas fa-calendar-alt"></i>
             Histori Skor
-        </a>
-    </li>
-    <li class="{{ request()->is('penanganan*') ? 'active' : '' }} hp-li" title="Penanganan">
-        <a href="/penanganan">
+        </li>
+    </a>
+    <a href="/penanganan">
+        <li class="{{ request()->is('penanganan*') ? 'active' : '' }} hp-li" title="Penanganan">
             <i class="fas fa-user-cog"></i>
             Penanganan
-        </a>
-    </li>
-    <li class="{{ request()->is('tata-tertib*') ? 'active' : '' }} hp-li" title="Tata Tertib">
-        <a href="/tata-tertib">
+        </li>
+    </a>
+    {{-- <a href="/tata-tertib">
+        <li class="{{ request()->is('tata-tertib*') ? 'active' : '' }} hp-li" title="Tata Tertib">
             <i class="fas fa-chalkboard-teacher"></i>
             Tata Tertib
-        </a>
-    </li>
-    <li class="{{ request()->is('kontak-sekolah*') ? 'active' : '' }} hp-li" title="Kontak Sekolah">
-        <a href="/kontak-sekolah">
+        </li>
+    </a>
+    <a href="/kontak-sekolah">
+        <li class="{{ request()->is('kontak-sekolah*') ? 'active' : '' }} hp-li" title="Kontak Sekolah">
             <i class="fas fa-phone"></i>
             Kontak Sekolah
-        </a>
-    </li>
-    <!-- <li class="{{ request()->is('faq*') ? 'active' : '' }} hp-li" title="FAQ">
-        <a href="/faq">
+        </li>
+    </a>
+    <a href="/faq">
+        <li class="{{ request()->is('faq*') ? 'active' : '' }} hp-li" title="FAQ">
             <i class="fas fa-comments"></i>
             FAQ
-        </a>
-    </li> -->
+        </li>
+    </a> --}}
 </ul>

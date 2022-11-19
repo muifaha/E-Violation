@@ -1,71 +1,43 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 @section('title', 'Login')
-@section('content')
+@section('auths')    
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Login') }}</div>
-                    @if (session()->has('error'))
-                        <div class="alert alert-error">
-                            {{ session('error') }}
-                        </div>
-                    @endif
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('login') }}">
-                            @csrf
+		<div class="login-container-wrapper clearfix">
+			<div class="logo">
+                <i class="fa fas fa-user"></i>
+			</div>
+			<div class="welcome"><strong>Selamat Datang Kembali</strong>, silahkan Login menggunakan NISN atau Email Anda.</div>
 
-                            <div class="row mb-3">
-                                <label for="nisn"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('Nisn or Email') }}</label>
+			<form class="form-horizontal login-form" method="POST" action="{{ route('login') }}">
+                @csrf
 
-                                <div class="col-md-6">
-                                    <input id="nisn" type="text" class="form-control" name="nisn"
-                                        value="{{ old('nisn') }}" required autocomplete="nisn" autofocus>
-                                </div>
-                            </div>
+				<div class="form-group relative">
+					<input id="nisn" type="text" class="form-control input-lg" placeholder="{{ __('Nisn or Email') }}" required
+                    name="nisn" value="{{ old('nisn') }}" required autocomplete="nisn" autofocus>
+				</div>
 
-                            <div class="row mb-3">
-                                <label for="password"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+				<div class="form-group relative password">
+					<input id="password" class="form-control input-lg" name="password"
+                    required autocomplete="current-password" type="password" placeholder="Password" required>
+				</div>
 
-                                <div class="col-md-6">
-                                    <input id="password" type="password"
-                                        class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="current-password">
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-md-6 offset-md-4">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="remember" id="remember"
-                                            {{ old('remember') ? 'checked' : '' }}>
-
-                                        <label class="form-check-label" for="remember">
-                                            {{ __('Remember Me') }}
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row mb-0">
-                                <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Login') }}
-                                    </button>
-
-                                    @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('Forgot Your Password?') }}
-                                        </a>
-                                    @endif
-                                </div>
-                            </div>
-                        </form>
+                @if (session()->has('error'))
+                    <div class="alert alert-error text-right mb-1" style="padding: 0; font-size:12px;">
+                        * {{ session('error') }}
                     </div>
+                @endif
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-lg btn-block">{{ __('Login') }}</button>
                 </div>
-            </div>
-        </div>
-    </div>
+                
+                <div class="text-center">
+                    <label>belum punya akun? <a href="/register">Register</a></label>
+                </div>
+			</form>
+		</div>
+	</div>
 @endsection
+
+
+

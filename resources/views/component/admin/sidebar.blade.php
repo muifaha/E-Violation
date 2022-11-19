@@ -16,7 +16,7 @@
                         <div class="ic">
                             <i class='bx bxs-grid-alt'></i>
                         </div>
-                        <div class="c-menu-item__title"><span>Home</span></div>
+                        <div class="c-menu-item__title"><span>Dashboard</span></div>
                     </a>
                 </li>
 
@@ -50,7 +50,7 @@
                     </a>
                 </li>
 
-                <li class="c-menu__item {{ request()->is('tata-tertib*') ? 'is-active' : '' }} has-submenu"
+                {{-- <li class="c-menu__item {{ request()->is('tata-tertib*') ? 'is-active' : '' }} has-submenu"
                     data-toggle="tooltip" title="Tata Tertib">
                     <a class="c-menu__item__inner" href="/tata-tertib">
                         <div class="ic">
@@ -58,9 +58,9 @@
                         </div>
                         <div class="c-menu-item__title"><span>Tata Tertib</span></div>
                     </a>
-                </li>
+                </li> --}}
 
-                <li class="c-menu__item {{ request()->is('kontak-sekolah*') ? 'is-active' : '' }} has-submenu"
+                {{-- <li class="c-menu__item {{ request()->is('kontak-sekolah*') ? 'is-active' : '' }} has-submenu"
                     data-toggle="tooltip" title="Kontak Sekolah">
                     <a class="c-menu__item__inner" href="/kontak-sekolah">
                         <div class="ic">
@@ -68,16 +68,16 @@
                         </div>
                         <div class="c-menu-item__title"><span>Kontak Sekolah</span></div>
                     </a>
-                </li>
+                </li> --}}
 
-                <!-- <li class="c-menu__item {{ request()->is('faq*') ? 'is-active' : '' }} has-submenu" data-toggle="tooltip" title="FAQ">
-                <a class="c-menu__item__inner" href="/faq">
-                  <div class="ic">
-                    <i class="fas fa-comments"></i>
-                  </div>
-                  <div class="c-menu-item__title"><span>FAQ</span></div>
-                </a>
-              </li> -->
+                {{-- <li class="c-menu__item {{ request()->is('faq*') ? 'is-active' : '' }} has-submenu" data-toggle="tooltip" title="FAQ">
+                    <a class="c-menu__item__inner" href="/faq">
+                        <div class="ic">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="c-menu-item__title"><span>FAQ</span></div>
+                    </a>
+                </li> --}}
 
             </ul>
         </nav>

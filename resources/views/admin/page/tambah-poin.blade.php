@@ -1,9 +1,10 @@
 @extends('layouts.main')
+@section('title', 'Tambah Poin')
 @section('content')
     <!-- <div class="container"> -->
         <!-- <div class="row justify-content-center"> -->
             <div class="card">
-                <h3 class="card-header mt-2">
+                <h3 class="card-header">
                     Pelanggaran yang dilakukan oleh {{ $siswa->nama }}
                 </h3>
                 <div class="card-body">
@@ -25,7 +26,7 @@
                         <input type="text" name="total" id="total" hidden>
                         <input type="text" name="id_user" id="id_user" value="{{ $siswa->user_id }}" hidden>
 
-                        <table class="table" id="table_data_user">
+                        <table class="table display" cellspacing="0" width="100%" id="table_data_user">
                             <thead>
                                 <tr>
                                     <th>No.</th>
@@ -41,7 +42,7 @@
                                         <td>{{ $rule->name }}</td>
                                         <td>{{ $rule->poin }}</td>
                                         <td>
-                                            <input type="checkbox" name="poin" id="poin{{ $rule->id }}" value="{{ $rule->poin }}" onmousedown="this.form.rule{{ $rule->id }}.disabled=this.checked">
+                                            <input type="checkbox" name="poin" class="check" id="poin{{ $rule->id }}" value="{{ $rule->poin }}" onmousedown="this.form.rule{{ $rule->id }}.disabled=this.checked">
                                             <input type="text" name="rule[]" id="rule{{ $rule->id }}" value="{{ $rule->id }}" disabled hidden>
                                         </td>
                                     </tr>

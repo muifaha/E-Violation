@@ -29,7 +29,7 @@
         <div class="content-wrapper content-wrapper--with-bg">
 
             <div class="page-title-content">
-                <h1 style="margin-bottom: 0; font-weight: 600;">Title</h1>
+                <h1 style="margin-bottom: 0; font-weight: 600;">@yield('title')</h1>
             </div>
 
             @yield('content')
@@ -37,8 +37,6 @@
         @include('component.footer')
 
     </main>
-
-
 
     @include('component.script')
 

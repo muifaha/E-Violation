@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title', 'Daftar Siswa')
 @section('content')
-    <div class="card shadow my-2 px-0 mx-1">
+    <div class="card shadow px-0">
         <div class="card-header">
             <h2 class="fw-bolder mt-2 d-inline-flex">List Siswa</h2>
             <div class="dropdown float-right">

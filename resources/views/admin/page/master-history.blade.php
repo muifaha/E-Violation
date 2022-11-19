@@ -1,9 +1,8 @@
 @extends('layouts.main')
-@section('title', 'History')
+@section('title', 'Histori Skor')
 @section('content')
-    <div class="container">
         <div class="row justify-content-center">
-            <div class="card shadow my-2 px-0">
+            <div class="card shadow px-0">
                 <div class="card-header">
                     <h2 class="fw-bolder mt-2">
                         History
@@ -49,5 +48,4 @@
 
             </div>
         </div>
-    </div>
 @endsection

@@ -1,4 +1,5 @@
-@extends('admin.master-admin')
+@extends('layouts.main')
+@section('title', 'Kurang Poin')
 @section('content')
     <div class="container">
         <div class="row justify-content-center">

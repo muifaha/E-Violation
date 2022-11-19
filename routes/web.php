@@ -20,8 +20,11 @@ use App\Http\Controllers\RuleController;
 |
 */
 
+// Route::get('/', function () {
+//     return view('auth.login');
+// });
 Route::get('/', function () {
-    return view('auth.login');
+    return view('welcome');
 });
 
 Auth::routes();

@@ -161,13 +161,10 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="kelas"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('Kelas') }}</label>
+                                <label for="kelas" class="col-md-4 col-form-label text-md-end">{{ __('Kelas') }}</label>
                                 <div class="col-md-6">
-                                    <select
-                                        class="form-select form-select-md form-select-solid @error('kelas') is-invalid @enderror"
-                                        name="kelas" id="kelas" value="{{ old('kelas') }}" autocomplete="kelas"
-                                        required>
+                                    <select class="form-select form-select-md form-select-solid @error('kelas') is-invalid @enderror"
+                                        name="kelas" id="kelas" value="{{ old('kelas') }}" required autocomplete="kelas">
                                         <option disabled value="Pilih" selected>
                                             Pilih kelas</option>
                                         @foreach ($kelas as $item)
@@ -175,8 +172,8 @@
                                                 @if (old('kelas') == $item->id) {{ 'selected' }} @endif>
                                                 {{ $item->nama_kelas }}</option>
                                         @endforeach
-
                                     </select>
+
                                     @error('kelas')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

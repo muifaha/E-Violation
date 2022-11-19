@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Home')
+@section('title', 'Dashboard')
 @section('content')
     @if (Auth::user()->role != 0)
         <div class="dashboard">
@@ -85,9 +85,9 @@
             </div>
         </div>
     @else
-        <div class="alert alert-primary alert-dismissible fade show" role="alert">Welcome,
-            <strong> {{ $nama }}</strong>
-            <button type="button" class="btn-close p-3" data-bs-dismiss="alert" aria-label="Close"></button>
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            Welcome,<strong> {{ $nama }}</strong>
+            <button type="button" class="btn-close p-3" data-bs-dismiss="alert" aria-label="Close" style="z-index: 1"></button>
         </div>
         <div class="row mt-3">
             <div class="col-lg-6 offset-lg-3">
