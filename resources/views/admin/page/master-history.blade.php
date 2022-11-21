@@ -17,11 +17,12 @@
                                     <div class="list-group">
                                         <a class="list-group-item list-group-item-action flex-column align-items-start py-0">
                                             <div class="d-flex w-100 justify-content-end mt-2">
+                                                <>{{ $history->siswa->nama }}</p>
                                                 <small>{{ $history->created_at->diffForHumans() }}</small>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-8">
-                                                    <p>{{ $history->siswa->nama }}</p>
+                                                    
                                                     <p class="mb-1 h6 text-dark ">{{ $history->rule->name }}
                                                     <div class="text-danger d-inline-flex">
                                                         +{{ $history->rule->poin }}

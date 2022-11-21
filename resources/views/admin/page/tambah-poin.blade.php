@@ -20,7 +20,7 @@
                             </div>
                         </form>
                     </div> -->
-                    <form action="/pelanggaran/{{ $siswa->id }}" method="post">
+                    <form action="/pelanggaran/{{ $siswa->id }}" method="post" id="form">
                         @csrf
                         @method('put')
                         <input type="text" name="total" id="total" hidden>
@@ -43,7 +43,7 @@
                                         <td>{{ $rule->poin }}</td>
                                         <td>
                                             <input type="checkbox" name="poin" class="check" id="poin{{ $rule->id }}" value="{{ $rule->poin }}" onmousedown="this.form.rule{{ $rule->id }}.disabled=this.checked">
-                                            <input type="text" name="rule[]" id="rule{{ $rule->id }}" value="{{ $rule->id }}" disabled hidden>
+                                            <input class="rule" type="text" name="rule[]" id="rule{{ $rule->id }}" value="{{ $rule->id }}" disabled hidden>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -70,5 +70,6 @@
             });
             $("#total").val(total);
         });
+
     </script>
 @endsection

@@ -13,9 +13,24 @@
 <script>
 	$(document).ready( function () {
 	    $('#table_data_user').DataTable({
+			pagingType: 'simple_numbers',
 	    	responsive:true,
 	    	"language": {
-			    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Indonesian.json"
+			    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Indonesian.json",
+				paginate: {
+					first:    '«',
+					previous: '‹',
+					next:     '›',
+					last:     '»'	
+				},
+				aria: {
+					paginate: {
+						first:    'First',
+						previous: 'Previous',
+						next:     'Next',
+						last:     'Last'
+					}
+        		}
 			}
 	    });
 	} );

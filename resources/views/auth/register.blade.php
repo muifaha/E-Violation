@@ -99,7 +99,7 @@
                     value="{{ old('nisn') }}" required autocomplete="nisn" autofocus placeholder="NISN">
 
                     @error('nisn')
-                        <span class="invalid-feedback" role="alert" style="color:red;">
+                        <span class="invalid-feedback" role="alert" style="color:red; text-shadow: 2px 2px 2px black;">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
@@ -110,7 +110,7 @@
                     value="{{ old('email') }}" required autocomplete="email" placeholder="Email">
 
                     @error('email')
-                        <span class="invalid-feedback" role="alert" style="color:red;">
+                        <span class="invalid-feedback" role="alert" style="color:red; text-shadow: 2px 2px 2px black;">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
@@ -121,7 +121,7 @@
                     required autocomplete="new-password" placeholder="Password">
 
                     @error('password')
-                        <span class="invalid-feedback" role="alert" style="color:red;">
+                        <span class="invalid-feedback" role="alert" style="color:red; text-shadow: 2px 2px 2px black;">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror

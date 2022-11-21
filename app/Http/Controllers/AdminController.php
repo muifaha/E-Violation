@@ -21,7 +21,7 @@ class AdminController extends Controller
         };
 
         return view('admin.page.daftar-siswa', [
-            'siswas' => Student::latest('poin')->filter(request(['search', 'kelas']))->paginate(2)->withQueryString(),
+            'siswas' => Student::latest('poin')->filter(request(['search', 'kelas']))->paginate(null)->withQueryString(),
             'kelas' => Kelas::all()
         ]);
     }
@@ -37,6 +37,7 @@ class AdminController extends Controller
     public function tambah_poin(Request $request, $id)
     {
         // return $student_id;
+        dd($request->all());
         $siswa = Student::findOrFail($id);
         // dd($request->rule);
         $histories = $request->input('rule');

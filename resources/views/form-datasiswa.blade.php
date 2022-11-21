@@ -164,8 +164,8 @@
                                 <label for="kelas" class="col-md-4 col-form-label text-md-end">{{ __('Kelas') }}</label>
                                 <div class="col-md-6">
                                     <select class="form-select form-select-md form-select-solid @error('kelas') is-invalid @enderror"
-                                        name="kelas" id="kelas" value="{{ old('kelas') }}" required autocomplete="kelas">
-                                        <option disabled value="Pilih" selected>
+                                    name="kelas" id="kelas" required autocomplete="kelas">
+                                        <option disabled selected value="">
                                             Pilih kelas</option>
                                         @foreach ($kelas as $item)
                                             <option value="{{ $item->id }}|{{ $item->user_id }}"

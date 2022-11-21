@@ -71,19 +71,19 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <!-- <div class="container"> -->
-                                                <!-- <div class="row"> -->
-                                                <div class="col-sm-12">
-                                                    <ul class="list-group list-group-flush h5 p-2">
-                                                        <li class="list-group-item">TTL : {{ $siswa->ttl }}</li>
-                                                        <li class="list-group-item">Gender : {{ $siswa->jk }}</li>
-                                                        <li class="list-group-item">Agama : {{ $siswa->agama }}</li>
-                                                        <li class="list-group-item">Alamat : {{ $siswa->alamat }}</li>
-                                                        <li class="list-group-item">No. Telp : {{ $siswa->no_telp }}</li>
-                                                    </ul>
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <ul class="list-group list-group-flush h5 p-2">
+                                                                <li class="list-group-item">TTL : {{ $siswa->ttl }}</li>
+                                                                <li class="list-group-item">Gender : {{ $siswa->jk }}</li>
+                                                                <li class="list-group-item">Agama : {{ $siswa->agama }}</li>
+                                                                <li class="list-group-item">Alamat : {{ $siswa->alamat }}</li>
+                                                                <li class="list-group-item">No. Telp : {{ $siswa->no_telp }}</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <!-- </div> -->
-                                                <!-- </div> -->
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"

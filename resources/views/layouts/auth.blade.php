@@ -3,7 +3,7 @@
 
 <head>
     @include('component.head')
-    <title>smart_book Now!</title>
+    <title>E-Book | @yield('title')</title>
     <link rel="stylesheet" href="../css/auth.css">
 </head>
 

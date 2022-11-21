@@ -9,6 +9,8 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RuleController;
 
+use App\Http\Controllers\BoardController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +29,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// leaderboard
+Route::get('/you-cant-see-me', [BoardController::class, 'unique'])->name('unique')->middleware('guest');
+
 Auth::routes();
 // Input More Info
 Route::post('/siswa/store', [StudentController::class, 'store'])->name('siswa');
@@ -38,7 +43,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/histori-skor', [StudentController::class, 'history']);
     // Route::get('/penangan', [StudentController::class, 'history']);
     // Route::get('/tata-tertib', [StudentController::class, 'history']);
-
 });
 //Admin
 Route::group(['middleware' => ['auth:sanctum', 'admin']], function () {

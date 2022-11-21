@@ -54,7 +54,7 @@ class StudentController extends Controller
         $ttl = $request->ttl . ', ' . $request->date;
         $kls = $request->kelas;
         $kls_explode = explode('|', $kls);
-
+        dd($kls);
         $data = [
             'wali_kelas' => $kls_explode[1],
             'kelas_id' => $kls_explode[0],

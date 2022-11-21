@@ -23,7 +23,7 @@
 
                 @if (session()->has('error'))
                     <div class="alert alert-error text-right mb-1" style="padding: 0; font-size:12px;">
-                        * {{ session('error') }}
+                        <strong>* {{ session('error') }}</strong>
                     </div>
                 @endif
 
