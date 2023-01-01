@@ -37,7 +37,7 @@ class AdminController extends Controller
     public function tambah_poin(Request $request, $id)
     {
         // return $student_id;
-        dd($request->all());
+        // dd($request->all());
         $siswa = Student::findOrFail($id);
         // dd($request->rule);
         $histories = $request->input('rule');

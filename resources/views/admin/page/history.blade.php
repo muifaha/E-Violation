@@ -1,9 +1,8 @@
 @extends('layouts.main')
 @section('title', 'Histori Siswa')
 @section('content')
-    <div class="container">
         <div class="row justify-content-center">
-            <div class="card shadow my-2 px-0">
+            <div class="card shadow px-0">
 
                 <div class="card-header">
 
@@ -20,21 +19,20 @@
                             <p class="text-dark mb-1 mt-3 ml-2">{{ $tgl }}</p>
                             @foreach ($histories as $history)
                                 @if ($history->getAttribute('tanggal') == $tgl)
-                                    <div class="list-group">
-                                        <a class="list-group-item list-group-item-action flex-column align-items-start py-0">
-                                            <div class="d-flex w-100 justify-content-end mt-2">
-                                                <small>{{ $history->created_at->diffForHumans() }}</small>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-8">
-
-                                                    <p class="mb-1 h6 text-dark ">{{ $history->rule->name }}
-                                                    <div class="text-danger d-inline-flex">
+                                    <div class="list-group mb-2">
+                                        <a class="list-group-item list-group-item-action flex-column align-items-start py-0"
+                                        style="background-color: #f1f1f1;">
+                                            
+                                            <div class="histori-part row mb-1">
+                                                <div class="col-lg-2 row" style="margin-top: .65rem;">
+                                                    <small class="px-0" style="height: 20px; width: 84px;">{{ $history->created_at->diffForHumans() }}</small>
+                                                </div>
+                                                <div class="col-lg-10" style="margin-top: .65rem;">
+                                                    <p class="mb-1 h6 text-dark ">{{ $history->rule->name }}</p>
+                                                    <div class="text-danger d-inline-flex mb-2">
                                                         +{{ $history->rule->poin }}
                                                     </div>
-                                                    </p>
                                                 </div>
-
                                             </div>
                                         </a>
                                     </div>
@@ -53,7 +51,6 @@
                 </div>
 
             </div>
-
         </div>
         <script>
             $('ul.pagination li').hide().filter(':lt(1), :nth-las-child(1)').show();

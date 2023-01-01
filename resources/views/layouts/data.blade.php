@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    @include('component.head')
+    <title>E-Book | @yield('title')</title>
+    <link rel="stylesheet" href="../css/form-data.css">
+</head>
+
+<body>
+
+    @yield('datas')
+
+    @include('component.footer')
+    @include('component.script')
+
+</body>
+
+</html>
