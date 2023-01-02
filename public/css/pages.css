@@ -10,18 +10,7 @@
 .cord {
   padding: 0;
 }
-.cord:nth-child(1) {
-  padding: 0 8px 0 0;
-}
-.cord:nth-child(2) {
-  padding: 0 8px 0 8px;
-}
-.cord:nth-last-child(1) {
-  padding: 0 0 0 8px;
-}
-.cord:nth-last-child(2) {
-  padding: 0 8px 0 8px;
-}
+
 .cord .card {
   /*border-top-left-radius: 0;*/
   /*border-bottom-left-radius: 0;*/
@@ -235,7 +224,40 @@ footer.sticky-footer .copyright {
   }
 }
 
-@media (min-width: 992px) and ( max-width: 1338px) {
+@media only screen and (min-width: 768px) {
+  .card {
+    margin-bottom: 20px;
+  }
+  .cord:nth-child(1) {
+    padding: 0 8px 0 0;
+  }
+  .cord:nth-child(2) {
+    padding: 0 0 0 8px;
+  }
+  .cord:nth-last-child(1) {
+    padding: 0 0 0 8px;
+  }
+  .cord:nth-last-child(2) {
+    padding: 0 8px 0 0;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .cord:nth-child(1) {
+    padding: 0 8px 0 0;
+  }
+  .cord:nth-child(2) {
+    padding: 0 8px 0 8px;
+  }
+  .cord:nth-last-child(1) {
+    padding: 0 0 0 8px;
+  }
+  .cord:nth-last-child(2) {
+    padding: 0 8px 0 8px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1338px) {
   .dashboard .card {
     font-size: 12px;
   }
@@ -252,29 +274,18 @@ footer.sticky-footer .copyright {
   }
 }
 
-@media (max-width: 991px) {
+@media only screen and (max-width: 991px) {
   .all-card {
     padding-top: 5px;
   }
-  .cord:nth-child(1) {
-    padding: 0 8px 0 0;
-  }
-  .cord:nth-child(2) {
-    padding: 0 0 0 8px;
-  }
-  .cord:nth-last-child(1) {
-    padding: 0 0 0 8px;
-  }
-  .cord:nth-last-child(2) {
-    padding: 0 8px 0 0;
-  }
-
   .histori-part .col-lg-2 {
     justify-content: flex-start;
   }
 }
 
-@media (max-width: 768px) {
+
+
+@media only screen and (max-width: 767px) {
   .card {
     margin-bottom: 20px;
   }

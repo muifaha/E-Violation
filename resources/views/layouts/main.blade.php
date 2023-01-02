@@ -28,7 +28,7 @@
     <main class="l-main">
         <div class="content-wrapper content-wrapper--with-bg">
 
-            <div class="page-title-content">
+            <div class="page-title-content animate__animated animate__fadeInDown">
                 <h1 style="margin-bottom: 0; font-weight: 600;">@yield('title')</h1>
             </div>
 

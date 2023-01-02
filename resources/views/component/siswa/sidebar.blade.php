@@ -1,7 +1,7 @@
 <div class="l-sidebar">
     <div class="logo">
-        <img src="../img/smkn1.png" width="35">
-        <div class="text-logo">
+        <img src="../img/smkn1.png" width="35" class="animate__animated animate__fadeInDown">
+        <div class="text-logo animate__animated animate__fadeInLeft" style="animation-delay: 1s">
             <span>E - Book</span>
         </div>
     </div>

@@ -3,7 +3,7 @@
 @section('auths')
 
     <div class="container">
-		<div class="login-container-wrapper clearfix">
+		<div class="animate__animated animate__fadeInDown login-container-wrapper clearfix">
 			<div class="logo">
                 <i class="fa fas fa-user"></i>
 			</div>
@@ -18,7 +18,7 @@
 
                     @error('nisn')
                         <span class="invalid-feedback" role="alert" style="color:red; text-shadow: 2px 2px 2px black;">
-                            <strong>{{ $message }}</strong>
+                            <strong style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
                         </span>
                     @enderror
 				</div>
@@ -29,7 +29,7 @@
 
                     @error('email')
                         <span class="invalid-feedback" role="alert" style="color:red; text-shadow: 2px 2px 2px black;">
-                            <strong>{{ $message }}</strong>
+                            <strong style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
                         </span>
                     @enderror
 				</div>
@@ -47,7 +47,7 @@
 
                     @error('password')
                         <span class="invalid-feedback" role="alert" style="color:red; text-shadow: 2px 2px 2px black;">
-                            <strong>{{ $message }}</strong>
+                            <strong style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
                         </span>
                     @enderror
 				</div>

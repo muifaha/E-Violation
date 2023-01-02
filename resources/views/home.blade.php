@@ -6,7 +6,7 @@
             <div class="all-card">
                 <div class="row">
                     <div class="cord col-lg-3 col-md-6">
-                        <div class="card">
+                        <div class="card animate__animated animate__fadeInDownBig" style="animation-delay: 0s;">
                             <div class="card-body border-left-green">
                                 <div class="row">
                                     <div class="col">
@@ -23,7 +23,7 @@
                         </div>
                     </div>
                     <div class="cord col-lg-3 col-md-6">
-                        <div class="card">
+                        <div class="card animate__animated animate__fadeInDownBig" style="animation-delay: 0.5s;">
                             <div class="card-body border-left-orange">
                                 <div class="row">
                                     <div class="col">
@@ -41,7 +41,7 @@
                     </div>
                     <div class="cord col-lg-3 col-md-6">
                         <a href="#" style="text-decoration: none;">
-                            <div class="card dashy">
+                            <div class="card dashy animate__animated animate__fadeInDownBig" style="animation-delay: 1s;">
                                 <div class="card-body border-left-yellow">
                                     <div class="row">
                                         <div class="col">
@@ -62,7 +62,7 @@
                     </div>
                     <div class="cord col-lg-3 col-md-6">
                         <a href="#" style="text-decoration: none;">
-                            <div class="card dashb">
+                            <div class="card dashb animate__animated animate__fadeInDownBig" style="animation-delay: 1.5s;">
                                 <div class="card-body border-left-blue">
                                     <div class="row">
                                         <div class="col">

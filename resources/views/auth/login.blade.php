@@ -1,8 +1,8 @@
 @extends('layouts.auth')
 @section('title', 'Login')
 @section('auths')    
-    <div class="container">
-		<div class="login-container-wrapper clearfix">
+    <div class="container mt-5">
+		<div class="animate__animated animate__bounceIn login-container-wrapper clearfix">
 			<div class="logo">
                 <i class="fa fas fa-user"></i>
 			</div>

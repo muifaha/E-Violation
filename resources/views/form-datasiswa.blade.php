@@ -1,8 +1,8 @@
 @extends('layouts.data')
 @section('title', 'Data Siswa & Orang tua')
 @section('datas')    
-    <div class="container">
-		<div class="login-container-wrapper clearfix">
+    <div class="container mb-5">
+		<div class="animate__animated animate__fadeInDown login-container-wrapper clearfix">
             <div class="welcome"><strong>{{ Auth::user()->nisn }}</strong>, silahkan mengisi Data pelajar & Orang Tua terlebih dahulu.</div>
             <form class="form-horizontal login-form" method="POST" action="{{ route('siswa') }}">
                 @csrf
@@ -10,23 +10,23 @@
                 <div class="all-data">
                     <div class="siswa col-lg-7 col-sm-12">
                         {{-- nisn --}}
-                        <input id="nisn" type="hidden" class="form-control @error('nisn') is-invalid @enderror" name="nisn"
+                        <input id="nisn" type="hidden" class="form-control input-lg @error('nisn') is-invalid @enderror" name="nisn"
                         value="{{ Auth::user()->nisn }}" required autocomplete="nisn" readonly>
 
                         @error('nisn')
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                                <strong style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
                             </span>
                         @enderror
     
                         {{-- nama --}}
                         <div class="form-group relative">
-                            <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama"
+                            <input id="nama" type="text" class="form-control input-lg @error('nama') is-invalid @enderror" name="nama"
                             value="{{ old('nama') }}" required autocomplete="nama" placeholder="Nama Siswa" autofocus required>
     
                             @error('nama')
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                    <strong style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
@@ -34,16 +34,16 @@
                         {{-- ttl --}}
                         <div class="form-group relative">
                             <div class="input-group">
-                                <input id="ttl" name="ttl" type="text" class="form-control @error('ttl') is-invalid @enderror"
+                                <input id="ttl" name="ttl" type="text" class="form-control input-lg @error('ttl') is-invalid @enderror"
                                 value="{{ old('ttl') }}" placeholder="Tempat Lahir" autocomplete="ttl" required>
     
-                                <input type="date" id="date" name="date" class="form-control"
+                                <input type="date" id="date" name="date" class="form-control input-lg"
                                     placeholder="dd-mm-yyyy" required>
                             </div>
     
                             @error('ttl')
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                    <strong style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
@@ -51,7 +51,7 @@
                         <div class="inner">
                             {{-- jk --}}
                             <div class="form-group relative one">
-                                <select class="form-select form-select-md form-select-solid @error('jk') is-invalid @enderror"
+                                <select class="form-select form-select-md form-select-solid input-lg @error('jk') is-invalid @enderror"
                                 name="jk" id="jk" value="{{ old('jk') }}" autocomplete="jk" required>
                                     <option disabled selected value="">Pilih Jenis Kelamin</option>
                                     <option value="Laki-laki" @if (old('jk') == 'Laki-laki') {{ 'selected' }} @endif>Laki-laki</option>
@@ -60,14 +60,14 @@
         
                                 @error('jk')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
         
                             {{-- agama --}}
                             <div class="form-group relative two">
-                                <select class="form-select form-select-md form-select-solid @error('agama') is-invalid @enderror"
+                                <select class="form-select form-select-md form-select-solid input-lg @error('agama') is-invalid @enderror"
                                 name="agama" id="agama" value="{{ old('agama') }}" autocomplete="agama" required>
                                     <option disabled value="" selected>Pilih Agama</option>
                                     <option value="Islam" @if (old('agama') == 'Islam') {{ 'selected' }} @endif>Islam</option>
@@ -80,7 +80,7 @@
         
                                 @error('agama')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -89,12 +89,12 @@
     
                         {{-- alamat --}}
                         <div class="form-group relative">
-                            <input id="alamat" type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat"
+                            <input id="alamat" type="text" class="form-control input-lg @error('alamat') is-invalid @enderror" name="alamat"
                             value="{{ old('alamat') }}" required autocomplete="alamat" placeholder="Masukkan Alamat">
     
                             @error('alamat')
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                    <strong style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
@@ -102,19 +102,19 @@
                         <div class="inner">
                             {{-- no_telp --}}
                             <div class="form-group relative one">
-                                <input id="no_telp" type="text" class="form-control @error('no_telp') is-invalid @enderror" name="no_telp"
+                                <input id="no_telp" type="text" class="form-control input-lg @error('no_telp') is-invalid @enderror" name="no_telp"
                                 value="{{ old('no_telp') }}" required autocomplete="no_telp" placeholder="Telepon Siswa">
         
                                 @error('no_telp')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
         
                             {{-- kelas --}}
                             <div class="form-group relative two">
-                                <select class="form-select form-select-md form-select-solid @error('kelas') is-invalid @enderror"
+                                <select class="form-select form-select-md form-select-solid input-lg @error('kelas') is-invalid @enderror"
                                 name="kelas" id="kelas" required autocomplete="kelas">
                                     <option disabled selected value="">Pilih kelas</option>
                                     @foreach ($kelas as $item)
@@ -127,7 +127,7 @@
         
                                 @error('kelas')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -138,50 +138,50 @@
                     <div class="ortu col-lg-5 col-sm-12">
                         {{-- nama_ayah --}}
                         <div class="form-group relative">
-                            <input id="n_ayah" type="text" class="form-control @error('n_ayah') is-invalid @enderror" name="n_ayah"
+                            <input id="n_ayah" type="text" class="form-control input-lg @error('n_ayah') is-invalid @enderror" name="n_ayah"
                             value="{{ old('n_ayah') }}" required autocomplete="n_ayah" placeholder="Nama Ayah">
     
                             @error('n_ayah')
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                    <strong style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
     
                         {{-- nama_ibu --}}
                         <div class="form-group relative">
-                            <input id="n_ibu" type="text" class="form-control @error('n_ibu') is-invalid @enderror" name="n_ibu"
+                            <input id="n_ibu" type="text" class="form-control input-lg @error('n_ibu') is-invalid @enderror" name="n_ibu"
                             value="{{ old('n_ibu') }}" required autocomplete="n_ibu" placeholder="Nama Ibu">
     
                             @error('n_ibu')
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                    <strong style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
     
                         {{-- alamat_ortu --}}
                         <div class="form-group relative">
-                            <input id="alamat_ortu" type="text" class="form-control @error('alamat_ortu') is-invalid @enderror"
+                            <input id="alamat_ortu" type="text" class="form-control input-lg @error('alamat_ortu') is-invalid @enderror"
                             name="alamat_ortu" value="{{ old('alamat_ortu') }}" required autocomplete="alamat_ortu" 
                             placeholder="Alamat Orang Tua">
     
                             @error('alamat_ortu')
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                    <strong style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
     
                         {{-- telepon_rumah --}}
                         <div class="form-group relative">
-                            <input id="no_telp_rumah" type="text" class="form-control @error('no_telp_rumah') is-invalid @enderror"
+                            <input id="no_telp_rumah" type="text" class="form-control input-lg @error('no_telp_rumah') is-invalid @enderror"
                             name="no_telp_rumah" value="{{ old('no_telp_rumah') }}" required autocomplete="no_telp_rumah" 
                             placeholder="Telepon Rumah">
     
                             @error('no_telp_rumah')
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                    <strong style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
