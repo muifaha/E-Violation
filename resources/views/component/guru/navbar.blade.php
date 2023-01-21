@@ -25,13 +25,12 @@
                     href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                     v-pre>
                     <!-- <i class='bx bxs-user-circle'></i> -->
-                    <div class="text-small d-inline-flex ms-1">{{ strtok(auth()->user()->name, ' ') }}</div>
+                    <div class="text-small d-inline-flex ms-1 ">{{ strtok(auth()->user()->name, ' ') }}</div>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-end me-2" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a>
 
@@ -50,21 +49,15 @@
 </header>
 
 <input type="checkbox" id="checki" class="ch">
-<ul class="hp-ul" for=checki style="z-index: 1;">
+<ul class="hp-ul" for=checki style="z-index: 2;">
     <a href="/home">
         <li class="{{ request()->is('home*') ? 'active' : '' }} hp-li" title="Dashboard">
             <i class='bx bxs-grid-alt'></i>
             Dashboard
         </li>
     </a>
-    <a href="/daftar-siswa">
-        <li class="{{ request()->is('daftar-siswa*') ? 'active' : '' }} hp-li" title="Daftar Siswa">
-            <i class='fas fa-users'></i>
-            Daftar Siswa
-        </li>
-    </a>
-    <a href="guru/histori-skor">
-        <li class="{{ request()->is('guru*') ? 'active' : '' }} hp-li" title="Histori Skor">
+    <a href="histori-skor">
+        <li class="{{ request()->is('histori-skor*') ? 'active' : '' }} hp-li" title="Histori Skor">
             <i class="fas fa-calendar-alt"></i>
             Histori Skor
         </li>
@@ -80,14 +73,14 @@
             <i class="fas fa-chalkboard-teacher"></i>
             Tata Tertib
         </li>
-    </a> --}}
-    {{-- <a href="/kontak-sekolah">
+    </a>
+    <a href="/kontak-sekolah">
         <li class="{{ request()->is('kontak-sekolah*') ? 'active' : '' }} hp-li" title="Kontak Sekolah">
             <i class="fas fa-phone"></i>
             Kontak Sekolah
         </li>
-    </a> --}}
-    {{-- <a href="/faq">
+    </a>
+    <a href="/faq">
         <li class="{{ request()->is('faq*') ? 'active' : '' }} hp-li" title="FAQ">
             <i class="fas fa-comments"></i>
             FAQ

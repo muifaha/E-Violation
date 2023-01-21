@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKelasTable extends Migration
+class CreatePenangananTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class CreateKelasTable extends Migration
      */
     public function up()
     {
-        Schema::create('kelas', function (Blueprint $table) {
+        Schema::create('penanganan', function (Blueprint $table) {
             $table->id();
-            $table->char('nama_kelas', 10);
+            $table->foreignId('student_id')->references('id')->on('students')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->string('tindak_lanjut', 255);
+            $table->boolean('konfirmasi')->default(0);
             $table->timestamps();
         });
     }
@@ -27,6 +31,6 @@ class CreateKelasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kelas');
+        Schema::dropIfExists('penanganan');
     }
 }

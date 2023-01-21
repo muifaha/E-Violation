@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class RuleType extends Model
+class WaliKelas extends Model
 {
-    use HasFactory;
     protected $guarded = ['id'];
 
-    public function rule()
+    public function kelas()
     {
-        return $this->hasMany(Rule::class);
+        return $this->belongsTo(Kelas::class);
     }
 }

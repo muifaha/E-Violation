@@ -5,6 +5,7 @@
     @include('component.head')
     <title>E-Book | @yield('title')</title>
     <link rel="stylesheet" href="../css/auth.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>

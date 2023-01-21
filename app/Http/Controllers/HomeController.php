@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
 use App\Models\User;
+use App\Models\Student;
+use App\Models\WaliKelas;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,15 +26,24 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->role > 0) {
+        if (auth()->user()->role == 1) {
             $siswas = Student::all();
             $users = User::all();
             return view('home', compact('siswas', 'users'));
         }
-        $siswas = Student::with('user')->take(10)->get()->sortByDesc('poin');
-        $siswa = Student::where('nisn', auth()->user()->nisn)->first();
-        $nama = strtok($siswa['nama'], " ");
-        return view('home', compact('siswas', 'siswa', 'nama'));
+        if (auth()->user()->role == 2) {
+            $wali_kelas_id = WaliKelas::where('user_id', auth()->user()->id)->first();
+            $siswas = Student::where('kelas_id', $wali_kelas_id->kelas_id)->get();
+
+            return view('home', compact('siswas'));
+        }
+        if (auth()->user()->role == 3) {
+
+            $siswas = Student::with('user')->take(10)->get()->sortByDesc('poin');
+            $siswa = Student::where('nisn', auth()->user()->nisn)->first();
+            $nama = strtok($siswa['nama'], " ");
+            return view('home', compact('siswas', 'siswa', 'nama'));
+        }
     }
 
     // public function penanganan()

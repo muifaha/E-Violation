@@ -8,11 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class History extends Model
 {
     protected $guarded = ['id'];
-
     protected $with = ['siswa', 'rule'];
     public function rule()
     {
-        return $this->belongsTo(Rule::class);
+        return $this->belongsTo(Peraturan::class, 'peraturan_id');
     }
 
     public function siswa()

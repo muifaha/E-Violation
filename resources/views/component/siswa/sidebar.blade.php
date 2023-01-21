@@ -30,7 +30,7 @@
                     </a>
                 </li>
 
-                <li class="c-menu__item {{ request()->is('penanganan*') ? 'is-active' : '' }} has-submenu "
+                {{-- <li class="c-menu__item {{ request()->is('penanganan*') ? 'is-active' : '' }} has-submenu "
                     data-toggle="tooltip" title="Penanganan">
                     <a class="c-menu__item__inner" href="/penanganan">
                         <div class="ic">
@@ -38,7 +38,7 @@
                         </div>
                         <div class="c-menu-item__title"><span>Penanganan</span></div>
                     </a>
-                </li>
+                </li> --}}
 
                 {{-- <li class="c-menu__item {{ request()->is('tata_tertib*') ? 'is-active' : '' }} has-submenu"
                     data-toggle="tooltip" title="Tata Tertib">

@@ -8,16 +8,25 @@
     <link rel="stylesheet" href="../css/nav-side-bar.css">
     <link rel="stylesheet" href="../css/pages.css">
     <!-- <link rel="stylesheet" href="../css/datatables.css"> -->
+
 </head>
 
 <body class="sidebar-is-reduced sidebar-is-expanded">
+
     @if (Auth::user()->info == true)
-        @if (Auth::user()->role != 0)
+        @if (Auth::user()->role == 1)
             <div class="sidebar-is-reduced">
                 @include('component.admin.sidebar')
                 @include('component.admin.navbar')
             </div>
-        @else
+        @endif
+        @if (Auth::user()->role == 2)
+            <div class="sidebar-is-reduced">
+                @include('component.guru.sidebar')
+                @include('component.guru.navbar')
+            </div>
+        @endif
+        @if (Auth::user()->role == 3)
             <div class="sidebar-is-reduced">
                 @include('component.siswa.sidebar')
                 @include('component.siswa.navbar')
@@ -31,14 +40,22 @@
             <div class="page-title-content animate__animated animate__fadeInDown">
                 <h1 style="margin-bottom: 0; font-weight: 600;">@yield('title')</h1>
             </div>
-
-            @yield('content')
+            @if (auth()->user()->role == 1)
+                @yield('content')
+            @endif
+            @if (auth()->user()->role == 2)
+                @yield('content')
+            @endif
+            @if (auth()->user()->role == 3)
+                @yield('content')
+            @endif
         </div>
         @include('component.footer')
 
     </main>
 
     @include('component.script')
+    @include('sweetalert::alert')
 
 </body>
 

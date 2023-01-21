@@ -12,7 +12,7 @@ class StudentController extends Controller
 {
     public function show()
     {
-        return view('siswa.detail.show', [
+        return view('siswa.show', [
             'siswa' => Student::where('user_id', auth()->user()->id)->first()
         ]);
     }
@@ -23,7 +23,7 @@ class StudentController extends Controller
         $histories = History::where('student_id', $siswa->id)->latest()->paginate(3);
         $tanggal = $histories->unique('tanggal')->pluck('tanggal');
         $nama = strtok($siswa['nama'], " ");
-        return view('siswa.detail.history', compact('histories', 'nama', 'tanggal'));
+        return view('siswa.history', compact('histories', 'nama', 'tanggal'));
     }
 
     public function store(Request $request)
@@ -52,12 +52,12 @@ class StudentController extends Controller
         ]);
 
         $ttl = $request->ttl . ', ' . $request->date;
-        $kls = $request->kelas;
-        $kls_explode = explode('|', $kls);
+        // $kls = $request->kelas;
+        // $kls_explode = explode('|', $kls);
         // dd($kls);
         $data = [
-            'wali_kelas' => $kls_explode[1],
-            'kelas_id' => $kls_explode[0],
+            'user_id' => auth()->user()->id,
+            'kelas_id' => $request->kelas,
             'nisn' => $request->nisn,
             'nama' => $request->nama,
             'ttl' => $ttl,
@@ -73,10 +73,11 @@ class StudentController extends Controller
         Student::create($data);
 
         User::findOrFail(Auth::user()->id)->update([
+            'name' => $request->nama,
             'info' => true
         ]);
 
-        return redirect('/home');
+        return redirect('/home')->with('toast_info', 'Welcome ' . $request->nama . '!');
     }
     public function edit($id)
     {

@@ -14,4 +14,9 @@ class Kelas extends Model
     {
         return $this->hasOne(Student::class);
     }
+
+    public function wali()
+    {
+        return $this->hasOne(WaliKelas::class);
+    }
 }

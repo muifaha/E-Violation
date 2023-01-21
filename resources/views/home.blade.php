@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title', 'Dashboard')
 @section('content')
-    @if (Auth::user()->role != 0)
+    @if (Auth::user()->role != 3)
         <div class="dashboard">
             <div class="all-card">
                 <div class="row">
@@ -11,7 +11,13 @@
                                 <div class="row">
                                     <div class="col">
                                         <p class="card-title text-title">{{ 'SISWA' }}</p>
-                                        <h2 class="card-text text-amount">{{ $siswas->count() }}</h2>
+                                        <h2 class="card-text text-amount">
+                                            @if ($siswas->count())
+                                                {{ $siswas->count() }}
+                                            @else
+                                                0
+                                            @endif
+                                        </h2>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon-shape green icon-area">
@@ -22,101 +28,82 @@
                             </div>
                         </div>
                     </div>
-                    <div class="cord col-lg-3 col-md-6">
-                        <div class="card animate__animated animate__fadeInDownBig" style="animation-delay: 0.5s;">
-                            <div class="card-body border-left-orange">
-                                <div class="row">
-                                    <div class="col">
-                                        <p class="card-title text-title">{{ 'USER' }}</p>
-                                        <h2 class="card-text text-amount">{{ $users->count() }}</h2>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon-shape orange icon-pie">
-                                            <i class="fa fa-users" aria-hidden="true"></i>
+                    @if (auth()->user()->role == 1)
+                        <div class="cord col-lg-3 col-md-6">
+                            <div class="card animate__animated animate__fadeInDownBig" style="animation-delay: 0.5s;">
+                                <div class="card-body border-left-orange">
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="card-title text-title">{{ 'USER' }}</p>
+                                            <h2 class="card-text text-amount">{{ $users->count() }}</h2>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="icon-shape orange icon-pie">
+                                                <i class="fa fa-users" aria-hidden="true"></i>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="cord col-lg-3 col-md-6">
-                        <a href="#" style="text-decoration: none;">
-                            <div class="card dashy animate__animated animate__fadeInDownBig" style="animation-delay: 1s;">
-                                <div class="card-body border-left-yellow">
-                                    <div class="row">
-                                        <div class="col">
-                                            <p class="card-title text-title hov">POIN</p>
-                                            <h5 class="card-text text-amount text-dark">
-                                                <i class="fas fa-arrow-right"></i>
-                                            </h5>
-                                        </div>
-                                        <div class="col-auto">
-                                            <div class="icon-shape yellow icon-user">
-                                                <i class="fas fa-clipboard-list" aria-hidden="true"></i>
+                        <div class="cord col-lg-3 col-md-6">
+                            <a href="#" style="text-decoration: none;">
+                                <div class="card dashy animate__animated animate__fadeInDownBig"
+                                    style="animation-delay: 1s;">
+                                    <div class="card-body border-left-yellow">
+                                        <div class="row">
+                                            <div class="col">
+                                                <p class="card-title text-title hov">POIN</p>
+                                                <h5 class="card-text text-amount text-dark">
+                                                    <i class="fas fa-arrow-right"></i>
+                                                </h5>
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="icon-shape yellow icon-user">
+                                                    <i class="fas fa-clipboard-list" aria-hidden="true"></i>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="cord col-lg-3 col-md-6">
-                        <a href="#" style="text-decoration: none;">
-                            <div class="card dashb animate__animated animate__fadeInDownBig" style="animation-delay: 1.5s;">
-                                <div class="card-body border-left-blue">
-                                    <div class="row">
-                                        <div class="col">
-                                            <p class="card-title text-title hov">VISI & MISI</p>
-                                            <h5 class="card-text text-amount text-dark">
-                                                <i class="fas fa-arrow-right"></i>
-                                            </h5>
-                                        </div>
-                                        <div class="col-auto">
-                                            <div class="icon-shape blue icon-percent">
-                                                <i class="fas fa-tasks" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="cord col-lg-3 col-md-6">
+                            <a href="#" style="text-decoration: none;">
+                                <div class="card dashb animate__animated animate__fadeInDownBig"
+                                    style="animation-delay: 1.5s;">
+                                    <div class="card-body border-left-blue">
+                                        <div class="row">
+                                            <div class="col">
+                                                <p class="card-title text-title hov">VISI & MISI</p>
+                                                <h5 class="card-text text-amount text-dark">
+                                                    <i class="fas fa-arrow-right"></i>
+                                                </h5>
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="icon-shape blue icon-percent">
+                                                    <i class="fas fa-tasks" aria-hidden="true"></i>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
-                    </div>
+                            </a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
     @else
-        <div class="alert alert-primary alert-dismissible fade show" role="alert">
-            Welcome,<strong> {{ $nama }}</strong>
-            <button type="button" class="btn-close p-3" data-bs-dismiss="alert" aria-label="Close" style="z-index: 1"></button>
-        </div>
         <div class="row mt-3">
             <div class="col-lg-6 offset-lg-3">
                 <div class="card shadow-lg-3">
                     <div class="card-header bg-primary text-light h5 p-3">
                         <i class="fas fa-tasks"></i>
-                        Papan Peringkat
+                        Ini Id Card/ data Diri
                     </div>
                     <div class="card-body py-4 text-dark">
-                        <div class="table-responsive">
-                            <table class="table" width="100%" cellspacing="0">
-                                <thead class="thead-inverse">
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Nama</th>
-                                        <th>Poin</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($siswas as $siswa)
-                                        <tr>
-                                            <td scope="row">{{ $loop->iteration }}</td>
-                                            <td>{{ $siswa->nama }}</td>
-                                            <td>{{ $siswa->poin }}</td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+
                     </div>
                 </div>
             </div>

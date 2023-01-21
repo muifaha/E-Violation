@@ -10,33 +10,47 @@
         <nav class="c-menu js-menu">
             <ul class="u-list">
 
-                <li class="c-menu__item {{ request()->is('home*') ? 'is-active' : '' }} has-submenu" data-toggle="tooltip"
-                    title="Dashboard">
+                <li class="c-menu__item {{ request()->is('home*') ? 'is-active' : '' }} has-submenu"
+                    data-toggle="tooltip" title="Dashboard">
                     <a class="c-menu__item__inner" href="/home">
                         <div class="ic animate__backInLeft animate__animated">
                             <i class='bx bxs-grid-alt'></i>
                         </div>
-                        <div class="c-menu-item__title animate__backInLeft animate__animated"><span>Dashboard</span></div>
+                        <div class="c-menu-item__title animate__backInLeft animate__animated"><span>Dashboard</span>
+                        </div>
                     </a>
                 </li>
 
-                <li class="c-menu__item {{ request()->is('daftar-siswa*') ? 'is-active' : '' }} has-submenu"
-                    data-toggle="tooltip" title="Skor Siswa">
-                    <a class="c-menu__item__inner" href="/daftar-siswa">
+                <li class="c-menu__item {{ request()->is('master-siswa*', 'pelanggaran*') ? 'is-active' : '' }} has-submenu"
+                    data-toggle="tooltip" title="Daftar Siswa">
+                    <a class="c-menu__item__inner" href="/master-siswa">
                         <div class="ic animate__backInLeft animate__animated">
                             <i class="fas fa-users"></i>
                         </div>
-                        <div class="c-menu-item__title animate__backInLeft animate__animated"><span>Daftar Siswa</span></div>
+                        <div class="c-menu-item__title animate__backInLeft animate__animated"><span>Master Siswa</span>
+                        </div>
                     </a>
                 </li>
 
-                <li class="c-menu__item {{ request()->is('guru*') ? 'is-active' : '' }} has-submenu"
+                <li class="c-menu__item {{ request()->is('master-user*') ? 'is-active' : '' }} has-submenu"
+                    data-toggle="tooltip" title="Daftar User">
+                    <a class="c-menu__item__inner" href="/master-user">
+                        <div class="ic animate__backInLeft animate__animated">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="c-menu-item__title animate__backInLeft animate__animated"><span>Master User</span>
+                        </div>
+                    </a>
+                </li>
+
+                <li class="c-menu__item {{ request()->is('master-histori*') ? 'is-active' : '' }} has-submenu"
                     data-toggle="tooltip" title="Histori Skor">
-                    <a class="c-menu__item__inner" href="/guru/histori-skor">
+                    <a class="c-menu__item__inner" href="/master-histori">
                         <div class="ic animate__backInLeft animate__animated">
                             <i class="fas fa-calendar-alt"></i>
                         </div>
-                        <div class="c-menu-item__title animate__backInLeft animate__animated"><span>Histori Skor</span></div>
+                        <div class="c-menu-item__title animate__backInLeft animate__animated"><span>Master
+                                Histori</span></div>
                     </a>
                 </li>
 
@@ -46,7 +60,8 @@
                         <div class="ic animate__backInLeft animate__animated">
                             <i class="fas fa-user-cog"></i>
                         </div>
-                        <div class="c-menu-item__title animate__backInLeft animate__animated"><span>Penanganan</span></div>
+                        <div class="c-menu-item__title animate__backInLeft animate__animated"><span>Penanganan</span>
+                        </div>
                     </a>
                 </li>
 

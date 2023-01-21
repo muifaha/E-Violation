@@ -11,6 +11,10 @@ class Student extends Model
     protected $guarded = ['id'];
     protected $with = ['kelas', 'rule'];
 
+    protected $casts = [
+        'poin' => 'integer'
+    ];
+
     public function scopeFilter($query, array $filters)
     {
 
@@ -31,8 +35,9 @@ class Student extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'wali_kelas');
+        return $this->belongsTo(User::class);
     }
+
     public function kelas()
     {
         return $this->belongsTo(Kelas::class);
@@ -40,7 +45,7 @@ class Student extends Model
 
     public function rule()
     {
-        return $this->belongsToMany(Rule::class, 'histories')->withPivot('tanggal', 'created_at
+        return $this->belongsToMany(Peraturan::class, 'histories')->withPivot('tanggal', 'created_at
         ');
     }
 
@@ -49,6 +54,10 @@ class Student extends Model
         return $this->hasMany(History::class);
     }
 
+    public function penanganan()
+    {
+        return $this->hasMany(Penanganan::class);
+    }
 
     public function getRouteKeyName()
     {

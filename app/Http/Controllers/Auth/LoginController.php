@@ -61,7 +61,7 @@ class LoginController extends Controller
         $remember = $request->has('remember') ? true : false;
 
         if (Auth::attempt($request->only($login_type, 'password'), $remember)) {
-            return redirect()->intended('/home');
+            return redirect()->intended('/home')->with('toast_info', 'Welcome Back ' . auth()->user()->name . '!');
         }
 
         return back()->with('error', 'Login gagal!');
@@ -75,6 +75,6 @@ class LoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/login');
     }
 }

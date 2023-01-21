@@ -6,7 +6,7 @@
             <div class="card shadow my-2 px-0">
                 <div class="card-header">
                     <h2 class="fw-bolder mt-2">
-                        History
+                        Histori
                     </h2>
                 </div>
                 <div class="card-body py-0">
@@ -22,8 +22,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-8">
-
-                                                    <p class="mb-1 h6 text-dark ">{{ $history->rule->name }}
+                                                    <p class="mb-1 h6 text-dark ">{{ $history->rule->nama }}
                                                     <div class="text-danger d-inline-flex">
                                                         +{{ $history->rule->poin }}
                                                     </div>

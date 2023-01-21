@@ -207,6 +207,9 @@ return [
             'min' => 'Password tidak kurang dari :min karakter',
             'confirmed' => 'Konfirmasi Password tidak cocok!'
         ],
+        'g-recaptcha-response' => [
+            'required' => 'Verifikasi terlebih dahulu!',
+        ],
     ],
 
     /*

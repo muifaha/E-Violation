@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePenanganansTable extends Migration
+class CreateWaliKelasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,15 @@ class CreatePenanganansTable extends Migration
      */
     public function up()
     {
-        Schema::create('penanganans', function (Blueprint $table) {
+        Schema::create('wali_kelas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->foreignId('student_id')->references('id')->on('students')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->string('message', 255);
-            $table->boolean('confirmation')->default(0);
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->foreignId('kelas_id')->references('id')->on('kelas')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->string('name', 255);
             $table->timestamps();
         });
     }
@@ -34,6 +33,6 @@ class CreatePenanganansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('penanganans');
+        Schema::dropIfExists('wali_kelas');
     }
 }

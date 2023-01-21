@@ -5,7 +5,7 @@
         <div class="card shadow px-0">
             <div class="card-header">
                 <h2 class="fw-bolder mt-2">
-                    History
+                    History {{ $wali_kelas->kelas->nama_kelas }}
                 </h2>
             </div>
             <div class="card-body py-0">
@@ -19,28 +19,7 @@
                                         class="list-group-item  list-group-item-action flex-column align-items-start py-0"
                                         style="background-color: #f1f1f1;">
                                         <div class="d-flex w-100 mt-2 mb-1" style="justify-content: space-between;">
-                                            <small>
-                                                <b>{{ $history->siswa->nama }} -
-                                                    @if ($history->siswa->kelas_id == 1)
-                                                        12 RPL 1
-                                                    @endif
-                                                    @if ($history->siswa->kelas_id == 2)
-                                                        12 RPL 2
-                                                    @endif
-                                                    @if ($history->siswa->kelas_id == 3)
-                                                        11 RPL 1
-                                                    @endif
-                                                    @if ($history->siswa->kelas_id == 4)
-                                                        11 RPL 2
-                                                    @endif
-                                                    @if ($history->siswa->kelas_id == 5)
-                                                        10 RPL 1
-                                                    @endif
-                                                    @if ($history->siswa->kelas_id == 6)
-                                                        10 RPL 2
-                                                    @endif
-                                                </b>
-                                            </small>
+                                            <small><b>{{ $history->siswa->nama }}</small></b>
                                             <small>{{ $history->created_at->diffForHumans() }}</small>
                                         </div>
                                         <div class="row">

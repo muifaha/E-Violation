@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRuleTypesTable extends Migration
+class CreatePeraturanTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class CreateRuleTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('rule_types', function (Blueprint $table) {
+        Schema::create('peraturan', function (Blueprint $table) {
             $table->id();
-            $table->string('type_name', 30);
+            $table->string('nama', 300);
+            $table->integer('poin');
+            $table->foreignId('jenis_peraturan_id')->references('id')->on('jenis_peraturan')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +31,6 @@ class CreateRuleTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rule_types');
+        Schema::dropIfExists('peraturan');
     }
 }

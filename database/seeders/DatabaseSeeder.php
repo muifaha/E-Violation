@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\JenisPeraturan;
+use App\Models\Peraturan;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,10 +17,10 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(5)->create();
         $this->call([
-            UserSeeder::class,
             KelasSeeder::class,
-            RuleTypeSeeder::class,
-            RuleSeeder::class,
+            UserSeeder::class,
+            JenisPeraturanSeeder::class,
+            PeraturanSeeder::class,
         ]);
     }
 }

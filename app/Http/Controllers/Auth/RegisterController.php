@@ -53,6 +53,7 @@ class RegisterController extends Controller
             'nisn' => ['required', 'numeric', 'digits_between:8,10', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed', 'max:255'],
+            'g-recaptcha-response' => ['required'],
         ]);
     }
 

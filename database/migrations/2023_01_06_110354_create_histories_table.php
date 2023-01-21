@@ -18,7 +18,7 @@ class CreateHistoriesTable extends Migration
             $table->foreignId('student_id')->references('id')->on('students')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->foreignId('rule_id')->references('id')->on('rules')
+            $table->foreignId('peraturan_id')->references('id')->on('peraturan')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->date('tanggal');
