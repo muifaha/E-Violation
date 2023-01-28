@@ -134,16 +134,6 @@
                     });
 
             });
-            $('input:checkbox').change(function() {
-                var total = 0;
-                $('input:checkbox:checked').each(
-                    function() { // iterate through each checked element.
-                        total += isNaN(parseInt($(this).val())) ? 0 : parseInt($(this)
-                            .val());
-                    });
-                $("#total").val(total);
-
-            });
         });
     </script>
 @endpush
