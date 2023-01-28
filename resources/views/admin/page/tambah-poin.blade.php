@@ -18,9 +18,9 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Pelanggaran</th>
+                            <th data-priority="1">Pelanggaran</th>
                             <th>Poin</th>
-                            <th>Action</th>
+                            <th data-priority="2">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -80,12 +80,22 @@
                 },
                 'columnDefs': [{
                         orderable: false,
+                        className: "my_class",
                         targets: 3
                     },
                     {
                         orderable: false,
                         targets: 1
                     },
+                    {
+                        responsivePriority: 1,
+                        targets: 1
+                    },
+                    {
+                        responsivePriority: 2,
+                        targets: 3
+                    }
+
                 ],
                 'bPaginate': false,
             });
@@ -122,6 +132,16 @@
                             form.submit();
                         }
                     });
+
+            });
+            $('input:checkbox').change(function() {
+                var total = 0;
+                $('input:checkbox:checked').each(
+                    function() { // iterate through each checked element.
+                        total += isNaN(parseInt($(this).val())) ? 0 : parseInt($(this)
+                            .val());
+                    });
+                $("#total").val(total);
 
             });
         });
