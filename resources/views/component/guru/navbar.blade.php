@@ -16,11 +16,11 @@
             <h1>@yield('title')</h1>
         </div>
 
-        <div class="c-search"></div>
+        {{-- <div class="c-search"></div> --}}
 
-        <ul class="navbar-nav ms-auto p-0">
+        <div class="ms-auto navbar-nav">
             <!-- Authentication Links -->
-            <li class="nav-item dropdown px-3">
+            <div class="nav-item dropdown px-3">
                 <a id="navbarDropdown" class="name-tag nav-link dropdown-toggle c-header-icon userDropdown me-2"
                     href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                     v-pre>
@@ -29,7 +29,11 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-end me-2" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('logout') }}"
+                    <a class="dropdown-item py-2" href="/">
+                        {{ __('Kembali') }}
+                    </a>
+
+                    <a class="dropdown-item py-2" href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a>
@@ -38,8 +42,8 @@
                         @csrf
                     </form>
                 </div>
-            </li>
-        </ul>
+            </div>
+        </div>
 
         <div class="none c-header-icon-hp">
             <i class='bx bx-menu-alt-right' id="btn"></i>
@@ -56,34 +60,24 @@
             Dashboard
         </li>
     </a>
-    <a href="histori-skor">
-        <li class="{{ request()->is('histori-skor*') ? 'active' : '' }} hp-li" title="Histori Skor">
-            <i class="fas fa-calendar-alt"></i>
-            Histori Skor
+    <a href="/guru/daftar-siswa">
+        <li class="{{ request()->is('guru/daftar-siswa*') ? 'active' : '' }} hp-li" title="Daftar Siswa">
+            <i class="fas fa-user-graduate"></i>
+            Daftar Siswa
         </li>
     </a>
-    <a href="/penanganan">
-        <li class="{{ request()->is('penanganan*') ? 'active' : '' }} hp-li" title="Penanganan">
-            <i class="fas fa-user-cog"></i>
-            Penanganan
-        </li>
-    </a>
-    {{-- <a href="/tata-tertib">
-        <li class="{{ request()->is('tata-tertib*') ? 'active' : '' }} hp-li" title="Tata Tertib">
-            <i class="fas fa-chalkboard-teacher"></i>
-            Tata Tertib
-        </li>
-    </a>
-    <a href="/kontak-sekolah">
-        <li class="{{ request()->is('kontak-sekolah*') ? 'active' : '' }} hp-li" title="Kontak Sekolah">
-            <i class="fas fa-phone"></i>
-            Kontak Sekolah
-        </li>
-    </a>
-    <a href="/faq">
-        <li class="{{ request()->is('faq*') ? 'active' : '' }} hp-li" title="FAQ">
-            <i class="fas fa-comments"></i>
-            FAQ
-        </li>
-    </a> --}}
+    @if ($siswas->count())
+        <a href="/guru/histori">
+            <li class="{{ request()->is('guru/histori*') ? 'active' : '' }} hp-li" title="Histori Siswa">
+                <i class="fas fa-calendar-alt"></i>
+                Histori Siswa
+            </li>
+        </a>
+        <a href="/guru/penanganan">
+            <li class="{{ request()->is('guru/penanganan*') ? 'active' : '' }} hp-li" title="Penanganan">
+                <i class="fas fa-user-cog"></i>
+                Penanganan
+            </li>
+        </a>
+    @endif
 </ul>

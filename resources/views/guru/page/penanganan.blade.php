@@ -4,9 +4,9 @@
     <div class="row justify-content-center">
         <div class="card shadow px-0">
             <div class="card-header">
-                <h2 class="fw-bolder mt-2">
-                    Penanganan {{ $siswas->kelas->nama_kelas }}
-                </h2>
+                <h3 class="fw-bolder mt-2">
+                    Penanganan {{$wali_kelas->kelas->nama_kelas}}
+                </h3>
             </div>
             <div class="card-body">
                 <table id="table_data_user" class="table table-bordered display nowrap" cellspacing="0" width="100%">

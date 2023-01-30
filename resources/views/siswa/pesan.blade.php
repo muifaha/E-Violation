@@ -1,41 +1,34 @@
 @extends('layouts.main')
-@section('title', 'Penanganan')
+@section('title', 'Pesan')
 @section('content')
     <div class="row justify-content-center">
         <div class="card shadow px-0">
-            <div class="card-header bg-gradient bg-danger">
-                <h3 class="fw-bolder mt-2 text-white">
-                    Penanganan
+            <div class="card-header">
+                <h3 class="fw-bolder mt-2">
+                    Pesan
                 </h3>
             </div>
             <div class="card-body">
                 <table id="table_data_user" class="table table-bordered display nowrap" cellspacing="0" width="100%">
                     <thead class="thead-inverse">
                         <tr>
-                            <th>No.</th>
-                            <th>Nama</th>
-                            <th>Kelas</th>
-                            <th>Tindak Lanjut</th>
+                            <th>No</th>
+                            <th>Pesan</th>
                             <th>Konfirmasi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($penanganan as $tindak)
+                        @foreach ($pesan as $msg)
                             <tr>
                                 <td scope="row">
-                                    {{ ($penanganan->currentpage() - 1) * $penanganan->perpage() + $loop->index + 1 }}
+                                    {{ ($pesan->currentpage() - 1) * $pesan->perpage() + $loop->index + 1 }}
                                 </td>
-                                <td>{{ $tindak->siswa->nama }}</td>
-                                <td>{{ $tindak->siswa->kelas->nama_kelas }}</td>
-                                <td>{{ $tindak->tindak_lanjut }}</td>
+                                <td>{{ $msg->tindak_lanjut }}</td>
                                 <td>
-                                    @if ($tindak->konfirmasi == 0)
-                                        <form action="/penanganan/{{ $tindak->id }}" method="post">
-                                            @csrf
-                                            <button type="submit" class="btn btn-primary btn-sm" disabled>Konfirm</button>
-                                        </form>
+                                    @if ($msg->konfirmasi == 0)
+                                            <button class="btn btn-primary btn-sm">Belum terkonfirmasi</button>
                                     @else
-                                        <button class="btn btn-secondary btn-sm" disabled>{{$tindak->updated_at->format('d-m-Y')}}</button> 
+                                        <button class="btn btn-secondary btn-sm" disabled>Terkonfirmasi {{$msg->updated_at}}</button>
                                     @endif
                                 </td>
                             </tr>
@@ -77,11 +70,7 @@
                     },
                     {
                         "orderable": false,
-                        "targets": 3
-                    },
-                    {
-                        "orderable": false,
-                        "targets": 4
+                        "targets": 2
                     },
                 ],
                 "pageLength": 10

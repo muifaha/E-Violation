@@ -16,11 +16,11 @@
             <h1>@yield('title')</h1>
         </div>
 
-        <div class="c-search"></div>
+        {{-- <div class="c-search"></div> --}}
 
-        <ul class="navbar-nav ms-auto p-0">
+        <div class="ms-auto navbar-nav">
             <!-- Authentication Links -->
-            <li class="nav-item dropdown px-3">
+            <div class="nav-item dropdown px-3">
                 <a id="navbarDropdown" class="name-tag nav-link dropdown-toggle c-header-icon userDropdown me-2"
                     href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                     v-pre>
@@ -29,9 +29,12 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-end me-2" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
+                    <a class="dropdown-item py-2" href="/">
+                        {{ __('Kembali') }}
+                    </a>
+
+                    <a class="dropdown-item py-2" href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a>
 
@@ -39,8 +42,8 @@
                         @csrf
                     </form>
                 </div>
-            </li>
-        </ul>
+            </div>
+        </div>
 
         <div class="none c-header-icon-hp">
             <i class='bx bx-menu-alt-right' id="btn"></i>
@@ -57,16 +60,22 @@
             Dashboard
         </li>
     </a>
-    <a href="/daftar-siswa">
-        <li class="{{ request()->is('daftar-siswa*') ? 'active' : '' }} hp-li" title="Daftar Siswa">
-            <i class='fas fa-users'></i>
-            Daftar Siswa
+    <a href="/master-siswa">
+        <li class="{{ request()->is('master-siswa*', 'pelanggaran*') ? 'active' : '' }} hp-li" title="Master Siswa">
+            <i class='fas fa-user-graduate'></i>
+            Master Siswa
         </li>
     </a>
-    <a href="guru/histori-skor">
-        <li class="{{ request()->is('guru*') ? 'active' : '' }} hp-li" title="Histori Skor">
+    <a href="/master-user">
+        <li class="{{ request()->is('master-user*') ? 'active' : '' }} hp-li" title="Master User">
+            <i class="fas fa-users"></i>
+            Master User
+        </li>
+    </a>
+    <a href="/master-histori">
+        <li class="{{ request()->is('master-histori*') ? 'active' : '' }} hp-li" title="Master Histori">
             <i class="fas fa-calendar-alt"></i>
-            Histori Skor
+            Master Histori
         </li>
     </a>
     <a href="/penanganan">
@@ -75,22 +84,4 @@
             Penanganan
         </li>
     </a>
-    {{-- <a href="/tata-tertib">
-        <li class="{{ request()->is('tata-tertib*') ? 'active' : '' }} hp-li" title="Tata Tertib">
-            <i class="fas fa-chalkboard-teacher"></i>
-            Tata Tertib
-        </li>
-    </a> --}}
-    {{-- <a href="/kontak-sekolah">
-        <li class="{{ request()->is('kontak-sekolah*') ? 'active' : '' }} hp-li" title="Kontak Sekolah">
-            <i class="fas fa-phone"></i>
-            Kontak Sekolah
-        </li>
-    </a> --}}
-    {{-- <a href="/faq">
-        <li class="{{ request()->is('faq*') ? 'active' : '' }} hp-li" title="FAQ">
-            <i class="fas fa-comments"></i>
-            FAQ
-        </li>
-    </a> --}}
 </ul>

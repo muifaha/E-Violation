@@ -1,52 +1,50 @@
 @extends('layouts.main')
-@section('title', 'Histori Skor')
+@section('title', 'Histori')
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="card shadow my-2 px-0">
-                <div class="card-header">
-                    <h2 class="fw-bolder mt-2">
-                        Histori
-                    </h2>
-                </div>
-                <div class="card-body py-0">
-                    @if ($histories->count())
-                        @foreach ($tanggal as $tgl)
-                            <p class="text-dark mb-1 mt-3 ml-2">{{ $tgl }}</p>
-                            @foreach ($histories as $history)
-                                @if ($history->getAttribute('tanggal') == $tgl)
-                                    <div class="list-group">
-                                        <a class="list-group-item list-group-item-action flex-column align-items-start py-0">
-                                            <div class="d-flex w-100 justify-content-end mt-2">
-                                                <small>{{ $history->created_at->diffForHumans() }}</small>
+    <div class="row justify-content-center">
+        <div class="card shadow my-1 px-0">
+            <div class="card-header bg-gradient bg-danger">
+                <h3 class="fw-bolder mt-2 text-white">
+                    Histori {{ Auth::user()->name }}
+                </h3>
+            </div>
+            <div class="card-body py-0">
+                @if ($histories->count())
+                    @foreach ($tanggal as $tgl)
+                        <b><p class="text-dark mb-1 mt-3 ml-1">{{ $tgl }}</p></b>
+                        @foreach ($histories as $history)
+                            @if ($history->getAttribute('tanggal') == $tgl)
+                                <div class="list-group mb-2">
+                                    <div class="border-hover list-group-item list-group-item-action flex-column align-items-start py-0 px-3"
+                                        style="background-color: #ffd8ab84; border-radius: 6px;">
+                                        <div class="histori-part row" style="margin-bottom: .5rem;">
+                                            <div class="col-lg-2 row" style="margin-top: .5rem;">
+                                                <small class="px-0"
+                                                    style="height: 20px; width: auto;">{{ $history->created_at->diffForHumans() }}</small>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-lg-8">
-                                                    <p class="mb-1 h6 text-dark ">{{ $history->rule->nama }}
-                                                    <div class="text-danger d-inline-flex">
-                                                        +{{ $history->rule->poin }}
-                                                    </div>
-                                                    </p>
+                                            <div class="col-lg-10" style="margin-top: .5rem;">
+                                                <p class="mb-1 h6 text-dark ">{{ $history->rule->nama }}</p>
+                                                <div class="text-danger d-inline-flex">
+                                                    <b>+{{ $history->rule->poin }}</b>
                                                 </div>
-
                                             </div>
-                                        </a>
+                                        </div>
                                     </div>
-                                @endif
-                            @endforeach
+                                </div>
+                            @endif
                         @endforeach
-                    @else
-                        <h5 class="text-secondary text-center py-1 mt-4">Histori tidak ada</h5>
-                    @endif
-
-                </div>
-                <div class="text-end card-footer mt-3">
-                    <div class="mx-4 text-decoration-none float-right">
-                        {{ $histories->links() }}
-                    </div>
-                </div>
+                    @endforeach
+                @else
+                    <h5 class="text-secondary text-center py-1 mt-4">Histori tidak ada</h5>
+                @endif
 
             </div>
+            <div class="text-end card-footer mt-3">
+                <div class="mx-4 text-decoration-none float-right">
+                    {{ $histories->links() }}
+                </div>
+            </div>
+
         </div>
     </div>
 @endsection

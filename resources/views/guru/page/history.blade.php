@@ -3,45 +3,42 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="card shadow px-0">
-
             <div class="card-header">
-
-                <h2 class="fw-bolder mt-2">
+                <h3 class="fw-bolder mt-2">
                     Histori @if ($histories->count())
                         {{ $histories[0]->siswa->nama }}
                     @endif
-                </h2>
-
+                </h3>
             </div>
             <div class="card-body py-0">
                 @if ($histories->count())
                     @foreach ($tanggal as $tgl)
-                        <p class="text-dark mb-1 mt-3 ml-2">{{ $tgl }}</p>
+                        <b><p class="text-dark mb-1 mt-3 ml-1">{{ $tgl }}</p></b>
                         @foreach ($histories as $history)
                             @if ($history->getAttribute('tanggal') == $tgl)
                                 <div class="list-group mb-2">
-                                    <a class="list-group-item list-group-item-action flex-column align-items-start py-0"
-                                        style="background-color: #f1f1f1;">
+                                    <div class="border-hover list-group-item list-group-item-action flex-column align-items-start py-0 px-3"
+                                        style="background-color: #ffd8ab84; border-radius: 6px;">
 
-                                        <div class="histori-part row mb-1">
-                                            <div class="col-lg-2 row" style="margin-top: .65rem;">
+                                        <div class="histori-part row" style="margin-bottom: .5rem;">
+                                            <div class="col-lg-2 row" style="margin-top: .5rem;">
                                                 <small class="px-0"
-                                                    style="height: 20px; width: 84px;">{{ $history->created_at->diffForHumans() }}</small>
+                                                    style="height: 20px; width: auto;">{{ $history->created_at->diffForHumans() }}</small>
                                             </div>
-                                            <div class="col-lg-10" style="margin-top: .65rem;">
+                                            <div class="col-lg-10" style="margin-top: .5rem;">
                                                 <p class="mb-1 h6 text-dark ">{{ $history->rule->nama }}</p>
-                                                <div class="text-danger d-inline-flex mb-2">
-                                                    +{{ $history->rule->poin }}
+                                                <div class="text-danger d-inline-flex">
+                                                    <b>+{{ $history->rule->poin }}</b>
                                                 </div>
                                             </div>
                                         </div>
-                                    </a>
+                                    </div>
                                 </div>
                             @endif
                         @endforeach
                     @endforeach
                 @else
-                    <h5 class="text-secondary text-center py-1 mt-4">History tidak ada</h5>
+                    <h5 class="text-secondary text-center py-1 mt-4">Histori tidak ada</h5>
                 @endif
 
             </div>

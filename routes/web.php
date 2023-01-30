@@ -42,7 +42,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/identitas-siswa', [StudentController::class, 'show']);
     Route::put('/identitas-siswa/{id}', [StudentController::class, 'edit']);
     Route::get('/histori-skor', [StudentController::class, 'history']);
-    // Route::get('/penangan', [StudentController::class, 'history']);
+    Route::get('/pesan', [StudentController::class, 'pesan']);
     // Route::get('/tata-tertib', [StudentController::class, 'history']);
 });
 

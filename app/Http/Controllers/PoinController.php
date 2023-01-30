@@ -125,7 +125,7 @@ class PoinController extends Controller
                 'poin' => $siswa->poin - $request->poin
             ]);
 
-            return redirect()->back()->with('success', 'Poin berhasil dikurangi');
+            return redirect('master-siswa')->with('success', 'Poin berhasil dikurangi');
         }
     }
 }

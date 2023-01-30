@@ -27,7 +27,7 @@
                     </div>
                 @endif
 
-                <div class="form-group">
+                <div class="form-group pt-2">
                     <button type="submit" class="btn btn-success btn-lg btn-block">{{ __('Login') }}</button>
                 </div>
                 

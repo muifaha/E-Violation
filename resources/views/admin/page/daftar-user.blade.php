@@ -1,38 +1,42 @@
 @extends('layouts.main')
-@section('title', 'Daftar user')
+@section('title', 'Master user')
 @section('content')
     <div class="card shadow px-0">
-        <div class="card-header">
-            <h2 class="fw-bolder mt-2 d-inline-flex">List user</h2>
-
+        <div class="card-header bg-gradient bg-primary">
+            <h3 class="fw-bolder mt-2 d-inline-flex text-white">List user</h3>
         </div>
 
         <div class="card-body">
-            <table id="table_data_user" class="table table-bordered display nowrap" cellspacing="0" width="100%">
+            <table id="table_data_user" class="table table-bordered display" cellspacing="0" width="100%">
                 <thead class="thead-inverse">
                     <th>No</th>
                     <th>Nama</th>
                     <th>Email</th>
-                    <th>Info</th>
+                    <th>Registrasi</th>
                     <th>Role</th>
                     <th>Aksi</th>
                 </thead>
                 <tbody>
-                    @foreach ($users as $user)
+                    @foreach ($users->skip(1) as $user)
                         <tr>
-                            <td scope="row">{{ ($users->currentpage() - 1) * $users->perpage() + $loop->index + 1 }}
+                            <td scope="row">
+                                {{ ($users->currentpage() - 1) * $users->perpage() + $loop->index + 1 }}
                             </td>
-                            <td>{{ $user->name }}</td>
+                            <td >{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td>{{ $user->info }}</td>
+                            @if ($user->info == 1)
+                                <td class="text-success">Sudah</td>
+                            @else
+                                <td class="text-danger">Belum</td>
+                            @endif
                             @if ($user->role == 1)
-                                <td>Admin</td>
+                                <td class="text-primary" style="font-weight:600;">Admin</td>
                             @endif
                             @if ($user->role == 2)
-                                <td>Guru</td>
+                                <td class="text-info" style="font-weight:500;">Guru</td>
                             @endif
                             @if ($user->role == 3)
-                                <td>Siswa</td>
+                                <td class="text-secondary" style="font-weight:500;">Siswa</td>
                             @endif
                             <td>
                                 <form action="/master-user/{{ $user->id }}" method="post" id="form">

@@ -1,11 +1,11 @@
 @extends('layouts.main')
-@section('title', 'Kurang Poin')
+@section('title', 'Pengurangan Poin')
 @section('content')
-    <div class="card col-md-6 offset-md-3">
+    <div class="card col-md-6">
         <div class="card-header">
-            <h2 class="mt-2">
+            <h3 class="mt-2">
                 Jumlah Poin <b>{{ $siswa->nama }}</b> : {{ $siswa->poin }}
-            </h2>
+            </h3>
         </div>
 
         <div class="card-body">

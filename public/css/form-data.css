@@ -65,13 +65,13 @@ body.login {
 .login-container-wrapper {
   max-width: 900px;
   margin: 40px auto 0;
-  padding: 40px;
+  padding: 40px 40px 20px;
   box-sizing: border-box;
   background: #393e46;
   box-shadow: 5px 5px 5px #333;
   position: relative;
   /* padding-top: 60px; */
-  border-radius: 12px;
+  border-radius: 8px;
 }
 
 .logo .fa {
@@ -179,7 +179,6 @@ div.alert.alert-error {
   padding: 0;
   font-size: 1rem;
 }
-
 .inner {
     display: flex;
 }
@@ -191,7 +190,9 @@ div.alert.alert-error {
 .inner .form-group.two{
     width: 49%;
 }
-
+.outer .form-group.one{
+  margin-right: 2%;
+}
 .in-btn {
     display: flex;
     justify-content: flex-end;
@@ -205,19 +206,22 @@ div.alert.alert-error {
     .in-btn {
         justify-content: center;
     }
+    .outer .form-group.one{
+      margin-right: 0;
+    }
 }
 
 @media (max-width: 768px) {
     .inner {
         display: block;
     }
-    
     .inner .form-group.one{
         width: 100%;
     }
     .inner .form-group.two{
         width: 100%;
     }
+    
 }
 
 @media (max-width: 420px) {

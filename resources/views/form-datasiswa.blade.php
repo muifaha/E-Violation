@@ -10,7 +10,7 @@
 
                 <div class="all-data">
                     <div class="siswa col-lg-7 col-sm-12">
-                        {{-- nisn --}}
+                        {{-- hidden nisn --}}
                         <input id="nisn" type="hidden" class="form-control input-lg @error('nisn') is-invalid @enderror"
                             name="nisn" value="{{ Auth::user()->nisn }}" required autocomplete="nisn" readonly>
 

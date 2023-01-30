@@ -3,9 +3,9 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h2 class="mt-2">
+            <h3 class="mt-2">
                 Pelanggaran yang dilakukan oleh <b>{{ $siswa->nama }}</b>
-            </h2>
+            </h3>
         </div>
         <div class="card-body">
             <form action="/pelanggaran/{{ $siswa->id }}" method="post" id="form">
@@ -40,9 +40,9 @@
                         @endforeach
                     </tbody>
                 </table>
-                <div class="text-end">
-                    <a href="/daftar-siswa" class="btn btn-secondary btn-rounded">Back</a>
-                    <button class="btn btn-primary me-2 my-2 show_confirm" type="submit">
+                <div class="text-end" style="font-size: 13px;">
+                    <a href="/daftar-siswa" class="btn btn-md btn-secondary btn-rounded me-1">Back</a>
+                    <button class="btn btn-md btn-primary me-1 my-2 show_confirm" type="submit">
                         Tambah Poin
                     </button>
                 </div>

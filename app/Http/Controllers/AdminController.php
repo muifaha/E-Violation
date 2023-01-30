@@ -23,7 +23,7 @@ class AdminController extends Controller
 
     public function histori_index()
     {
-        $histories = History::latest()->paginate(7);
+        $histories = History::with('siswa')->latest()->paginate(7);
         $tanggal = $histories->unique('tanggal')->pluck('tanggal');
         return view('admin.page.master-history', compact('histories', 'tanggal'));
     }

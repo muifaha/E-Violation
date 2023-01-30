@@ -154,7 +154,17 @@ a.c-header-icon {
   padding: 0 20px;
   margin: 0;
 }
-
+.navbar-nav {
+  position: relative;
+    display: flex;
+    flex-shrink: 0;
+    float: left;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    cursor: pointer;
+}
 .c-header-icon {
   position: relative;
   display: flex;

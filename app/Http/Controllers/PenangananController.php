@@ -12,7 +12,7 @@ class PenangananController extends Controller
     public function index()
     {
         $penanganan = Penanganan::with('siswa')->latest()->paginate(null);
-        return view('admin.page.penanganan', compact('penanganan'));
+    return view('admin.page.penanganan', compact('penanganan'));
     }
 
     public function konfirmasi($id)
@@ -27,9 +27,15 @@ class PenangananController extends Controller
     public function guru_index()
     {
         $wali_kelas = WaliKelas::where('user_id', auth()->user()->id)->first();
-        $siswas = Student::where('kelas_id', $wali_kelas->kelas_id)->first();
-        $penanganan = Penanganan::latest()->where('student_id', $siswas->id)->paginate(null);
-        return view('guru.page.penanganan', compact('penanganan', 'siswas'));
+        $siswas = Student::whereHas('penanganan', function($q) use($wali_kelas){
+                    $q->where('kelas_id', $wali_kelas->kelas_id);
+                })->get();
+        $id_student = [];
+        foreach($siswas as $siswa){
+            $id_student[] = $siswa->id;
+        }
+        $penanganan = Penanganan::whereIn('student_id', $id_student)->latest()->paginate(null);
+        return view('guru.page.penanganan', compact('penanganan', 'siswas', 'wali_kelas'));
     }
 
     public function guru_konfirmasi($id)

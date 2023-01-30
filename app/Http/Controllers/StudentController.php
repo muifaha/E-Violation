@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\History;
 use App\Models\User;
 use App\Models\Student;
+use App\Models\Penanganan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -84,5 +85,14 @@ class StudentController extends Controller
         return view('siswa.detail.edit', [
             'siswa' => Student::find($id)
         ]);
+    }
+
+    public function pesan()
+    {
+        $siswa = Student::where('user_id', auth()->user()->id)->first();
+        $pesan = Penanganan::where('student_id', $siswa->id)->latest()->paginate(null);
+        $nama = strtok($siswa['nama'], " ");
+
+        return view('siswa.pesan', compact('pesan', 'siswa', 'nama'));
     }
 }

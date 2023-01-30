@@ -1,57 +1,40 @@
 @extends('layouts.main')
-@section('title', 'Histori Skor')
+@section('title', 'Master Histori')
 @section('content')
     <div class="row justify-content-center">
         <div class="card shadow px-0">
-            <div class="card-header">
-                <h2 class="fw-bolder mt-2">
-                    History
-                </h2>
+            <div class="card-header bg-gradient bg-warning">
+                <h3 class="fw-bolder mt-2 text-dark">
+                    Histori Siswa
+                </h3>
             </div>
             <div class="card-body py-0">
                 @if ($histories->count())
                     @foreach ($tanggal as $tgl)
-                        <p class="text-dark mb-1 mt-3 ml-2">{{ $tgl }}</p>
+                        <b><p class="text-dark mb-1 mt-3 ml-1">{{ $tgl }}</p></b>
                         @foreach ($histories as $history)
                             @if ($history->getAttribute('tanggal') == $tgl)
-                                <div class="list-group mb-2">
-                                    <a href="/guru/histori/{{ $history->siswa->id }}"
-                                        class="list-group-item  list-group-item-action flex-column align-items-start py-0"
-                                        style="background-color: #f1f1f1;">
-                                        <div class="d-flex w-100 mt-2 mb-1" style="justify-content: space-between;">
-                                            <small>
-                                                <b>{{ $history->siswa->nama }} -
-                                                    @if ($history->siswa->kelas_id == 1)
-                                                        12 RPL 1
-                                                    @endif
-                                                    @if ($history->siswa->kelas_id == 2)
-                                                        12 RPL 2
-                                                    @endif
-                                                    @if ($history->siswa->kelas_id == 3)
-                                                        11 RPL 1
-                                                    @endif
-                                                    @if ($history->siswa->kelas_id == 4)
-                                                        11 RPL 2
-                                                    @endif
-                                                    @if ($history->siswa->kelas_id == 5)
-                                                        10 RPL 1
-                                                    @endif
-                                                    @if ($history->siswa->kelas_id == 6)
-                                                        10 RPL 2
-                                                    @endif
-                                                </b>
-                                            </small>
-                                            <small>{{ $history->created_at->diffForHumans() }}</small>
+                                <div class="list-group" style="margin-bottom: 0.75rem">
+                                    <div class="border-hover list-group-item list-group-item-action flex-column align-items-start py-0"
+                                        style="background-color: #ffd8ab84; border-radius: 6px;">
+                                        <div class="d-flex w-100 mt-1 mb-1 align-items-center" style="justify-content: space-between; flex-wrap: wrap;">
+                                            <a href="/master-histori/{{ $history->siswa->id }}" class="linkind">
+                                                <small class="me-1">
+                                                    <b>{{ $history->siswa->nama }} - {{$history->siswa->kelas->nama_kelas}}
+                                                    </b>
+                                                </small>
+                                            </a>
+                                            <a><small>{{ $history->created_at->diffForHumans() }}</small></a>
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-10">
                                                 <p class="mb-1 h6 text-dark ">{{ $history->rule->nama }}</p>
                                                 <div class="text-danger d-inline-flex mb-2">
-                                                    +{{ $history->rule->poin }}
+                                                    <b>+{{ $history->rule->poin }}</b>
                                                 </div>
                                             </div>
                                         </div>
-                                    </a>
+                                    </div>
                                 </div>
                             @endif
                         @endforeach

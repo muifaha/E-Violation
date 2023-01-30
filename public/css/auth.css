@@ -76,7 +76,7 @@ body.login {
 }
 
 .login-container-wrapper {
-  max-width: 350px;
+  max-width: 345px;
   margin: 60px auto 0;
   padding: 40px;
   box-sizing: border-box;
@@ -84,7 +84,7 @@ body.login {
   box-shadow: 5px 5px 5px #333;
   position: relative;
   padding-top: 60px;
-  border-radius: 12px;
+  border-radius: 8px;
 }
 
 .logo .fa {
