@@ -192,8 +192,13 @@ div.alert.alert-error {
 
 
 @media (max-width: 420px) {
+  body {
+    background-image: none;
+    background-color:#222831;
+    padding: 0 20px;
+  }
   .login-container-wrapper {
-    margin: 30px auto;
+    margin: 50px auto;
     padding: 10px;
     background: transparent;
     box-shadow: none;
@@ -204,9 +209,9 @@ div.alert.alert-error {
   }
 
   .text-center label a {
-    font-weight: 700;
-    color: #f20000;
-    text-shadow: 1px 1px 2px #fff;
+    font-weight: 600;
+    color: #fd7014;
+    text-shadow: 1px 1px 2px #111;
   }
 
   .form-control,
@@ -216,6 +221,9 @@ div.alert.alert-error {
 }
 
 @media (max-width: 320px) {
+  body {
+    padding: 0 15px;
+  }
   .login-container-wrapper {
     margin: 20px auto;
     padding: 0 0 15px;

@@ -63,32 +63,54 @@
                                         <div class="row ing ps-2 py-1">
                                             <div class="col-4 dem">TTL</div>
                                             <div class="pisah">:</div>
-                                            <div class="col-7">{{ $siswa->ttl }}</div>
+                                            <div class="col-7">
+                                                <i class="me-1 fas fa-calendar"></i>
+                                                {{ $siswa->ttl }}
+                                            </div>
                                         </div>
                                         <div class="row ing ps-2 py-1">
                                             <div class="col-4 dem">JK</div>
                                             <div class="pisah">:</div>
-                                            <div class="col-7">{{ $siswa->jk }}</div>
+                                            <div class="col-7">
+                                                <i class="me-1 fas @if($siswa->jk == 'Laki-laki') fa-mars @else fa-venus @endif"></i>
+                                                {{ $siswa->jk }}
+                                            </div>
                                         </div>
                                         <div class="row ing ps-2 py-1">
                                             <div class="col-4 dem">Agama</div>
                                             <div class="pisah">:</div>
-                                            <div class="col-7">{{ $siswa->agama }}</div>
+                                            <div class="col-7">
+                                                <i class="me-1 fas fa-hands"></i>
+                                                {{ $siswa->agama }}
+                                            </div>
                                         </div>
                                         <div class="row ing ps-2 py-1">
                                             <div class="col-4 dem">Alamat</div>
                                             <div class="pisah">:</div>
-                                            <div class="col-7">{{ $siswa->alamat }}</div>
+                                            <div class="col-7">
+                                                <i class="me-1 fas fa-home"></i>
+                                                {{ $siswa->alamat }}
+                                            </div>
                                         </div>
                                         <div class="row ing ps-2 py-1">
                                             <div class="col-4 dem">No.Telp</div>
                                             <div class="pisah">:</div>
-                                            <div class="col-7">{{ $siswa->no_telp }}</div>
+                                            <div class="col-7">
+                                                <a class="linkind" style="color: darkblue" href="tel:{{ $siswa->no_telp }}">
+                                                    <i class="me-1 fas fa-phone"></i>
+                                                    {{ $siswa->no_telp }}
+                                                </a>
+                                            </div>
                                         </div>
                                         <div class="row ing ps-2 py-1">
                                             <div class="col-4 dem">No.Telp Rumah</div>
                                             <div class="pisah">:</div>
-                                            <div class="col-7">{{ $siswa->no_telp_rumah }}</div>
+                                            <div class="col-7">
+                                                <a class="linkind" style="color: darkblue" href="tel:{{ $siswa->no_telp_rumah }}">
+                                                    <i class="me-1 fas fa-phone"></i>
+                                                    {{ $siswa->no_telp_rumah }}
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer p-2 bg-light">

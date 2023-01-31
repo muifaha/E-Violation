@@ -66,4 +66,10 @@
             Histori
         </li>
     </a>
+    <a href="/pesan">
+        <li class="{{ request()->is('pesan*') ? 'active' : '' }} hp-li" title="Pesan">
+            <i class="fas fa-envelope"></i>
+            Pesan
+        </li>
+    </a>
 </ul>

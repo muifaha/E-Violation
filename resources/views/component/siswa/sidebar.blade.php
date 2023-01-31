@@ -34,7 +34,7 @@
                     data-toggle="tooltip" title="Pesan">
                     <a class="c-menu__item__inner" href="/pesan">
                         <div class="ic">
-                            <i class="fas fa-calendar-alt"></i>
+                            <i class="fas fa-envelope"></i>
                         </div>
                         <div class="c-menu-item__title"><span>Pesan</span></div>
                     </a>

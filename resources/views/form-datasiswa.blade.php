@@ -17,7 +17,7 @@
                         @error('nisn')
                             <span class="invalid-feedback" role="alert">
                                 <strong
-                                    style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
+                                    style="color: red; text-shadow: 1px 1px 2px #121212">{{ $message }}</strong>
                             </span>
                         @enderror
 
@@ -31,7 +31,7 @@
                             @error('nama')
                                 <span class="invalid-feedback" role="alert">
                                     <strong
-                                        style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
+                                        style="color: red; text-shadow: 1px 1px 2px #121212">{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
@@ -50,7 +50,7 @@
                             @error('ttl')
                                 <span class="invalid-feedback" role="alert">
                                     <strong
-                                        style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
+                                        style="color: red; text-shadow: 1px 1px 2px #121212">{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
@@ -71,7 +71,7 @@
                                 @error('jk')
                                     <span class="invalid-feedback" role="alert">
                                         <strong
-                                            style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
+                                            style="color: red; text-shadow: 1px 1px 2px #121212">{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -100,7 +100,7 @@
                                 @error('agama')
                                     <span class="invalid-feedback" role="alert">
                                         <strong
-                                            style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
+                                            style="color: red; text-shadow: 1px 1px 2px #121212">{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -116,7 +116,7 @@
                             @error('alamat')
                                 <span class="invalid-feedback" role="alert">
                                     <strong
-                                        style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
+                                        style="color: red; text-shadow: 1px 1px 2px #121212">{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
@@ -132,7 +132,7 @@
                                 @error('no_telp')
                                     <span class="invalid-feedback" role="alert">
                                         <strong
-                                            style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
+                                            style="color: red; text-shadow: 1px 1px 2px #121212">{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -154,7 +154,7 @@
                                 @error('kelas')
                                     <span class="invalid-feedback" role="alert">
                                         <strong
-                                            style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
+                                            style="color: red; text-shadow: 1px 1px 2px #121212">{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -172,7 +172,7 @@
                             @error('n_ayah')
                                 <span class="invalid-feedback" role="alert">
                                     <strong
-                                        style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
+                                        style="color: red; text-shadow: 1px 1px 2px #121212">{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
@@ -186,7 +186,7 @@
                             @error('n_ibu')
                                 <span class="invalid-feedback" role="alert">
                                     <strong
-                                        style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
+                                        style="color: red; text-shadow: 1px 1px 2px #121212">{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
@@ -201,7 +201,7 @@
                             @error('alamat_ortu')
                                 <span class="invalid-feedback" role="alert">
                                     <strong
-                                        style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
+                                        style="color: red; text-shadow: 1px 1px 2px #121212">{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
@@ -216,7 +216,7 @@
                             @error('no_telp_rumah')
                                 <span class="invalid-feedback" role="alert">
                                     <strong
-                                        style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
+                                        style="color: red; text-shadow: 1px 1px 2px #121212">{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>

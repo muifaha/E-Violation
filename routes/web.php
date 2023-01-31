@@ -29,6 +29,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/surat-panggilan', function () {
+    return view('surat-panggilan');
+});
+
 // leaderboard
 Route::get('/you-cant-see-me', [BoardController::class, 'unique'])->name('unique')->middleware('guest');
 

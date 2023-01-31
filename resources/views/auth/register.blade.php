@@ -17,7 +17,7 @@
                             @error('nisn')
                                 <span class="invalid-feedback" role="alert" style="color:red; text-shadow: 2px 2px 2px black;">
                                     <strong
-                                        style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
+                                        style="color: red; text-shadow: 1px 1px 2px #121212">{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
@@ -29,7 +29,7 @@
                             @error('email')
                                 <span class="invalid-feedback" role="alert" style="color:red; text-shadow: 2px 2px 2px black;">
                                     <strong
-                                        style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
+                                        style="color: red; text-shadow: 1px 1px 2px #121212">{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
@@ -49,7 +49,7 @@
                             @error('password')
                                 <span class="invalid-feedback" role="alert" style="color:red; text-shadow: 2px 2px 2px black;">
                                     <strong
-                                        style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">{{ $message }}</strong>
+                                        style="color: red; text-shadow: 1px 1px 2px #121212">{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
@@ -64,8 +64,9 @@
                         </div>
                     </div>
                     @error('g-recaptcha-response')
-                        <text-small class="mt-1" style="color: red; text-shadow: 1px 1px 2px #121212, -1px -1px 2px #ddd;">
-                            {{ $message }}</text-small>
+                        <text-small style="font-size: 12px; color: red; text-shadow: 1px 1px 2px #121212; font-weight: 600; ">
+                            {{ $message }}
+                        </text-small>
                     @enderror
                 </div>
 
