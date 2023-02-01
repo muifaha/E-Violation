@@ -47,6 +47,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/identitas-siswa/{id}', [StudentController::class, 'edit']);
     Route::get('/histori-skor', [StudentController::class, 'history']);
     Route::get('/pesan', [StudentController::class, 'pesan']);
+    Route::get('/pesan/{id}', [StudentController::class, 'checkpesan']);
     // Route::get('/tata-tertib', [StudentController::class, 'history']);
 });
 

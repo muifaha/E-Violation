@@ -166,7 +166,7 @@ return [
          * Package Service Providers...
          */
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
-
+        Barryvdh\DomPDF\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -232,6 +232,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Helper' => app\Http\Helpers\helpers::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];

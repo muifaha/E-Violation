@@ -18,8 +18,12 @@ class CreatePenangananTable extends Migration
             $table->foreignId('student_id')->references('id')->on('students')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->string('tindak_lanjut', 255);
-            $table->boolean('konfirmasi')->default(0);
+            $table->foreignId('tindak_lanjut_id')->references('id')->on('tindak_lanjut')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->boolean('status')->default(0);
+            $table->string('berkas', 255)->nullable();
+            $table->string('berita_acara', 255)->nullable();
             $table->timestamps();
         });
     }

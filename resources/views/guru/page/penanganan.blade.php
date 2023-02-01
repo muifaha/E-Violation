@@ -5,7 +5,7 @@
         <div class="card shadow px-0">
             <div class="card-header">
                 <h3 class="fw-bolder mt-2">
-                    Penanganan {{$wali_kelas->kelas->nama_kelas}}
+                    Penanganan {{ $wali_kelas->kelas->nama_kelas }}
                 </h3>
             </div>
             <div class="card-body">
@@ -15,7 +15,7 @@
                             <th>No.</th>
                             <th>Nama</th>
                             <th>Tindak Lanjut</th>
-                            <th>Konfirmasi</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -25,15 +25,16 @@
                                     {{ ($penanganan->currentpage() - 1) * $penanganan->perpage() + $loop->index + 1 }}
                                 </td>
                                 <td>{{ $tindak->siswa->nama }}</td>
-                                <td>{{ $tindak->tindak_lanjut }}</td>
+                                <td>{{ $tindak->pesan->tindak_lanjut }}</td>
                                 <td>
-                                    @if ($tindak->konfirmasi == 0)
+                                    @if ($tindak->status == 0)
                                         <form action="/guru/penanganan/{{ $tindak->id }}" method="post">
                                             @csrf
                                             <button type="submit" class="btn btn-primary btn-sm">Konfirm</button>
                                         </form>
                                     @else
-                                        <button class="btn btn-secondary btn-sm" disabled>Terkonfirmasi</button>
+                                        <button class="btn btn-secondary btn-sm" disabled>Terkonfirmasi -
+                                            {{ $tindak->created_at->format('d/m/Y') }}</button>
                                     @endif
                                 </td>
                             </tr>

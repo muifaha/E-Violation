@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Penanganan;
 use App\Models\User;
 use App\Models\Student;
 use App\Models\WaliKelas;
@@ -32,8 +33,9 @@ class HomeController extends Controller
             $siswas = Student::all();
             $users = User::all();
             $walikelas = Walikelas::all();
-            $points = Peraturan::all();
-            return view('home', compact('siswas', 'users', 'walikelas', 'points'));
+            $peraturan = Peraturan::all();
+            $penanganan = Penanganan::latest()->take(5)->get();
+            return view('home', compact('siswas', 'users', 'walikelas', 'peraturan', 'penanganan'));
         }
 
         // wali kelas

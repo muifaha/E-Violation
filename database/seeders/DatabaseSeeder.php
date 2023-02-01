@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\JenisPeraturan;
 use App\Models\Peraturan;
+use App\Models\TindakLanjut;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,6 +22,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             JenisPeraturanSeeder::class,
             PeraturanSeeder::class,
+            TindakLanjutSeeder::class,
         ]);
     }
 }

@@ -33,10 +33,15 @@ class PoinController extends Controller
     {
         $siswa = Student::findOrFail($id);
         $penanganan = Penanganan::where('student_id', '=', $siswa->id)->get();
+
+        if ($request->total == 0 || $request->total == '') {
+            return redirect()->back()->with('error', 'Poin tidak valid!');
+        }
         // dd($penanganan->tindak_lanjut);
+
         $tindak_lanjut = [];
         foreach ($penanganan as $item) {
-            $tindak_lanjut[] = $item->tindak_lanjut;
+            $tindak_lanjut[] = $item->pesan->tindak_lanjut;
         }
 
         $histories = $request->input('rule');
@@ -49,6 +54,7 @@ class PoinController extends Controller
                 'tanggal' => date('Y-m-d', time())
             ]);
         }
+
         $siswa->update([
             'poin' => $siswa->poin + $request->total
         ]);
@@ -57,44 +63,44 @@ class PoinController extends Controller
         if ($siswa->poin >= 10 && $siswa->poin <= 35 && !(in_array('Peringatan ke I', $tindak_lanjut))) {
             Penanganan::create([
                 'student_id' => $siswa->id,
-                'tindak_lanjut' => 'Peringatan ke I'
+                'tindak_lanjut_id' => 1
             ]);
         }
         if ($siswa->poin >= 36 && $siswa->poin <= 55 && !(in_array('Peringatan ke II', $tindak_lanjut))) {
 
             Penanganan::create([
                 'student_id' => $siswa->id,
-                'tindak_lanjut' => 'Peringatan ke II'
+                'tindak_lanjut_id' => 2
             ]);
         }
         if ($siswa->poin >= 56 && $siswa->poin <= 75 && !(in_array('Panggilan Orang tua I', $tindak_lanjut))) {
             Penanganan::create([
                 'student_id' => $siswa->id,
-                'tindak_lanjut' => 'Panggilan Orang tua I'
+                'tindak_lanjut_id' => 3
             ]);
         }
         if ($siswa->poin >= 76 && $siswa->poin <= 95 && !(in_array('Panggilan Orang tua II', $tindak_lanjut))) {
             Penanganan::create([
                 'student_id' => $siswa->id,
-                'tindak_lanjut' => 'Panggilan Orang tua II'
+                'tindak_lanjut_id' => 4
             ]);
         }
         if ($siswa->poin >= 96 && $siswa->poin <= 149 && !(in_array('Panggilan Orang tua III', $tindak_lanjut))) {
             Penanganan::create([
                 'student_id' => $siswa->id,
-                'tindak_lanjut' => 'Panggilan Orang tua III'
+                'tindak_lanjut_id' => 5
             ]);
         }
         if ($siswa->poin >= 150 && $siswa->poin <= 249 && !(in_array('Skorsing', $tindak_lanjut))) {
             Penanganan::create([
                 'student_id' => $siswa->id,
-                'tindak_lanjut' => 'Skorsing'
+                'tindak_lanjut_id' => 6
             ]);
         }
         if ($siswa->poin >= 250 && !(in_array('Dikembalikan Orang tua', $tindak_lanjut))) {
             Penanganan::create([
                 'student_id' => $siswa->id,
-                'tindak_lanjut' => 'Dikembalikan Orang tua'
+                'tindak_lanjut_id' => 7
             ]);
         }
 

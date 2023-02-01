@@ -21,7 +21,18 @@ class Penanganan extends Model
         return $this->belongsTo(Student::class, 'student_id');
     }
 
+    public function pesan()
+    {
+        return $this->belongsTo(TindakLanjut::class, 'tindak_lanjut_id');
+    }
+
     protected $casts = [
-        'konfirmasi' => 'boolean'
+        'status' => 'integer',
+        'berkas' => 'string'
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'berkas';
+    }
 }

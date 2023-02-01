@@ -1,6 +1,12 @@
 @extends('layouts.main')
 @section('title', 'Tambah Poin')
 @section('content')
+    @if (session()->has('error'))
+        <div class="alert alert-danger alert-dismissible fade show ms-auto" role="alert">
+            {{ session('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     <div class="card">
         <div class="card-header">
             <h3 class="mt-2">
@@ -9,12 +15,14 @@
         </div>
         <div class="card-body">
             <form action="/pelanggaran/{{ $siswa->id }}" method="post" id="form">
+
                 @csrf
                 @method('put')
                 <input type="text" name="total" id="total" value=0 hidden>
                 <input type="text" name="id_user" id="id_user" value="{{ $siswa->user_id }}" hidden>
 
                 <table class="table display" cellspacing="0" width="100%" id="table_data_user">
+
                     <thead>
                         <tr>
                             <th>No.</th>

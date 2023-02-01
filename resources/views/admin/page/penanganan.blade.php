@@ -16,7 +16,8 @@
                             <th>Nama</th>
                             <th>Kelas</th>
                             <th>Tindak Lanjut</th>
-                            <th>Konfirmasi</th>
+                            <th>Status</th>
+                            <th>Berkas</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -27,18 +28,79 @@
                                 </td>
                                 <td>{{ $tindak->siswa->nama }}</td>
                                 <td>{{ $tindak->siswa->kelas->nama_kelas }}</td>
-                                <td>{{ $tindak->tindak_lanjut }}</td>
+                                <td>{{ $tindak->pesan->tindak_lanjut }}</td>
                                 <td>
-                                    @if ($tindak->konfirmasi == 0)
-                                        <form action="/penanganan/{{ $tindak->id }}" method="post">
-                                            @csrf
-                                            <button type="submit" class="btn btn-primary btn-sm" disabled>Konfirm</button>
-                                        </form>
+                                    @if ($tindak->pesan->tingkatan == 'Ringan')
+                                        @if ($tindak->status == 0)
+                                            <form action="/penanganan/{{ $tindak->id }}" method="post">
+                                                @csrf
+                                                <button type="submit" class="btn btn-primary btn-sm">Konfirmasi</button>
+                                            </form>
+                                        @else
+                                            <button class="btn btn-secondary btn-sm" disabled>Terkonfirmasi -
+                                                {{ $tindak->created_at->format('d/m/Y') }}</button>
+                                        @endif
                                     @else
-                                        <button class="btn btn-secondary btn-sm" disabled>{{$tindak->updated_at->format('d-m-Y')}}</button> 
+                                        @if ($tindak->status == 0)
+                                            <a href="#modalCenter{{ $tindak->id }}" role="button"
+                                                class="btn btn-sm btn-info" data-bs-toggle="modal">Belum Terlaksana</a>
+                                        @endif
+                                        @if ($tindak->status == 1)
+                                            <form action="/penanganan/{{ $tindak->id }}" method="post">
+                                                @csrf
+                                                <button class="btn text-dark btn-warning btn-sm">Terkirim Belum
+                                                    terlaksana</button>
+                                            </form>
+                                        @endif
+                                        @if ($tindak->status == 2)
+                                            <button class="btn btn-secondary btn-sm" disabled>Terkonfirmasi -
+                                                {{ $tindak->created_at->format('d/m/Y') }}</button>
+                                        @endif
                                     @endif
                                 </td>
+                                <td>
+                                    <a href="/storage/surat/{{ $tindak->berkas }} " target="_blank"
+                                        rel="noopener noreferrer">{{ $tindak->berkas }}</a>
+                                </td>
                             </tr>
+                            <div id="modalCenter{{ $tindak->id }}" class="modal fade" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-md modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header py-2 bg-info text-white">
+                                            <h5 class="modal-title ps-2">Form Pesan</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="/penanganan/{{ $tindak->id }}" method="post">
+                                                @csrf
+                                                <div class="form-floating mb-2">
+                                                    <input required type="date" name="date"
+                                                        class="form-control form-input-lg @error('date') is-invalid @enderror"
+                                                        value="{{ old('date') }}">
+                                                    <label for="date">Date</label>
+                                                    @error('date')
+                                                        <div class="invalid-feedback mb-2">
+                                                            {{ $message }}
+                                                        </div>
+                                                    @enderror
+                                                </div>
+                                                <div class="form-floating mb-2">
+                                                    <input required type="time" name="time"
+                                                        class="form-control form-input-lg @error('time') is-invalid @enderror"
+                                                        value="{{ old('time') }}">
+                                                    <label for="time">Time</label>
+                                                    @error('time')
+                                                        <div class="invalid-feedback mb-2">
+                                                            {{ $message }}
+                                                        </div>
+                                                    @enderror
+                                                </div>
+                                                <button type="submit"
+                                                    class="float-end btn btn-sm btn-primary me-2">Kirim</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         @endforeach
                     </tbody>
                 </table>

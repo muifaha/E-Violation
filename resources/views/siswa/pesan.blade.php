@@ -2,79 +2,59 @@
 @section('title', 'Pesan')
 @section('content')
     <div class="row justify-content-center">
-        <div class="card shadow px-0">
-            <div class="card-header">
-                <h3 class="fw-bolder mt-2">
-                    Pesan
+        <div class="card shadow my-1 px-0">
+            <div class="card-header bg-gradient bg-success">
+                <h3 class="fw-bolder mt-2 text-white">
+                    Kotak Pesan
                 </h3>
             </div>
-            <div class="card-body">
-                <table id="table_data_user" class="table table-bordered display nowrap" cellspacing="0" width="100%">
-                    <thead class="thead-inverse">
-                        <tr>
-                            <th>No</th>
-                            <th>Pesan</th>
-                            <th>Konfirmasi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($pesan as $msg)
-                            <tr>
-                                <td scope="row">
-                                    {{ ($pesan->currentpage() - 1) * $pesan->perpage() + $loop->index + 1 }}
-                                </td>
-                                <td>{{ $msg->tindak_lanjut }}</td>
-                                <td>
-                                    @if ($msg->konfirmasi == 0)
-                                            <button class="btn btn-primary btn-sm">Belum terkonfirmasi</button>
-                                    @else
-                                        <button class="btn btn-secondary btn-sm" disabled>Terkonfirmasi {{$msg->updated_at}}</button>
-                                    @endif
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+            <div class="card-body py-0">
+                @if ($pesan->count())
+
+                    @foreach ($pesan as $msg)
+                        <div class="list-group my-2">
+                            <div class="border-hover list-group-item list-group-item-action flex-column align-items-start py-0 px-3"
+                                style="background-color: #abddff84; border-radius: 6px;">
+                                <div class="histori-part row" style="margin-bottom: .5rem;">
+                                    <div class="col-lg-2 row" style="margin-top: .5rem;">
+                                        <small class="px-0"
+                                            style="height: 20px; width: auto;">{{ $msg->created_at->diffForHumans() }}</small>
+                                    </div>
+                                    <div class="col-lg-10" style="margin-top: .5rem;">
+                                        <p class="mb-1 mt-2 h6 text-dark ">{{ $msg->pesan->tindak_lanjut }}</p>
+                                        <div class="text-danger d-inline-flex">
+                                            @if ($msg->pesan->tingkatan == 'Ringan')
+                                                @if ($msg->status == 0)
+                                                    <p>Belum Terkonfirmasi</p>
+                                                @else
+                                                    <p>Terkonfirmasi - {{ $msg->created_at->format('d/m/Y') }}</p>
+                                                @endif
+                                            @else
+                                                @if ($msg->status == 0)
+                                                    <p>Belum Terlaksana</p>
+                                                @else
+                                                    <a href="/storage/surat/{{ $msg->berkas }}" target="_blank"
+                                                        rel="noopener noreferrer">{{ $msg->berkas }}
+                                                    </a>
+                                                @endif
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <h5 class="text-secondary text-center py-1 mt-4">Pesan tidak ada</h5>
+                @endif
+
+            </div>
+            <div class="text-end card-footer mt-3">
+                <div class="mx-4 text-decoration-none float-right">
+                    {{ $pesan->links() }}
+                </div>
             </div>
 
         </div>
     </div>
 @endsection
-@push('scripts')
-    <script>
-        $(document).ready(function() {
-            var table = $('#table_data_user').DataTable({
-                pagingType: 'simple_numbers',
-                responsive: true,
-                processing: true,
-                "language": {
-                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Indonesian.json",
-                    paginate: {
-                        first: '«',
-                        previous: '‹',
-                        next: '›',
-                        last: '»'
-                    },
-                    aria: {
-                        paginate: {
-                            first: 'First',
-                            previous: 'Previous',
-                            next: 'Next',
-                            last: 'Last'
-                        }
-                    },
-                },
-                "columnDefs": [{
-                        "orderable": false,
-                        "targets": 1
-                    },
-                    {
-                        "orderable": false,
-                        "targets": 2
-                    },
-                ],
-                "pageLength": 10
-            });
-        });
-    </script>
-@endpush
