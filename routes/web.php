@@ -26,7 +26,7 @@ use App\Http\Controllers\PenangananController;
 //     return view('auth.login');
 // });
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.app');
 });
 
 Route::get('/surat-panggilan', function () {
@@ -37,6 +37,7 @@ Route::get('/surat-panggilan', function () {
 Route::get('/you-cant-see-me', [BoardController::class, 'unique'])->name('unique')->middleware('guest');
 
 Auth::routes();
+
 // Input More Info
 Route::post('/siswa/store', [StudentController::class, 'store'])->name('siswa');
 

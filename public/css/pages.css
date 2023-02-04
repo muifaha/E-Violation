@@ -53,6 +53,14 @@
   border-bottom-left-radius: 9px;
   /*border-bottom-right-radius: 9px;*/
 }
+.border-purple {
+  border-left: 5px solid #bb11ef;
+  border-top-left-radius: 9px;
+  border-bottom-left-radius: 9px;
+  border-right: 5px solid #bb11ef;
+  border-top-right-radius: 9px;
+  border-bottom-right-radius: 9px;
+}
 .green {
   background-color: #3cd014;
 }
@@ -64,7 +72,7 @@
 }
 .blue {
   background-color: #11cdef;
-}     
+} 
 .text-title {
   color: #8898aa;
   font-weight: 500;

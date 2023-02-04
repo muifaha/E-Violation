@@ -23,7 +23,7 @@ class CreatePenangananTable extends Migration
                 ->onDelete('cascade');
             $table->boolean('status')->default(0);
             $table->string('berkas', 255)->nullable();
-            $table->string('berita_acara', 255)->nullable();
+            // $table->string('berita_acara', 255)->nullable();
             $table->timestamps();
         });
     }

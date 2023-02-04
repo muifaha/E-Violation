@@ -80,10 +80,10 @@
 
     <div class="container my-2">
         <div class="row mb-4">
-            <div class="head col-2">
+            {{-- <div class="head col-2">
                 <img src="/img/smkn1.png" alt="smkn-1-sby" width="90" height="110">
-            </div>
-            <div class="head row col-10">
+            </div> --}}
+            <div class="head row text-center">
                 <h2 class="mb-1"><b>SMK NEGERI 1 SURABAYA</b></h2>
                 <h6 class="mb-1">Jl. Smea No.4, Wonokromo, Kec. Wonokromo, Kota SBY, Jawa Timur 60243, Telp.
                     031-8292038</h6>
@@ -115,7 +115,8 @@
             </div>
             <div class="isi mx-5 pt-4">
                 <div class="row">
-                    <p>Hari : <b class="ms-1">{{ $hari }}</b></p>
+                    <p>Hari</p>
+                    <p> : <b class="ms-1">{{ $hari }}</b></p>
                 </div>
                 <div class="row">
                     <p>Tanggal</p>
