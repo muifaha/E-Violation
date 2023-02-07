@@ -8,7 +8,7 @@
         </div>
     @endif
     <div class="card">
-        <div class="card-header">
+        <div class="card-header bg-danger bg-gradient text-white">
             <h3 class="mt-2">
                 Pelanggaran yang dilakukan oleh <b>{{ $siswa->nama }}</b>
             </h3>

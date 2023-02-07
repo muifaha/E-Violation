@@ -42,8 +42,9 @@ class HomeController extends Controller
         if (auth()->user()->role == 2) {
             $wali_kelas_id = WaliKelas::where('user_id', auth()->user()->id)->first();
             $siswas = Student::where('kelas_id', $wali_kelas_id->kelas_id)->get();
+            $peraturan = Peraturan::all();
             $points = Peraturan::all();
-            return view('home', compact('siswas', 'points'));
+            return view('home', compact('siswas', 'peraturan', 'points'));
         }
 
         // siswa

@@ -42,7 +42,8 @@
                                 @if ($siswa->poin <= 149) style="color:#fd5d03;" @endif
                                 @if ($siswa->poin >= 150) class="text-danger" @endif>
                                     <b>{{ $siswa->poin }}</b>
-                                </a></td>
+                                </a>
+                            </td>
                             <td data-label="Posisi">
                                 <a href="#modalCenter{{ $siswa->id }}" role="button" class="btn btn-sm btn-info mb-1"
                                     data-bs-toggle="modal">Detail</a>
@@ -64,7 +65,6 @@
                                             <div class="col-4 dem">TTL</div>
                                             <div class="pisah">:</div>
                                             <div class="col-7">
-                                                <i class="me-1 fas fa-calendar"></i>
                                                 {{ $siswa->ttl }}
                                             </div>
                                         </div>
@@ -72,7 +72,6 @@
                                             <div class="col-4 dem">JK</div>
                                             <div class="pisah">:</div>
                                             <div class="col-7">
-                                                <i class="me-1 fas @if($siswa->jk == 'Laki-laki') fa-mars @else fa-venus @endif"></i>
                                                 {{ $siswa->jk }}
                                             </div>
                                         </div>
@@ -80,7 +79,6 @@
                                             <div class="col-4 dem">Agama</div>
                                             <div class="pisah">:</div>
                                             <div class="col-7">
-                                                <i class="me-1 fas fa-hands"></i>
                                                 {{ $siswa->agama }}
                                             </div>
                                         </div>
@@ -88,7 +86,6 @@
                                             <div class="col-4 dem">Alamat</div>
                                             <div class="pisah">:</div>
                                             <div class="col-7">
-                                                <i class="me-1 fas fa-home"></i>
                                                 {{ $siswa->alamat }}
                                             </div>
                                         </div>
@@ -97,7 +94,6 @@
                                             <div class="pisah">:</div>
                                             <div class="col-7">
                                                 <a class="linkind" style="color: darkblue" href="tel:{{ $siswa->no_telp }}">
-                                                    <i class="me-1 fas fa-phone"></i>
                                                     {{ $siswa->no_telp }}
                                                 </a>
                                             </div>
@@ -107,7 +103,6 @@
                                             <div class="pisah">:</div>
                                             <div class="col-7">
                                                 <a class="linkind" style="color: darkblue" href="tel:{{ $siswa->no_telp_rumah }}">
-                                                    <i class="me-1 fas fa-phone"></i>
                                                     {{ $siswa->no_telp_rumah }}
                                                 </a>
                                             </div>

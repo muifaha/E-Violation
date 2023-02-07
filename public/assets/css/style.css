@@ -74,6 +74,28 @@ tr.table-trr td:nth-child(2){
   opacity: 1;
 }
 
+.text-danger {
+  color: red !important;
+}
+
+.btn-danger {
+  background: red !important;
+}
+.btn-danger:hover {
+  background: rgb(202, 0, 0) !important;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #ffeee1;
+}
+::-webkit-scrollbar-thumb {
+  background: #fb6340; 
+  border-radius: 5px;
+}
+
 @media screen and (max-width: 425px) {
   .tgl {
     justify-content: center;
@@ -241,7 +263,7 @@ tr.table-trr td:nth-child(2){
 
 #header.header-scrolled {
   /* top: 0; */
-  background: #fff;
+  background: #ffeee1;
   box-shadow: 0px 2px 15px rgba(25, 119, 204, 0.1);
 }
 
@@ -335,7 +357,7 @@ tr.table-trr td:nth-child(2){
   white-space: nowrap;
   transition: 0.3s;
   border-bottom: none;
-  padding: 5px 2px;
+  padding: 5px 2px; 
 }
 
 #header.header-scrolled .navbar a,
@@ -346,7 +368,7 @@ tr.table-trr td:nth-child(2){
   font-size: 14px;
   white-space: nowrap;
   transition: 0.3s;
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px solid #ffeee1;
 }
 
 .navbar a i,
@@ -601,14 +623,14 @@ tr.table-trr td:nth-child(2){
   color: #fff;
   border: 1px solid #fd795b;
   border-radius: 50px;
-  background: #fb624075;
+  background: #fb624057;
   box-shadow: 0 8px 20px 0 rgba(114, 64, 14, 0.432);
   backdrop-filter: blur( 11.5px );
   -webkit-backdrop-filter: blur( 11.5px );
 }
 
 #hero .btn-get-started:hover {
-  background: #fd795bbd;
+  background: #f1401885;
 }
 
 @media (min-width: 1024px) {

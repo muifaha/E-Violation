@@ -3,7 +3,7 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="card shadow px-0">
-            <div class="card-header">
+            <div class="card-header bg-danger text-white">
                 <h3 class="fw-bolder mt-2">
                     Penanganan {{ $wali_kelas->kelas->nama_kelas }}
                 </h3>
@@ -19,6 +19,17 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td scope="row">
+                                1
+                            </td>
+                            <td>Iksan Arya Dinata</td>
+                            <td>Panggilan Orang Tua II</td>
+                            <td>
+                                
+                                    <button class="btn btn-secondary btn-sm" disabled>Terkonfirmasi - 06/02/2023</button>
+                            </td>
+                        </tr>
                         @foreach ($penanganan as $tindak)
                             <tr>
                                 <td scope="row">

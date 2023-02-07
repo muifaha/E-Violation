@@ -3,7 +3,7 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="card shadow my-1 px-0">
-            <div class="card-header bg-gradient bg-success">
+            <div class="card-header bg-gradient bg-info">
                 <h3 class="fw-bolder mt-2 text-white">
                     Kotak Pesan
                 </h3>
@@ -13,14 +13,14 @@
 
                     @foreach ($pesan as $msg)
                         <div class="list-group my-2">
-                            <div class="border-hover list-group-item list-group-item-action flex-column align-items-start py-0 px-3"
-                                style="background-color: #abddff84; border-radius: 6px;">
+                            <div class="border-hover list-group-item list-group-item-action flex-column align-items-start py-1 px-3 mt-2 mb-1"
+                                style="background-color: #ffd8ab84; border-radius: 6px;">
                                 <div class="histori-part row" style="margin-bottom: .5rem;">
                                     <div class="col-lg-2 row" style="margin-top: .5rem;">
                                         <small class="px-0"
                                             style="height: 20px; width: auto;">{{ $msg->created_at->diffForHumans() }}</small>
                                     </div>
-                                    <div class="col-lg-10" style="margin-top: .5rem;">
+                                    <div class="col-lg-10">
                                         <p class="mb-1 mt-2 h6 text-dark ">{{ $msg->pesan->tindak_lanjut }}</p>
                                         <div class="text-danger d-inline-flex">
                                             @if ($msg->pesan->tingkatan == 'Ringan')
@@ -33,7 +33,7 @@
                                                 @if ($msg->status == 0)
                                                     <p>Belum Terlaksana</p>
                                                 @else
-                                                    <a href="/storage/surat/{{ $msg->berkas }}" target="_blank"
+                                                    <a class="text-danger" href="/storage/surat/{{ $msg->berkas }}" target="_blank"
                                                         rel="noopener noreferrer">{{ $msg->berkas }}
                                                     </a>
                                                 @endif

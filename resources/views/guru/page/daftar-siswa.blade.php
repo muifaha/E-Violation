@@ -2,7 +2,7 @@
 @section('title', 'Daftar Siswa')
 @section('content')
     <div class="card shadow px-0">
-        <div class="card-header">
+        <div class="card-header bg-success text-white">
             <h3 class="fw-bolder mt-2 d-inline-flex">
                 List Siswa {{ $wali_kelas->kelas->nama_kelas }}
             </h3>
@@ -29,7 +29,14 @@
                             <td>{{ $siswa->nisn }}</td>
                             <td>{{ $siswa->nama }}</td>
                             <td>{{ $siswa->kelas->nama_kelas }}</td>
-                            <td><a href="/guru/histori/{{ $siswa->id }}"><b>{{ $siswa->poin }}</b></a></td>
+                            <td><a href="/guru/histori/{{ $siswa->id }}"
+                                @if ($siswa->poin == 0) class="text-success" @endif
+                                @if ($siswa->poin <= 55) style="color:#fcbc05;" @endif
+                                @if ($siswa->poin <= 149) style="color:#fd5d03;" @endif
+                                @if ($siswa->poin >= 150) class="text-danger" @endif>
+                                    <b>{{ $siswa->poin }}</b>
+                                </a>
+                            </td>
                             <td data-label="Posisi">
                                 <a href="#modalCenter{{ $siswa->id }}" role="button" class="btn btn-sm btn-info"
                                     data-bs-toggle="modal">Detail</a>

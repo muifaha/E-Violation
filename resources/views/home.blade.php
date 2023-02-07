@@ -254,9 +254,9 @@
         </div>
 
     @if (auth()->user()->role == 1)
-        <div class="card border-purple col-lg-12 animate__animated animate__fadeInDownBig" style="animation-delay: 1.333s;">
-            <div class="card-header">
-                Penanganan Pelanggaran Terbaru
+        <div class="card col-lg-12 animate__animated animate__fadeInDownBig" style="animation-delay: 1.333s;">
+            <div class="card-header bg-purple">
+                <h3 class="pb-0 mb-0 text-white">Penanganan Pelanggaran Terbaru</h3>
             </div>
             <div class="card-body py-2" style="max-width:auto;">
                 <div class="row">
