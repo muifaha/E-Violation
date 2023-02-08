@@ -52,6 +52,11 @@ class User extends Authenticatable
         return $this->hasOne(Student::class, 'id');
     }
 
+    public function wali()
+    {
+        return $this->hasOne(WaliKelas::class,);
+    }
+
     public function penanganan()
     {
         return $this->hasMany(Penanganan::class);

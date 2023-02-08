@@ -17,6 +17,6 @@ class CekRole
             return $next($request);
         }
 
-        return redirect()->back();
+        return back();
     }
 }

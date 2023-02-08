@@ -3,7 +3,10 @@
 @section('content')
     <div class="card shadow px-0">
         <div class="card-header bg-gradient bg-primary">
-            <h3 class="fw-bolder mt-2 d-inline-flex text-white">List User</h3>
+            <h3 class="fw-bolder mt-2 d-inline-flex text-white">List Guru</h3>
+            <button type="button" class="btn btn-secondary float-end" data-bs-toggle="modal" data-bs-target="#myModal">
+                Tambah
+            </button>
         </div>
 
         <div class="card-body">
@@ -16,37 +19,19 @@
                 <thead class="thead-inverse">
                     <th>No</th>
                     <th>Nama</th>
-                    <th>Email</th>
-                    <th>Registrasi</th>
-                    <th>Role</th>
+                    <th>Kelas</th>
                     <th>Aksi</th>
                 </thead>
                 <tbody>
-                    @foreach ($users->skip(1) as $user)
+                    @foreach ($wali_kelas as $guru)
                         <tr>
                             <td scope="row">
-                                {{ ($users->currentpage() - 1) * $users->perpage() + $loop->index + 1 }}
+                                {{ ($wali_kelas->currentpage() - 1) * $wali_kelas->perpage() + $loop->index + 1 }}
                             </td>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->email }}</td>
-                            @if ($user->info == 1)
-                                <td class="text-success">Sudah</td>
-                            @else
-                                <td class="text-danger">Belum</td>
-                            @endif
-                            @if ($user->role == 1)
-                                <td class="text-primary" style="font-weight:600;">Admin</td>
-                            @endif
-                            @if ($user->role == 2)
-                                <td class="text-info" style="font-weight:500;">Guru</td>
-                            @endif
-                            @if ($user->role == 3)
-                                <td class="text-secondary" style="font-weight:500;">Siswa</td>
-                            @endif
+                            <td>{{ $guru->name }}</td>
+                            <td>{{ $guru->kelas->nama_kelas }}</td>
                             <td>
-                                <button class="btn btn-sm btn-warning btn-detail open_modal"
-                                    value="{{ $user->id }}">Edit</button>
-                                <form action="/master-user/{{ $user->id }}" method="post" id="form"
+                                <form action="/master-guru/{{ $guru->id }}" method="post" id="form"
                                     class="d-inline">
                                     @csrf
                                     <button type="submit" class="btn btn-sm btn-danger" id="show_confirm">Hapus</button>
@@ -58,11 +43,54 @@
             </table>
         </div>
     </div>
-    @include('admin.page.edit_user')
+    <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary fs-4 fw-bold text-light">
+                    <h4 class="modal-title" id="myModalLabel">Tambah Data</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="/master-guru/store" method="post" id="editform">
+                        @csrf
+                        <label for="name">Nama</label>
+                        <input type="text" class="form-control" name="name" id="name" required>
+
+                        <div class="mt-2">
+                            <label for="user_id">User</label>
+                            <select class="select2 form-control" id="user_id" name="user_id" required
+                                style="width: 100%;">
+                                <option value="" selected>Pilih User</option>
+                                @foreach ($users as $user)
+                                    <option value="{{ $user->id }}">{{ $user->email }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="mt-2">
+                            <label for="kelas_id">Kelas</label>
+                            <select class="select2 form-control" id="kelas_id" name="kelas_id" required
+                                style="width: 100%;">
+                                <option value="" selected>Pilih Kelas</option>
+
+                                @foreach ($kelas as $item)
+                                    <option value="{{ $item->id }}">{{ $item->nama_kelas }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-primary" id="tambah">Tambah</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 @push('scripts')
     <script>
         $(document).ready(function() {
+            $('.select2').select2();
             var table = $('#table_data_user').DataTable({
                 pagingType: 'simple_numbers',
                 responsive: true,
@@ -91,12 +119,8 @@
                     },
                     {
                         orderable: false,
-                        targets: 2
-                    },
-                    {
-                        orderable: false,
                         responsivePriority: 2,
-                        targets: 5
+                        targets: 3
                     },
                 ],
             });
@@ -106,7 +130,7 @@
                 event.preventDefault();
                 swal({
                         title: `Yakin ingin menghapus?`,
-                        text: "Hapus Permanen User",
+                        text: "Hapus Permanen Guru",
                         icon: "warning",
                         buttons: [true, "Yakin"],
                         dangerMode: true,
@@ -115,53 +139,20 @@
                         if (willDelete) {
                             form.submit();
                             setTimeout(() => {
-                                swal("User berhasil dihapus!", "", "success");
-                            }, 1100);
+                                swal("Guru berhasil dihapus!", "", "success");
+                            }, 1500);
                         }
                     });
             });
 
 
         });
-        $(document).on('click', '.open_modal', function() {
-            var url = "/master-user";
-            var user_id = $(this).val();
-            $.get(url + '/' + user_id + '/' + 'edit', function(data) {
-                //success data
-                const target = "{{ url('master-user/:id') }}".replace(':id', data.id)
-                const pass = "{{ url('change-pass/:id') }}".replace(':id', data.id)
-                $('input#user_id').val(data.id);
-                $('input#nisn').val(data.nisn);
-                $('input#name').val(data.name);
-                $('input#email').val(data.email);
-                $('select#role').val(data.role).change();
-                if (data.info == '0') {
-                    $('input#info2').prop('checked', true);
-                } else {
-                    $('input#info').prop('checked', true);
-                };
-                $('#editform').attr('action', target);
-                $('#change_pass_form').attr('action', pass);
-                $('#myModal').modal('show');
-            })
-        });
-
-        $('button#btn-update').click(function(event) {
+        $('button#tambah').click(function(event) {
             var form = $(this).closest("form");
 
             form.submit();
             setTimeout(() => {
-                swal("User berhasil diupdate!", "", "success");
-            }, 2200);
-
-        });
-
-        $('button#btn-pass').click(function(event) {
-            var form = $(this).closest("form");
-
-            form.submit();
-            setTimeout(() => {
-                swal("Password berhasil diupdate!", "", "success");
+                swal("Guru berhasil ditambah!", "", "success");
             }, 2200);
 
         });

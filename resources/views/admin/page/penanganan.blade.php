@@ -59,8 +59,13 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="/storage/surat/{{ $tindak->berkas }} " target="_blank"
-                                        rel="noopener noreferrer">{{ $tindak->berkas }}</a>
+                                    @if ($tindak->berkas)
+                                        <a href="/storage/surat/{{ $tindak->berkas }} " target="_blank"
+                                            rel="noopener noreferrer">{{ $tindak->berkas }}</a>
+                                    @else
+                                        Tidak ada berkas
+                                    @endif
+
                                 </td>
                             </tr>
                             <div id="modalCenter{{ $tindak->id }}" class="modal fade" tabindex="-1" aria-hidden="true">
@@ -94,10 +99,13 @@
                                                         </div>
                                                     @enderror
                                                 </div>
-                                                <button type="submit"
-                                                    class="float-end btn btn-sm btn-primary me-2">Kirim</button>
-                                            </form>
                                         </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-sm  btn-secondary"
+                                                data-bs-dismiss="modal">Tutup</button>
+                                            <button type="submit" class="btn btn-sm btn-primary">Kirim</button>
+                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

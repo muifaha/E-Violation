@@ -7,6 +7,7 @@ use App\Models\WaliKelas;
 use App\Models\Penanganan;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Barryvdh\DomPDF\PDF as DomPDFPDF;
+use Dompdf\Dompdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -58,10 +59,13 @@ class PenangananController extends Controller
 
             // $pdf = PDF::loadView('surat-panggilan', compact('tanggal', 'jam'));
             // return $pdf->output();
+            // return $dompdf->loadHtml($html);
             $pdf = PDF::loadView('surat-panggilan', compact('jam', 'penanganan', 'hari', 'text'))->setOptions([
                 'chroot' => '/public',
                 'defaultFont' => 'helvetica'
             ]);
+            // return $pdf->stream('surat-panggilan');
+
             $tindak_lanjut = str_replace(' ', '_', $penanganan->pesan->tindak_lanjut);
             $nama_siswa = strtok($penanganan->siswa->nama, " ");
             $fileName = $tindak_lanjut  . '_' . $nama_siswa . '_' . time() . '.' . 'pdf';

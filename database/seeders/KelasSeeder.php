@@ -32,5 +32,43 @@ class KelasSeeder extends Seeder
         Kelas::create([
             'nama_kelas' => '10 RPL 2'
         ]);
+
+        Kelas::create([
+            'nama_kelas' => '12 DKV 1'
+        ]);
+        Kelas::create([
+            'nama_kelas' => '12 DKV 2'
+        ]);
+        Kelas::create([
+            'nama_kelas' => '11 DKV 1'
+        ]);
+        Kelas::create([
+            'nama_kelas' => '11 DKV 2'
+        ]);
+        Kelas::create([
+            'nama_kelas' => '10 DKV 1'
+        ]);
+        Kelas::create([
+            'nama_kelas' => '10 DKV 2'
+        ]);
+
+        Kelas::create([
+            'nama_kelas' => '12 TKJ 1'
+        ]);
+        Kelas::create([
+            'nama_kelas' => '12 TKJ 2'
+        ]);
+        Kelas::create([
+            'nama_kelas' => '11 TKJ 1'
+        ]);
+        Kelas::create([
+            'nama_kelas' => '11 TKJ 2'
+        ]);
+        Kelas::create([
+            'nama_kelas' => '10 TKJ 1'
+        ]);
+        Kelas::create([
+            'nama_kelas' => '10 TKJ 2'
+        ]);
     }
 }
