@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
         User::create([
             'nisn' => '0000000002',
             'name' => 'AsmuIn',
-            'email' => '12rpl1@gmail.com',
+            'email' => 'pakasmuin@gmail.com',
             'email_verified_at' => now(),
             'password' => bcrypt('password'),
             'info' => true,
@@ -37,7 +37,7 @@ class UserSeeder extends Seeder
         User::create([
             'nisn' => '0000000003',
             'name' => 'Lukman Sholeh',
-            'email' => '12rpl2@gmail.com',
+            'email' => 'paklukman@gmail.com',
             'email_verified_at' => now(),
             'password' => bcrypt('password'),
             'info' => true,
@@ -46,7 +46,7 @@ class UserSeeder extends Seeder
         User::create([
             'nisn' => '0000000004',
             'name' => 'Mochammad Arsyad',
-            'email' => '11rpl1@gmail.com',
+            'email' => 'pakarsyad@gmail.com',
             'email_verified_at' => now(),
             'password' => bcrypt('password'),
             'info' => true,
@@ -55,7 +55,7 @@ class UserSeeder extends Seeder
         User::create([
             'nisn' => '0000000005',
             'name' => 'Kukuh Widodo',
-            'email' => '11rpl2@gmail.com',
+            'email' => 'pakkukuh@gmail.com',
             'email_verified_at' => now(),
             'password' => bcrypt('password'),
             'info' => true,
@@ -64,7 +64,7 @@ class UserSeeder extends Seeder
         User::create([
             'nisn' => '0000000006',
             'name' => 'Reny Karlinawati',
-            'email' => '10rpl1@gmail.com',
+            'email' => 'bureny@gmail.com',
             'email_verified_at' => now(),
             'password' => bcrypt('password'),
             'info' => true,
@@ -73,7 +73,7 @@ class UserSeeder extends Seeder
         User::create([
             'nisn' => '0000000007',
             'name' => 'Farahma Yuanita',
-            'email' => '10rpl2@gmail.com',
+            'email' => 'buyuanita@gmail.com',
             'email_verified_at' => now(),
             'password' => bcrypt('password'),
             'info' => true,

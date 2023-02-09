@@ -34,7 +34,7 @@ class HomeController extends Controller
             $users = User::all();
             $walikelas = Walikelas::all();
             $peraturan = Peraturan::all();
-            $penanganan = Penanganan::latest()->take(5)->get();
+            $penanganan = Penanganan::latest()->take(3)->get();
             return view('home', compact('siswas', 'users', 'walikelas', 'peraturan', 'penanganan'));
         }
 
@@ -44,7 +44,18 @@ class HomeController extends Controller
             $siswas = Student::where('kelas_id', $wali_kelas_id->kelas_id)->get();
             $peraturan = Peraturan::all();
             $points = Peraturan::all();
-            return view('home', compact('siswas', 'peraturan', 'points'));
+
+            $sis = Student::whereHas('penanganan', function ($q) use ($wali_kelas_id) {
+                $q->where('kelas_id', $wali_kelas_id->kelas_id);
+            })->get();
+            $id_student = [];
+            foreach ($sis as $siswa) {
+                $id_student[] = $siswa->id;
+            }
+            $penanganan = Penanganan::whereIn('student_id', $id_student)
+                ->where('tindak_lanjut_id', '<=', 2)->latest()->paginate(3);
+
+            return view('home', compact('siswas', 'peraturan', 'points', 'penanganan', 'wali_kelas_id'));
         }
 
         // siswa

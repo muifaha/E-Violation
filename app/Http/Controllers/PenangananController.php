@@ -94,12 +94,14 @@ class PenangananController extends Controller
     public function guru_index()
     {
         $wali_kelas = WaliKelas::where('user_id', auth()->user()->id)->first();
-        $siswas = Student::whereHas('penanganan', function ($q) use ($wali_kelas) {
+        $siswas = Student::where('kelas_id', $wali_kelas->kelas_id)->first();
+
+        $siswa = Student::whereHas('penanganan', function ($q) use ($wali_kelas) {
             $q->where('kelas_id', $wali_kelas->kelas_id);
         })->get();
         $id_student = [];
-        foreach ($siswas as $siswa) {
-            $id_student[] = $siswa->id;
+        foreach ($siswa as $item) {
+            $id_student[] = $item->id;
         }
         $penanganan = Penanganan::whereIn('student_id', $id_student)
             ->where('tindak_lanjut_id', '<=', 2)->latest()->paginate(null);

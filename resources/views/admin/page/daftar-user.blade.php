@@ -44,12 +44,12 @@
                                 <td class="text-secondary" style="font-weight:500;">Siswa</td>
                             @endif
                             <td>
-                                <button class="btn btn-sm btn-warning btn-detail open_modal"
-                                    value="{{ $user->id }}">Edit</button>
+                                <button class="btn clickind btn-sm btn-warning btn-detail open_modal"
+                                    value="{{ $user->id }}"><i class="fas fa-pen"></i></button>
                                 <form action="/master-user/{{ $user->id }}" method="post" id="form"
                                     class="d-inline">
                                     @csrf
-                                    <button type="submit" class="btn btn-sm btn-danger" id="show_confirm">Hapus</button>
+                                    <button type="submit" class="btn clickind btn-sm btn-danger" id="show_confirm"><i class="fas fa-trash"></i></button>
                                 </form>
                             </td>
                         </tr>
@@ -160,9 +160,9 @@
             var form = $(this).closest("form");
 
             form.submit();
-            setTimeout(() => {
+            // setTimeout(() => {
                 swal("Password berhasil diupdate!", "", "success");
-            }, 2200);
+            // }, 2200);
 
         });
     </script>

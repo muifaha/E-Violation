@@ -2,8 +2,8 @@
 @section('title', 'Pesan')
 @section('content')
     <div class="row justify-content-center">
-        <div class="card shadow my-1 px-0">
-            <div class="card-header bg-gradient bg-info">
+        <div class="card shadow px-0">
+            <div class="card-header bg-gradient bg-primary">
                 <h3 class="fw-bolder mt-2 text-white">
                     Kotak Pesan
                 </h3>
@@ -25,13 +25,13 @@
                                         <div class="text-danger d-inline-flex">
                                             @if ($msg->pesan->tingkatan == 'Ringan')
                                                 @if ($msg->status == 0)
-                                                    <p>Belum Terkonfirmasi</p>
+                                                    <p class="mb-0">Belum Terkonfirmasi</p>
                                                 @else
-                                                    <p>Terkonfirmasi - {{ $msg->created_at->format('d/m/Y') }}</p>
+                                                    <p class="mb-0">Terkonfirmasi - {{ $msg->created_at->format('d/m/Y') }}</p>
                                                 @endif
                                             @else
                                                 @if ($msg->status == 0)
-                                                    <p>Belum Terlaksana</p>
+                                                    <p class="mb-0">Belum Terlaksana</p>
                                                 @else
                                                     <a class="text-danger" href="/storage/surat/{{ $msg->berkas }}" target="_blank"
                                                         rel="noopener noreferrer">{{ $msg->berkas }}

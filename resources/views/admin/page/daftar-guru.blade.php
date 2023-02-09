@@ -1,11 +1,11 @@
 @extends('layouts.main')
-@section('title', 'Master user')
+@section('title', 'Master Guru')
 @section('content')
     <div class="card shadow px-0">
-        <div class="card-header bg-gradient bg-primary">
-            <h3 class="fw-bolder mt-2 d-inline-flex text-white">List Guru</h3>
-            <button type="button" class="btn btn-secondary float-end" data-bs-toggle="modal" data-bs-target="#myModal">
-                Tambah
+        <div class="card-header bg-gradient bg-info">
+            <h3 class="fw-bolder mt-2 d-inline-flex text-white">List Walikelas</h3>
+            <button type="button" class="btn btn-md btn-light text-info float-end" data-bs-toggle="modal" data-bs-target="#myModal">
+                <i class="fas fa-user-plus me-1"></i> Tambah
             </button>
         </div>
 
@@ -34,7 +34,7 @@
                                 <form action="/master-guru/{{ $guru->id }}" method="post" id="form"
                                     class="d-inline">
                                     @csrf
-                                    <button type="submit" class="btn btn-sm btn-danger" id="show_confirm">Hapus</button>
+                                    <button type="submit" class="clickind btn btn-sm btn-danger" id="show_confirm"><i class="fas fa-trash"></i></button>
                                 </form>
                             </td>
                         </tr>
@@ -44,20 +44,21 @@
         </div>
     </div>
     <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-md modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header bg-primary fs-4 fw-bold text-light">
-                    <h4 class="modal-title" id="myModalLabel">Tambah Data</h4>
+                <div class="modal-header bg-gradient bg-success fs-4 fw-bold text-light py-2">
+                    <h4 class="modal-title" id="myModalLabel">Tambah WaliKelas</h4>
                 </div>
                 <div class="modal-body">
                     <form action="/master-guru/store" method="post" id="editform">
                         @csrf
-                        <label for="name">Nama</label>
-                        <input type="text" class="form-control" name="name" id="name" required>
+                        
+                        <label for="name" class="mb-0">Nama</label>
+                        <input type="text" class="form-control-sm form-control mb-2" name="name" id="name" required>
 
                         <div class="mt-2">
-                            <label for="user_id">User</label>
-                            <select class="select2 form-control" id="user_id" name="user_id" required
+                            <label for="user_id" class="mb-0">User</label>
+                            <select class="select2 mb-2" id="user_id" name="user_id" required
                                 style="width: 100%;">
                                 <option value="" selected>Pilih User</option>
                                 @foreach ($users as $user)
@@ -67,8 +68,8 @@
                         </div>
 
                         <div class="mt-2">
-                            <label for="kelas_id">Kelas</label>
-                            <select class="select2 form-control" id="kelas_id" name="kelas_id" required
+                            <label for="kelas_id"  class="mb-0">Kelas</label>
+                            <select class="select2 mb-2" id="kelas_id" name="kelas_id" required
                                 style="width: 100%;">
                                 <option value="" selected>Pilih Kelas</option>
 
@@ -78,9 +79,9 @@
                             </select>
                         </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary" id="tambah">Tambah</button>
+                <div class="modal-footer py-2" style="padding: 12px;">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-sm btn-success" id="tambah">Tambah</button>
                 </div>
                 </form>
             </div>
@@ -150,10 +151,13 @@
         $('button#tambah').click(function(event) {
             var form = $(this).closest("form");
 
-            form.submit();
-            setTimeout(() => {
-                swal("Guru berhasil ditambah!", "", "success");
-            }, 2200);
+                    form.submit(function (e){
+                        // e.preventDefault();  
+                        swal("Guru berhasil ditambah!", "", "success");
+                    });
+                    // setTimeout(() => {
+                        
+                    // }, 2200);
 
         });
     </script>

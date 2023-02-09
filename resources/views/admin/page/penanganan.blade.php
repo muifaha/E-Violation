@@ -100,7 +100,7 @@
                                                     @enderror
                                                 </div>
                                         </div>
-                                        <div class="modal-footer">
+                                        <div class="modal-footer py-2">
                                             <button type="button" class="btn btn-sm  btn-secondary"
                                                 data-bs-dismiss="modal">Tutup</button>
                                             <button type="submit" class="btn btn-sm btn-primary">Kirim</button>

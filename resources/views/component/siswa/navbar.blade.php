@@ -60,8 +60,8 @@
             Dashboard
         </li>
     </a>
-    <a href="/histori-skor">
-        <li class="{{ request()->is('histori-skor*') ? 'active' : '' }} hp-li" title="Histori">
+    <a href="/histori">
+        <li class="{{ request()->is('histori*') ? 'active' : '' }} hp-li" title="Histori">
             <i class="fas fa-calendar-alt"></i>
             Histori
         </li>

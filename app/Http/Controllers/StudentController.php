@@ -23,7 +23,7 @@ class StudentController extends Controller
     public function history()
     {
         $siswa = Student::where('nisn', Auth::user()->nisn)->first();
-        $histories = History::where('student_id', $siswa->id)->latest()->paginate(3);
+        $histories = History::where('student_id', $siswa->id)->latest()->paginate(7);
         $tanggal = $histories->unique('tanggal')->pluck('tanggal');
         $nama = strtok($siswa['nama'], " ");
         return view('siswa.history', compact('histories', 'nama', 'tanggal'));

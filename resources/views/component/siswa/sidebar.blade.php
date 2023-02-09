@@ -20,9 +20,9 @@
                     </a>
                 </li>
 
-                <li class="c-menu__item {{ request()->is('histori-skor*') ? 'is-active' : '' }}  has-submenu"
+                <li class="c-menu__item {{ request()->is('histori*') ? 'is-active' : '' }}  has-submenu"
                     data-toggle="tooltip" title="Histori">
-                    <a class="c-menu__item__inner" href="/histori-skor">
+                    <a class="c-menu__item__inner" href="/histori">
                         <div class="ic">
                             <i class="fas fa-calendar-alt"></i>
                         </div>

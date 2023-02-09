@@ -45,10 +45,10 @@
                                 </a>
                             </td>
                             <td data-label="Posisi">
-                                <a href="#modalCenter{{ $siswa->id }}" role="button" class="btn btn-sm btn-info mb-1"
-                                    data-bs-toggle="modal">Detail</a>
-                                <a href="/pelanggaran/tambah/{{ $siswa->nisn }}" class="btn btn-sm btn-danger mb-1">Tambah</a>
-                                <a href="/pelanggaran/kurang/{{ $siswa->nisn }}" class="btn btn-sm btn-success d-inline-flex mb-1">Kurang</a>
+                                <a href="#modalCenter{{ $siswa->id }}" role="button" class="clickind btn btn-sm btn-info mb-1"
+                                    data-bs-toggle="modal"><i class="fas fa-info"></i></a>
+                                <a href="/pelanggaran/tambah/{{ $siswa->nisn }}" class="clickind btn btn-sm btn-danger mb-1"><i class="fas fa-plus"></i></a>
+                                <a href="/pelanggaran/kurang/{{ $siswa->nisn }}" class="clickind btn btn-sm btn-success d-inline-flex mb-1"><i class="fas fa-minus"></i></a>
                             </td>
                         </tr>
 

@@ -47,13 +47,14 @@ Route::post('/register', [RegisterController::class, 'register']);
 // Input More Info
 Route::post('/siswa/store', [StudentController::class, 'store'])->name('siswa');
 
-// Siswa
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::group(['middleware' => ['role:1']], function () {
+
+    // Siswa
+    Route::group(['middleware' => ['role:3']], function () {
         Route::get('/identitas-siswa', [StudentController::class, 'show']);
         Route::put('/identitas-siswa/{id}', [StudentController::class, 'edit']);
-        Route::get('/histori-skor', [StudentController::class, 'history']);
+        Route::get('/histori', [StudentController::class, 'history']);
         Route::get('/pesan', [StudentController::class, 'pesan']);
         Route::get('/pesan/{id}', [StudentController::class, 'checkpesan']);
         // Route::get('/tata-tertib', [StudentController::class, 'history']);

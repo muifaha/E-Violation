@@ -66,6 +66,12 @@
             Master Siswa
         </li>
     </a>
+    <a href="/master-guru">
+        <li class="{{ request()->is('master-guru*') ? 'active' : '' }} hp-li" title="Master Guru">
+            <i class="fas fa-user-tie"></i>
+            Master Guru
+        </li>
+    </a>
     <a href="/master-user">
         <li class="{{ request()->is('master-user*') ? 'active' : '' }} hp-li" title="Master User">
             <i class="fas fa-users"></i>

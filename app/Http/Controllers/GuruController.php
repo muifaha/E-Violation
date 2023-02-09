@@ -20,12 +20,14 @@ class GuruController extends Controller
     public function master_history()
     {
         $wali_kelas = WaliKelas::where('user_id', auth()->user()->id)->first();
-        $siswas = Student::whereHas('history', function($q) use($wali_kelas){
+        $siswas = Student::where('kelas_id', $wali_kelas->kelas_id)->first();
+
+        $siswa = Student::whereHas('history', function($q) use($wali_kelas){
             $q->where('kelas_id', $wali_kelas->kelas_id);
         })->get();
         $id_student = [];
-        foreach($siswas as $siswa){
-            $id_student[] = $siswa->id;
+        foreach($siswa as $item){
+            $id_student[] = $item->id;
         }
 
 

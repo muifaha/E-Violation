@@ -11,6 +11,18 @@
   padding: 0;
 }
 
+.linkred {
+  /* text-decoration: none; */
+  color: darkgray;
+  transition: all 0.3s ease-in-out;
+  width: auto;
+}
+.linkred:hover {
+  text-decoration: none;
+  color: darkred;
+  transition: all 0.3s ease-in-out;
+}
+
 .cord .card {
   /*border-top-left-radius: 0;*/
   /*border-bottom-left-radius: 0;*/
@@ -279,6 +291,34 @@ tr.table-trr td:nth-child(2){
   flex: 0 0 1%;
   max-width: 1%;
   padding: 0 7px;
+}
+
+input[type="radio"]:focus {
+  display: none;
+}
+.form-check-input:checked {
+  background-color: gold;
+  border-color: gold;
+}
+.info,
+.info2{
+  color: #777777;
+  font-weight: 400;
+}
+#info:checked:checked ~ .info,
+#info2:checked:checked ~ .info2{
+  color: #121212;
+  font-weight: 600;
+}
+
+.clickind {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  margin-bottom: 5px;
+}
+.clickind .fa-minus {
+  margin-top: 3.5px;
 }
 
 @keyframes a {

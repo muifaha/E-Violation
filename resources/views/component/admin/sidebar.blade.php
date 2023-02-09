@@ -38,7 +38,7 @@
                     data-toggle="tooltip" title="Master Guru">
                     <a class="c-menu__item__inner" href="/master-guru">
                         <div class="ic animate__backInLeft animate__animated">
-                            <i class="fas fa-user-graduate"></i>
+                            <i class="fas fa-user-tie"></i>
                         </div>
                         <div class="c-menu-item__title animate__backInLeft animate__animated">
                             <span>Master Guru</span>

@@ -2,7 +2,7 @@
 @section('title', 'Histori')
 @section('content')
     <div class="row justify-content-center">
-        <div class="card shadow my-1 px-0">
+        <div class="card shadow px-0">
             <div class="card-header bg-gradient bg-danger">
                 <h3 class="fw-bolder mt-2 text-white">
                     Histori {{ Auth::user()->name }}
