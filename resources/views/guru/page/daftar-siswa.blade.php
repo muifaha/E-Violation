@@ -2,7 +2,7 @@
 @section('title', 'Daftar Siswa')
 @section('content')
     <div class="card shadow px-0">
-        <div class="card-header bg-success text-white">
+        <div class="card-header bg-gradient bg-success text-white">
             <h3 class="fw-bolder mt-2 d-inline-flex">
                 List Siswa {{ $wali_kelas->kelas->nama_kelas }}
             </h3>

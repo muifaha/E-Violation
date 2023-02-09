@@ -3,7 +3,7 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="card shadow px-0">
-            <div class="card-header bg-warning">
+            <div class="card-header bg-gradient bg-warning">
                 <h3 class="fw-bolder mt-2">
                     Histori @if ($histories->count())
                         {{ $histories[0]->siswa->nama }}

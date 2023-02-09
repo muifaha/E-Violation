@@ -79,7 +79,12 @@ class UserAdminController extends Controller
             'name' => 'required|max:255'
         ]);
 
-        WaliKelas::create($request->all());
+        $wali = WaliKelas::create($request->all());
+
+        $user = User::where('id', $wali->user_id);
+        $user->update([
+            'info' => 1
+        ]);
 
         return back();
     }

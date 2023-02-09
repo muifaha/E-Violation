@@ -256,7 +256,7 @@
     @if (auth()->user()->role == 1)
         <div class="card col-lg-12 animate__animated animate__fadeInDownBig" style="animation-delay: 1.333s;">
             <div class="card-header bg-purple">
-                <h3 class="pb-0 mb-0 text-white">Penanganan Pelanggaran Terbaru</h3>
+                <h3 class="pb-0 mb-0 text-white">Penanganan Terbaru</h3>
             </div>
             <div class="card-body py-2" style="max-width:auto;">
                 <div class="row">
@@ -312,7 +312,7 @@
     @if (auth()->user()->role == 2)
         <div class="card col-lg-12 animate__animated animate__fadeInDownBig" style="animation-delay: 1s;">
             <div class="card-header bg-purple">
-                <h3 class="pb-0 mb-0 text-white">Penanganan kelas {{$wali_kelas_id->kelas->nama_kelas}}</h3>
+                <h3 class="pb-0 mb-0 text-white">Penanganan Kelas {{$wali_kelas_id->kelas->nama_kelas}}</h3>
             </div>
             <div class="card-body py-2" style="max-width:auto;">
                 <div class="row">

@@ -3,7 +3,7 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="card shadow px-0">
-            <div class="card-header bg-danger text-white">
+            <div class="card-header bg-gradient bg-danger text-white">
                 <h3 class="fw-bolder mt-2">
                     Penanganan {{ $wali_kelas->kelas->nama_kelas }}
                 </h3>

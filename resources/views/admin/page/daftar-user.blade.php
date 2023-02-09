@@ -150,9 +150,9 @@
             var form = $(this).closest("form");
 
             form.submit();
-            setTimeout(() => {
-                swal("User berhasil diupdate!", "", "success");
-            }, 2200);
+            // setTimeout(() => {
+                // swal("User berhasil diupdate!", "", "success");
+            // }, 2200);
 
         });
 
@@ -161,7 +161,7 @@
 
             form.submit();
             // setTimeout(() => {
-                swal("Password berhasil diupdate!", "", "success");
+                // swal("Password berhasil diupdate!", "", "success");
             // }, 2200);
 
         });

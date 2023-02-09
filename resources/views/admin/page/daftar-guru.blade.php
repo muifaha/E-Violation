@@ -151,10 +151,7 @@
         $('button#tambah').click(function(event) {
             var form = $(this).closest("form");
 
-                    form.submit(function (e){
-                        // e.preventDefault();  
-                        swal("Guru berhasil ditambah!", "", "success");
-                    });
+                    form.submit();
                     // setTimeout(() => {
                         
                     // }, 2200);
