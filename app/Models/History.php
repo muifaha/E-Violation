@@ -18,4 +18,21 @@ class History extends Model
     {
         return $this->belongsTo(Student::class, 'student_id');
     }
+
+    public function scopeFilter($q, array $filters)
+    {
+        $q->when($filters['tanggal'] ?? false, function ($q, $tanggal) {
+            return $q->where('tanggal', 'like', '%' . $tanggal . '%');
+        });
+
+        $q->when(
+            $filters['student'] ?? false,
+            fn ($q, $student) =>
+            $q->whereHas(
+                'student',
+                fn ($q) =>
+                $q->where('nisn', $student)
+            )
+        );
+    }
 }

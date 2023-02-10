@@ -12,6 +12,7 @@ use App\Http\Controllers\UserAdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PenangananController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\FrontController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,16 +25,8 @@ use App\Http\Controllers\Auth\RegisterController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('auth.login');
-// });
-Route::get('/', function () {
-    return view('layouts.app');
-});
-
-Route::get('/surat-panggilan', function () {
-    return view('surat-panggilan');
-});
+Route::get('/', [FrontController::class, 'index']);
+Route::get('/api/{nisn}', [FrontController::class, 'search_nisn']);
 
 // leaderboard
 Route::get('/you-cant-see-me', [BoardController::class, 'unique'])->name('unique')->middleware('guest');
