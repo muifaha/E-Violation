@@ -46,7 +46,7 @@
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
+                var elementVisible = 50;
 
                 if (elementTop < windowHeight - elementVisible) {
                     reveals[i].classList.add("active");
@@ -219,12 +219,17 @@
             <div class="container">
 
                 <div class="section-title pb-3">
-                    <h2 class="reveal">Pelanggaran Harian <br>
-                        {{ $tanggal }}
+                    
+                    <h2 class="reveal">Pelanggaran Tanggal 
+                        @if (request('tanggal'))
+                        {{ date('d-m-Y', strtotime(request('tanggal'))) }}
+                        @else
+                        {{ Carbon\Carbon::now()->format('d-m-Y') }}
+                        @endif
+                        {{-- {{ $tanggal }} --}}
                     </h2>
-                    <p class="reveal">Fitur ini digunakan untuk menampilkan semua Histori Pelanggaran Siswa berdasarkan
-                        tanggal yang Anda tentukan. Fitur ini akan menampilkan nama Pelanggaran yang dilakukan dan
-                        poinnya.</p>
+                    <p class="texting-mobile reveal" style="display: none;">Fitur ini digunakan untuk menampilkan semua Histori Pelanggaran Siswa berdasarkan tanggal yang Anda tentukan.</p>
+                    <p class="texting reveal">Fitur ini digunakan untuk menampilkan semua Histori Pelanggaran Siswa berdasarkan tanggal yang Anda tentukan. Fitur ini akan menampilkan nama Pelanggaran yang dilakukan dan poinnya.</p>
                 </div>
 
                 <div class="row gy-4 reveal">
@@ -237,7 +242,7 @@
                         </form>
                     </div>
                     <div class="col-lg-12 table-responsive mt-2">
-                        <table class="table table-hover table-bordered" id="tbl_history">
+                        <table class="table table-hover table-stripped" id="tbl_history">
                             <thead style="color:#fff; background-color: #fb6240d6;">
                                 <tr>
                                     <th>No.</th>
@@ -280,8 +285,8 @@
 
                 <div class="section-title pb-3">
                     <h2 class="reveal">Cek Poin Pelanggaran</h2>
-                    <p class="reveal">Gunakan NISN Anda untuk melihat Poin Pelanggaran Anda, Fitur ini hanya akan
-                        menampilkan Poin Pelanggaran dan tidak akan menampilkan Histori Pelanggaran Anda.</p>
+                    <p class="texting-mobile reveal" style="display: none;">Fitur ini hanya akan menampilkan Poin Pelanggaran dan tidak akan menampilkan Histori Pelanggaran Anda.</p>
+                    <p class="texting reveal">Gunakan NISN Anda untuk melihat Poin Pelanggaran Anda, Fitur ini hanya akan menampilkan Poin Pelanggaran dan tidak akan menampilkan Histori Pelanggaran Anda.</p>
                 </div>
                 <div class="alert alert-success alert-dismissible fade show ms-auto" role="alert"
                     style="display: none;" id="alertSuccess">
@@ -335,7 +340,7 @@
 
                                 {{-- After Input --}}
                                 <div class="card-body py-3 px-3 text-dark text-center" style="display: none;"
-                                    id="after_nins">
+                                    id="after_nisn">
                                     <div class="row">
                                         <label class="mb-0 poin">Poin Pelanggaran Anda adalah</label>
                                         <label class="mb-0 poin text-danger" id="poin_field">0 poin</label>
@@ -409,14 +414,11 @@
 
                         <li class="reveal" data-aos-delay="300">
                             <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
-                                data-bs-target="#faq-list-4" class="collapsed">Tempus quam pellentesque nec nam
-                                aliquam sem et tortor consequat? <i class="bx bx-chevron-down icon-show"></i><i
+                                data-bs-target="#faq-list-4" class="collapsed">Apakah poin pelanggaran dapat <b>dikurangi</b>? <i class="bx bx-chevron-down icon-show"></i><i
                                     class="bx bx-chevron-up icon-close"></i></a>
                             <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
                                 <p>
-                                    Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in
-                                    est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl
-                                    suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in.
+                                    <b>Benar.</b> Total skor pelanggaran dapat dikurangi dengan mendapatkan <b>penghargaan/prestasi</b>, oleh karena itu kurangi bermalas-malasan dan raihlah prestasi setinggi langit.
                                 </p>
                             </div>
                         </li>
@@ -476,7 +478,7 @@
             </div>
         </div>
 
-        <div class="container d-md-flex py-4">
+        <div class="container d-md-flex py-4" style="z-index: 5;">
             <div class="me-md-auto text-center text-md-start">
                 <div class="copyright">
                     &copy; Copyright <strong><span>San</span></strong>. All Rights Reserved
@@ -510,11 +512,11 @@
                     m += 1; // JavaScript months are 0-11
                     var y = formattedDate.getFullYear();
 
-                    $("label#update_poin").html("Diperbarui pada " + d + "/" + m + "/" + y);
+                    $("label#update_poin").html("Diperbarui pada " + d + "-" + m + "-" + y);
 
-                    var elems = $('#alertSuccess').html("Data Fetched");
+                    var elems = $('#alertSuccess').html("Data Ditampilkan..");
                     var bNisn = $('#before_nisn');
-                    var aNisn = $('#after_nins');
+                    var aNisn = $('#after_nisn');
                     for (var i = 0; i < elems.length; i += 1) {
                         elems[i].style.display = 'block';
                     }
