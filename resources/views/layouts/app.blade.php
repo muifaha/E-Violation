@@ -219,17 +219,20 @@
             <div class="container">
 
                 <div class="section-title pb-3">
-                    
-                    <h2 class="reveal">Pelanggaran Tanggal 
+
+                    <h2 class="reveal">Pelanggaran Tanggal
                         @if (request('tanggal'))
-                        {{ date('d-m-Y', strtotime(request('tanggal'))) }}
+                            {{ date('d-m-Y', strtotime(request('tanggal'))) }}
                         @else
-                        {{ Carbon\Carbon::now()->format('d-m-Y') }}
+                            {{ Carbon\Carbon::now()->format('d-m-Y') }}
                         @endif
                         {{-- {{ $tanggal }} --}}
                     </h2>
-                    <p class="texting-mobile reveal" style="display: none;">Fitur ini digunakan untuk menampilkan semua Histori Pelanggaran Siswa berdasarkan tanggal yang Anda tentukan.</p>
-                    <p class="texting reveal">Fitur ini digunakan untuk menampilkan semua Histori Pelanggaran Siswa berdasarkan tanggal yang Anda tentukan. Fitur ini akan menampilkan nama Pelanggaran yang dilakukan dan poinnya.</p>
+                    <p class="texting-mobile reveal" style="display: none;">Fitur ini digunakan untuk menampilkan
+                        semua Histori Pelanggaran Siswa berdasarkan tanggal yang Anda tentukan.</p>
+                    <p class="texting reveal">Fitur ini digunakan untuk menampilkan semua Histori Pelanggaran Siswa
+                        berdasarkan tanggal yang Anda tentukan. Fitur ini akan menampilkan nama Pelanggaran yang
+                        dilakukan dan poinnya.</p>
                 </div>
 
                 <div class="row gy-4 reveal">
@@ -285,8 +288,10 @@
 
                 <div class="section-title pb-3">
                     <h2 class="reveal">Cek Poin Pelanggaran</h2>
-                    <p class="texting-mobile reveal" style="display: none;">Fitur ini hanya akan menampilkan Poin Pelanggaran dan tidak akan menampilkan Histori Pelanggaran Anda.</p>
-                    <p class="texting reveal">Gunakan NISN Anda untuk melihat Poin Pelanggaran Anda, Fitur ini hanya akan menampilkan Poin Pelanggaran dan tidak akan menampilkan Histori Pelanggaran Anda.</p>
+                    <p class="texting-mobile reveal" style="display: none;">Fitur ini hanya akan menampilkan Poin
+                        Pelanggaran dan tidak akan menampilkan Histori Pelanggaran Anda.</p>
+                    <p class="texting reveal">Gunakan NISN Anda untuk melihat Poin Pelanggaran Anda, Fitur ini hanya
+                        akan menampilkan Poin Pelanggaran dan tidak akan menampilkan Histori Pelanggaran Anda.</p>
                 </div>
                 <div class="alert alert-success alert-dismissible fade show ms-auto" role="alert"
                     style="display: none;" id="alertSuccess">
@@ -414,11 +419,14 @@
 
                         <li class="reveal" data-aos-delay="300">
                             <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
-                                data-bs-target="#faq-list-4" class="collapsed">Apakah poin pelanggaran dapat <b>dikurangi</b>? <i class="bx bx-chevron-down icon-show"></i><i
+                                data-bs-target="#faq-list-4" class="collapsed">Apakah poin pelanggaran dapat
+                                <b>dikurangi</b>? <i class="bx bx-chevron-down icon-show"></i><i
                                     class="bx bx-chevron-up icon-close"></i></a>
                             <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
                                 <p>
-                                    <b>Benar.</b> Total skor pelanggaran dapat dikurangi dengan mendapatkan <b>penghargaan/prestasi</b>, oleh karena itu kurangi bermalas-malasan dan raihlah prestasi setinggi langit.
+                                    <b>Benar.</b> Total skor pelanggaran dapat dikurangi dengan mendapatkan
+                                    <b>penghargaan/prestasi</b>, oleh karena itu kurangi bermalas-malasan dan raihlah
+                                    prestasi setinggi langit.
                                 </p>
                             </div>
                         </li>
@@ -501,7 +509,6 @@
             var nisn = $("input#nisn").val();
 
             $.get(url + "/" + nisn, function(data) {
-                if (data) {
                     $('td#nama').html(data.nama);
                     $('td#kelas').html(data.kelas.nama_kelas);
                     $('label#poin_field').html(data.poin + " Poin");
@@ -529,18 +536,15 @@
                     setTimeout(() => {
                         elems.fadeOut('slow');
                     }, 2000);
-
-                } else {
-                    return swal({
+                })
+                .fail(function() {
+                    swal({
                         title: "Data tidak ditemukan!",
                         icon: "warning",
                         dangerMode: true,
                         button: true,
                     });
-                }
-
-            });
-
+                });
         });
 
         function history() {

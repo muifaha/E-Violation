@@ -24,15 +24,5 @@ class History extends Model
         $q->when($filters['tanggal'] ?? false, function ($q, $tanggal) {
             return $q->where('tanggal', 'like', '%' . $tanggal . '%');
         });
-
-        $q->when(
-            $filters['student'] ?? false,
-            fn ($q, $student) =>
-            $q->whereHas(
-                'student',
-                fn ($q) =>
-                $q->where('nisn', $student)
-            )
-        );
     }
 }
