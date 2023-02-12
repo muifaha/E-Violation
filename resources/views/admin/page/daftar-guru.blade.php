@@ -1,10 +1,20 @@
 @extends('layouts.main')
 @section('title', 'Master Guru')
+@push('css')
+    <style>
+        label.error {
+            color: #a94442;
+            padding: 1px 20px 1px 2px;
+            margin-bottom: -7px !important;
+        }
+    </style>
+@endpush
 @section('content')
     <div class="card shadow px-0">
         <div class="card-header bg-gradient bg-info">
             <h3 class="fw-bolder mt-2 d-inline-flex text-white">List Walikelas</h3>
-            <button type="button" class="btn btn-md btn-light text-info float-end" data-bs-toggle="modal" data-bs-target="#myModal">
+            <button type="button" class="btn btn-md btn-light text-info float-end" data-bs-toggle="modal"
+                data-bs-target="#myModal">
                 <i class="fas fa-user-plus me-1"></i> Tambah
             </button>
         </div>
@@ -31,11 +41,8 @@
                             <td>{{ $guru->name }}</td>
                             <td>{{ $guru->kelas->nama_kelas }}</td>
                             <td>
-                                <form action="/master-guru/{{ $guru->id }}" method="post" id="form"
-                                    class="d-inline">
-                                    @csrf
-                                    <button type="submit" class="clickind btn btn-sm btn-danger" id="show_confirm"><i class="fas fa-trash"></i></button>
-                                </form>
+                                <button type="submit" class="clickind btn btn-sm btn-danger" id="show_confirm"
+                                    onclick="deleteGuru({{ $guru->id }})"><i class="fas fa-trash"></i></button>
                             </td>
                         </tr>
                     @endforeach
@@ -50,38 +57,41 @@
                     <h4 class="modal-title" id="myModalLabel">Tambah WaliKelas</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="/master-guru/store" method="post" id="editform">
+                    <form action="" method="post" id="editform">
                         @csrf
-                        
-                        <label for="name" class="mb-0">Nama</label>
-                        <input type="text" class="form-control-sm form-control mb-2" name="name" id="name" required>
+                        <div>
+                            <label for="name" class="mb-0">Nama</label>
+                            <input type="text" class="form-control-sm form-control mb-2" name="name" id="name">
+                            <div id="nameMsg"></div>
 
+                        </div>
                         <div class="mt-2">
                             <label for="user_id" class="mb-0">User</label>
-                            <select class="select2 mb-2" id="user_id" name="user_id" required
-                                style="width: 100%;">
+                            <select class="select2 mb-2" id="user_id" name="user_id" style="width: 100%;">
                                 <option value="" selected>Pilih User</option>
                                 @foreach ($users as $user)
                                     <option value="{{ $user->id }}">{{ $user->email }}</option>
                                 @endforeach
                             </select>
+                            <div id="userMsg"></div>
                         </div>
 
                         <div class="mt-2">
-                            <label for="kelas_id"  class="mb-0">Kelas</label>
-                            <select class="select2 mb-2" id="kelas_id" name="kelas_id" required
-                                style="width: 100%;">
+                            <label for="kelas_id" class="mb-0">Kelas</label>
+                            <select class="select2 mb-2" id="kelas_id" name="kelas_id" style="width: 100%;">
                                 <option value="" selected>Pilih Kelas</option>
 
                                 @foreach ($kelas as $item)
                                     <option value="{{ $item->id }}">{{ $item->nama_kelas }}</option>
                                 @endforeach
                             </select>
+                            <div id="kelasMsg"></div>
+
                         </div>
                 </div>
                 <div class="modal-footer py-2" style="padding: 12px;">
                     <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-sm btn-success" id="tambah">Tambah</button>
+                    <button onclick="tambahGuru(event)" class="btn btn-sm btn-success" id="tambah">Tambah</button>
                 </div>
                 </form>
             </div>
@@ -125,37 +135,138 @@
                     },
                 ],
             });
-            $('button#show_confirm').click(function(event) {
-                var form = $(this).closest("form");
-                var name = $(this).data("name");
-                event.preventDefault();
-                swal({
-                        title: `Yakin ingin menghapus?`,
-                        text: "Hapus Permanen Guru",
-                        icon: "warning",
-                        buttons: [true, "Yakin"],
-                        dangerMode: true,
-                    })
-                    .then((willDelete) => {
-                        if (willDelete) {
-                            form.submit();
-                            setTimeout(() => {
-                                swal("Guru berhasil dihapus!", "", "success");
-                            }, 1500);
+
+        });
+
+        function tambahGuru(event) {
+            $('form#editform').validate({ // initialize the plugin
+                rules: {
+                    name: {
+                        required: true,
+                        maxlength: 255
+                    },
+                    kelas_id: {
+                        required: true,
+                    },
+                    user_id: {
+                        required: true,
+                    },
+                },
+                messages: {
+                    name: {
+                        required: "Nama harus diisi!",
+                        maxlength: "Nama maksimal 255 karakter!"
+                    },
+                    kelas_id: {
+                        required: "Kelas harus dipilih!",
+                    },
+                    user_id: {
+                        required: "User harus dipilih!",
+                    }
+                },
+                errorPlacement: function(error, element) {
+                    if (element.attr("name") == "name") {
+
+                        $("#nameMsg").html(error);
+                    }
+                    if (element.attr("name") == "kelas_id") {
+
+                        $("#kelasMsg").html(error);
+                    }
+                    if (element.attr("name") == "user_id") {
+
+                        $("#userMsg").html(error);
+                    }
+                },
+                submitHandler: function(form) {
+                    $("#tambah").attr("disabled", true);
+                    let name = $('input#name').val();
+                    let user = $('select#user_id').val();
+                    let kelas = $('select#kelas_id').val();
+                    $.ajax({
+                        url: "/master-guru/store",
+                        type: "POST",
+                        data: {
+                            _token: $('meta[name=csrf-token]').attr("content"),
+                            name,
+                            user,
+                            kelas,
+                        },
+                        success: function(res) {
+                            if (res.success) {
+                                swal(
+                                    'Guru berhasil dibuat!',
+                                    "",
+                                    'success'
+                                ).then((result) => {
+                                    window.location.reload();
+                                });
+                                console.log(res)
+                            } else {
+                                console.log(res.errors)
+
+                                $.each(res.errors, function(key, val) {
+
+                                    swal({
+                                        title: "Data tidak valid!",
+                                        icon: "warning",
+                                        dangerMode: true,
+                                        button: true,
+                                    });
+                                });
+                            }
+                        },
+                        error: function(xhr) {
+                            console.log(xhr.responseText);
+                            swal({
+                                title: "Data tidak valid!",
+                                icon: "warning",
+                                dangerMode: true,
+                                button: true,
+                            });
                         }
                     });
+                }
             });
+        }
 
+        function deleteGuru(guru) {
+            event.preventDefault();
+            swal({
+                    title: `Yakin ingin menghapus?`,
+                    text: "Hapus Permanen Guru",
+                    icon: "warning",
+                    buttons: [true, "Yakin"],
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            url: "/master-guru/" + guru,
+                            type: "POST",
+                            data: {
+                                _token: $('meta[name=csrf-token]').attr("content"),
+                                guruId: guru
+                            },
+                            success: function(res) {
+                                if (res.success) {
+                                    swal(
+                                        'Guru berhasil dihapus!',
+                                        "",
+                                        'success'
+                                    ).then((result) => {
+                                        window.location.reload();
+                                    });
+                                    console.log(res)
+                                }
+                            },
+                            error: function(error) {
+                                console.log(error)
+                            }
+                        });
+                    }
 
-        });
-        $('button#tambah').click(function(event) {
-            var form = $(this).closest("form");
-
-                    form.submit();
-                    // setTimeout(() => {
-                        
-                    // }, 2200);
-
-        });
+                });
+        }
     </script>
 @endpush

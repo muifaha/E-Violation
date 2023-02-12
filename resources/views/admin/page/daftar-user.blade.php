@@ -1,5 +1,14 @@
 @extends('layouts.main')
 @section('title', 'Master user')
+@push('css')
+    <style>
+        label.error {
+            color: #a94442;
+            padding: 1px 20px 1px 2px;
+            margin-bottom: -7px !important;
+        }
+    </style>
+@endpush
 @section('content')
     <div class="card shadow px-0">
         <div class="card-header bg-gradient bg-primary">
@@ -46,11 +55,13 @@
                             <td>
                                 <button class="btn clickind btn-sm btn-warning btn-detail open_modal"
                                     value="{{ $user->id }}"><i class="fas fa-pen"></i></button>
-                                <form action="/master-user/{{ $user->id }}" method="post" id="form"
+                                {{-- <form action="/master-user/" method="post" id="form"
                                     class="d-inline">
-                                    @csrf
-                                    <button type="submit" class="btn clickind btn-sm btn-danger" id="show_confirm"><i class="fas fa-trash"></i></button>
-                                </form>
+                                    @csrf --}}
+                                <button type="button" onclick="deleteUser({{ $user->id }})"
+                                    class="btn clickind btn-sm btn-danger" id="show_confirm"><i
+                                        class="fas fa-trash"></i></button>
+                                {{-- </form> --}}
                             </td>
                         </tr>
                     @endforeach
@@ -100,29 +111,10 @@
                     },
                 ],
             });
-            $('button#show_confirm').click(function(event) {
-                var form = $(this).closest("form");
-                var name = $(this).data("name");
-                event.preventDefault();
-                swal({
-                        title: `Yakin ingin menghapus?`,
-                        text: "Hapus Permanen User",
-                        icon: "warning",
-                        buttons: [true, "Yakin"],
-                        dangerMode: true,
-                    })
-                    .then((willDelete) => {
-                        if (willDelete) {
-                            form.submit();
-                            setTimeout(() => {
-                                swal("User berhasil dihapus!", "", "success");
-                            }, 1100);
-                        }
-                    });
-            });
-
 
         });
+
+        // Edit user
         $(document).on('click', '.open_modal', function() {
             var url = "/master-user";
             var user_id = $(this).val();
@@ -146,24 +138,214 @@
             })
         });
 
-        $('button#btn-update').click(function(event) {
-            var form = $(this).closest("form");
+        function editUser(event) {
+            var url = $('form#editform').attr('action');
+            $('form#editform').validate({ // initialize the plugin
+                rules: {
+                    nisn: {
+                        number: true,
+                        required: true,
+                        minlength: 8,
+                        maxlength: 10,
+                    },
+                    name: {
+                        required: true,
+                        maxlength: 255
+                    },
+                    email: {
+                        required: true,
+                        maxlength: 255,
+                        email: true
+                    },
+                    role: {
+                        required: true,
+                    },
+                },
+                messages: {
+                    nisn: {
+                        number: "Nisn harus berupa angka!",
+                        required: "Nisn harus diisi!",
+                        minlength: "Nisn minimal 8 digit!",
+                        maxlength: "Nisn maksimal 10 digit!",
+                    },
+                    name: {
+                        required: "Nama harus diisi!",
+                        maxlength: "Nama maksimal 255 karakter!"
+                    },
+                    email: {
+                        required: "Email harus diisi!",
+                        maxlength: "Email maksimal 255 karakter!",
+                        email: "Masukkan Email yang valid",
+                    }
+                },
+                submitHandler: function(form) {
+                    $("#btn-update").attr("disabled", true);
 
-            form.submit();
-            // setTimeout(() => {
-                // swal("User berhasil diupdate!", "", "success");
-            // }, 2200);
+                    let nisn = $('input#nisn').val();
+                    let name = $('input#name').val();
+                    let email = $('input#email').val();
+                    let role = $('select#role').val();
+                    let info = $("input[type='radio'][name='info']:checked").val();
+                    $.ajax({
+                        url: url,
+                        type: "PUT",
+                        data: {
+                            _token: $('meta[name=csrf-token]').attr("content"),
+                            nisn,
+                            name,
+                            email,
+                            role,
+                            info
+                        },
+                        success: function(res) {
+                            if (res.success) {
+                                swal(
+                                    'User berhasil diubah!',
+                                    "",
+                                    'success'
+                                ).then((result) => {
+                                    window.location.reload();
+                                });
+                                console.log(res);
+                            } else {
+                                console.log(res.errors);
+                                $.each(res.errors, function(key, val) {
 
-        });
+                                    swal({
+                                        title: "Nisn atau Email sudah digunakan!",
+                                        icon: "warning",
+                                        dangerMode: true,
+                                        button: true,
+                                    });
+                                });
+                            }
+                        },
+                        error: function(xhr) {
+                            console.log(xhr.responseText);
+                            swal({
+                                title: "Data tidak valid!",
+                                icon: "warning",
+                                dangerMode: true,
+                                button: true,
+                            });
+                        }
+                    });
+                }
+            });
+        }
 
-        $('button#btn-pass').click(function(event) {
-            var form = $(this).closest("form");
 
-            form.submit();
-            // setTimeout(() => {
-                // swal("Password berhasil diupdate!", "", "success");
-            // }, 2200);
+        function editPass(event) {
 
-        });
+            var url = $('#change_pass_form').attr('action');
+            $('form#change_pass_form').validate({ // initialize the plugin
+                rules: {
+                    password: {
+                        required: true,
+                        minlength: 8,
+                    },
+                    password_confirm: {
+                        required: true,
+                        minlength: 8,
+                        equalTo: "#password"
+                    }
+                },
+                messages: {
+                    password: {
+                        required: "Password harus diisi!",
+                        minlength: "Password minimal 8 karakter!",
+                    },
+                    password_confirm: {
+                        required: "Confirm Password harus diisi!",
+                        minlength: "Password minimal 8 karakter!",
+                        equalTo: "Confirm password tidak valid"
+                    }
+                },
+                submitHandler: function(form) {
+                    $("#btn-pass").attr("disabled", true);
+                    var password = $('input#password').val();
+
+                    $.ajax({
+                        url: url,
+                        type: "PUT",
+                        data: {
+                            _token: $('meta[name=csrf-token]').attr("content"),
+                            password: password
+                        },
+                        success: function(res) {
+                            if (res.success) {
+
+                                swal(
+                                    'Password berhasil diubah!',
+                                    "",
+                                    'success'
+                                ).then((result) => {
+
+                                    window.location.reload();
+
+                                });
+                                console.log(res)
+                            }
+                        },
+                        error: function(errors) {
+                            console.log(errors);
+                            swal({
+                                title: "Password tidak valid!",
+                                icon: "warning",
+                                dangerMode: true,
+                                button: true,
+                            });
+                        }
+                    });
+                }
+            });
+        }
+
+
+
+        function deleteUser(user) {
+            event.preventDefault();
+            swal({
+                    title: `Yakin ingin menghapus?`,
+                    text: "Hapus Permanen User",
+                    icon: "warning",
+                    buttons: [true, "Yakin"],
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        // form.submit();
+                        // setTimeout(() => {
+                        //     swal("User berhasil dihapus!", "", "success");
+                        // }, 1100);
+                        $.ajax({
+                            url: "/master-user/" + user,
+                            type: "POST",
+                            data: {
+                                _token: $('meta[name=csrf-token]').attr("content"),
+                                userId: user
+                            },
+                            success: function(res) {
+                                if (res.success) {
+                                    swal(
+                                        'User berhasil dihapus!',
+                                        "",
+                                        'success'
+                                    ).then((result) => {
+
+                                        window.location.reload();
+
+                                    });
+                                    console.log(res)
+                                }
+                            },
+                            error: function(error) {
+                                console.log(error)
+                            }
+                        });
+                    }
+
+                });
+        }
     </script>
 @endpush

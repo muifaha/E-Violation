@@ -7,7 +7,8 @@
             <div class="dropdown float-right">
                 <button class="btn bg-gradient btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">Filter Kelas</button>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu" style="max-height: 180px;
+                overflow-y: auto;">
                     @foreach ($kelas as $item)
                         <li>
                             <a class="dropdown-item" href="/master-siswa?kelas={{ $item->nama_kelas }}"
@@ -37,18 +38,22 @@
                             <td>{{ $siswa->nama }}</td>
                             <td>{{ $siswa->kelas->nama_kelas }}</td>
                             <td><a href="/master-histori/{{ $siswa->id }}"
-                                @if ($siswa->poin == 0) class="text-success" @endif
-                                @if ($siswa->poin <= 55) style="color:#fcbc05;" @endif
-                                @if ($siswa->poin <= 149) style="color:#fd5d03;" @endif
-                                @if ($siswa->poin >= 150) class="text-danger" @endif>
+                                    @if ($siswa->poin == 0) class="text-success" @endif
+                                    @if ($siswa->poin <= 55) style="color:#fcbc05;" @endif
+                                    @if ($siswa->poin <= 149) style="color:#fd5d03;" @endif
+                                    @if ($siswa->poin >= 150) class="text-danger" @endif>
                                     <b>{{ $siswa->poin }}</b>
                                 </a>
                             </td>
                             <td data-label="Posisi">
-                                <a href="#modalCenter{{ $siswa->id }}" role="button" class="clickind btn btn-sm btn-info mb-1"
-                                    data-bs-toggle="modal"><i class="fas fa-info"></i></a>
-                                <a href="/pelanggaran/tambah/{{ $siswa->nisn }}" class="clickind btn btn-sm btn-danger mb-1"><i class="fas fa-plus"></i></a>
-                                <a href="/pelanggaran/kurang/{{ $siswa->nisn }}" class="clickind btn btn-sm btn-success d-inline-flex mb-1"><i class="fas fa-minus"></i></a>
+                                <a href="#modalCenter{{ $siswa->id }}" role="button"
+                                    class="clickind btn btn-sm btn-info mb-1" data-bs-toggle="modal"><i
+                                        class="fas fa-info"></i></a>
+                                <a href="/pelanggaran/tambah/{{ $siswa->nisn }}"
+                                    class="clickind btn btn-sm btn-danger mb-1"><i class="fas fa-plus"></i></a>
+                                <a href="/pelanggaran/kurang/{{ $siswa->nisn }}"
+                                    class="clickind btn btn-sm btn-success d-inline-flex mb-1"><i
+                                        class="fas fa-minus"></i></a>
                             </td>
                         </tr>
 
@@ -93,7 +98,8 @@
                                             <div class="col-4 dem">No.Telp</div>
                                             <div class="pisah">:</div>
                                             <div class="col-7">
-                                                <a class="linkind" style="color: darkblue" href="tel:{{ $siswa->no_telp }}">
+                                                <a class="linkind" style="color: darkblue"
+                                                    href="tel:{{ $siswa->no_telp }}">
                                                     {{ $siswa->no_telp }}
                                                 </a>
                                             </div>
@@ -102,14 +108,16 @@
                                             <div class="col-4 dem">No.Telp Rumah</div>
                                             <div class="pisah">:</div>
                                             <div class="col-7">
-                                                <a class="linkind" style="color: darkblue" href="tel:{{ $siswa->no_telp_rumah }}">
+                                                <a class="linkind" style="color: darkblue"
+                                                    href="tel:{{ $siswa->no_telp_rumah }}">
                                                     {{ $siswa->no_telp_rumah }}
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer p-2 bg-light">
-                                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                                        <button type="button" class="btn btn-sm btn-secondary"
+                                            data-bs-dismiss="modal">Kembali</button>
                                     </div>
                                 </div>
                             </div>

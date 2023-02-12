@@ -302,7 +302,8 @@
                         <div class="col-lg-6 reveal">
                             <div class="form-group input-group">
                                 <input type="text" name="nisn" class="form-control" id="nisn"
-                                    placeholder="Masukkan NISN Anda" value="{{ request('nisn') }}">
+                                    placeholder="Masukkan NISN Anda" value="{{ request('nisn') }}"
+                                    onkeydown="return (event.keyCode!=13);">
                                 <button type="button" class="btn btn-sm btn-danger btn_nisn"
                                     style="width: auto;">Cek
                                     Poin</button>

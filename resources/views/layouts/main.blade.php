@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../css/nav-side-bar.css">
     <link rel="stylesheet" href="../css/pages.css">
     <!-- <link rel="stylesheet" href="../css/datatables.css"> -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    @stack('css')
 
 </head>
 
