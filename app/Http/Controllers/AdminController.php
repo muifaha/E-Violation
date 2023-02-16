@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Kelas;
 use App\Models\History;
 use App\Models\Student;
@@ -23,15 +24,27 @@ class AdminController extends Controller
 
     public function histori_index()
     {
-        $histories = History::with('siswa')->latest()->paginate(7);
-        $tanggal = $histories->unique('tanggal')->pluck('tanggal');
+        if (request('tanggal')) {
+            $histories = History::with('siswa')->where('tanggal', request('tanggal'))->filter(request(['tanggal']))->paginate(7)->withQueryString();
+            $tanggal = date('d-m-Y', strtotime(request('tanggal')));
+        } else {
+            $histories = History::latest()->with('siswa')->filter(request(['tanggal']))->paginate(7)->withQueryString();
+            $tanggal = $histories->unique('tanggal')->pluck('tanggal');
+        };
+
         return view('admin.page.histori.master-history', compact('histories', 'tanggal'));
     }
 
     public function histori_admin($id)
     {
-        $histories = History::latest()->where('student_id', $id)->paginate(7);
-        $tanggal = $histories->unique('tanggal')->pluck('tanggal');
-        return view('admin.page.histori.history', compact('histories', 'tanggal'));
+        $siswa = Student::findOrFail($id);
+        if (request('tanggal')) {
+            $histories = History::with('siswa')->where('tanggal', request('tanggal'))->where('student_id', $id)->filter(request(['tanggal']))->paginate(7)->withQueryString();
+            $tanggal = date('d-m-Y', strtotime(request('tanggal')));
+        } else {
+            $histories = History::latest()->with('siswa')->where('student_id', $id)->filter(request(['tanggal']))->paginate(7)->withQueryString();
+            $tanggal = $histories->unique('tanggal')->pluck('tanggal');
+        };
+        return view('admin.page.histori.history', compact('histories', 'tanggal', 'siswa'));
     }
 }
