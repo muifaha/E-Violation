@@ -7,12 +7,14 @@
             <div class="dropdown float-right">
                 <button class="btn bg-gradient btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">Filter Kelas</button>
-                <ul class="dropdown-menu" style="max-height: 180px;
-                overflow-y: auto;">
+                <ul class="dropdown-menu" style="max-height: 180px; overflow-y: auto;
+                border: 1px solid #999; border-radius: 7px;">
                     @foreach ($kelas as $item)
                         <li>
-                            <a class="dropdown-item" href="/master-siswa?kelas={{ $item->nama_kelas }}"
-                                class="text-decoration-none author">{{ $item->nama_kelas }}</a>
+                            <a class="dropdown-item text-decoration-none author" style="padding: 5px 0 5px 15px;"
+                            href="/master-siswa?kelas={{ $item->nama_kelas }}">
+                                {{ $item->nama_kelas }}
+                            </a>
                         </li>
                     @endforeach
                 </ul>
@@ -20,7 +22,7 @@
         </div>
 
         <div class="card-body">
-            <table id="table_data_user" class="table table-bordered display md:nowrap" cellspacing="0" width="100%">
+            <table id="table_data_user" class="table table-bordered display md:nowrap" cellspacing="0" width="100%" style="z-index: 2;">
                 <thead class="thead-inverse">
                     <th>No.</th>
                     <th>Nisn</th>
@@ -37,23 +39,27 @@
                             <td>{{ $siswa->nisn }}</td>
                             <td>{{ $siswa->nama }}</td>
                             <td>{{ $siswa->kelas->nama_kelas }}</td>
-                            <td><a href="/master-histori/{{ $siswa->id }}"
-                                    @if ($siswa->poin == 0) class="text-success" @endif
+                            <td><a href="/master-histori/{{ $siswa->id }}"  
+                                    @if ($siswa->poin == 0) style="color:green;" @endif
                                     @if ($siswa->poin <= 55) style="color:#fcbc05;" @endif
                                     @if ($siswa->poin <= 149) style="color:#fd5d03;" @endif
-                                    @if ($siswa->poin >= 150) class="text-danger" @endif>
+                                    @if ($siswa->poin >= 150) style="color:red;" @endif>
                                     <b>{{ $siswa->poin }}</b>
                                 </a>
                             </td>
                             <td data-label="Posisi">
                                 <a href="#modalCenter{{ $siswa->id }}" role="button"
-                                    class="clickind btn btn-sm btn-info mb-1" data-bs-toggle="modal"><i
-                                        class="fas fa-info"></i></a>
+                                    class="clickind btn btn-sm btn-info mb-1 animate__animated animate__flip"
+                                    style="animation-delay: 1s;" data-bs-toggle="modal">
+                                    <i class="fas fa-info"></i></a>
                                 <a href="/pelanggaran/tambah/{{ $siswa->nisn }}"
-                                    class="clickind btn btn-sm btn-danger mb-1"><i class="fas fa-plus"></i></a>
+                                    class="clickind btn btn-sm btn-danger mb-1 animate__animated animate__flip"
+                                    style="animation-delay: 2s;">
+                                    <i class="fas fa-plus"></i></a>
                                 <a href="/pelanggaran/kurang/{{ $siswa->nisn }}"
-                                    class="clickind btn btn-sm btn-success d-inline-flex mb-1"><i
-                                        class="fas fa-minus"></i></a>
+                                    class="clickind btn btn-sm btn-success mb-1 animate__animated animate__flip"
+                                    style="animation-delay: 3s;">
+                                    <i class="fas fa-minus"></i></a>
                             </td>
                         </tr>
 

@@ -1,4 +1,4 @@
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false"
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog"  data-bs-keyboard="false"
     aria-hidden="true">
     <div class="modal-dialog modal-md modal-dialog-centered">
         <div class="modal-content">
@@ -10,31 +10,32 @@
             <div class="modal-body">
                 <form action="" method="post" id="editform">
                     @csrf
-                    <div class="">
-                        <label for="nisn">NISN</label>
+                    <div class="form-floating mb-4">
                         <input minlength=8 type="text" class="form-control" name="nisn" id="nisn" required
                             autofocus>
+                        <label for="nisn">NISN</label>
                     </div>
-                    <div class="mt-2">
-                        <label for="name">Nama</label>
+                    <div class="form-floating mb-4 mt-1">
+                        
                         <input type="text" class="form-control" name="name" id="name" required>
+                        <label for="name">Nama</label>
                     </div>
-                    <div class="mt-2">
-                        <label for="email">Email</label>
+                    <div class="form-floating mb-4 mt-1">
                         <input type="text" class="form-control" name="email" id="email" required>
+                        <label for="email">Email</label>
                     </div>
 
-                    <div class="mt-2">
-                        <label for="role">Role</label>
+                    <div class="form-floating mb-2 mt-1">
                         <select class="form-select" id="role" name="role" required>
                             <option selected value="" disabled>Pilih Role</option>
                             <option value="1">Admin</option>
                             <option value="2">Guru</option>
                             <option value="3">Siswa</option>
                         </select>
+                        <label for="role">Role</label>
                     </div>
 
-                    <div class="d-flex mt-2 mx-4">
+                    <div class="d-flex mx-4 ps-1">
                         <div class="form-check ps-0 mb-0 me-4">
                             <input class="form-check-input" type="radio" name="info" id="info" value="1">
                             <label class="form-check-label info" for="info" style="margin: 2px 0 0 -4px;">
@@ -58,34 +59,23 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="exampleModalToggle2" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true"
-    aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-    <div class="modal-dialog modal-md modal-dialog-centered">
-        <div class="modal-content">
-            <form action="" method="post" id="change_pass_form">
-                <div class="modal-header bg-danger bg-gradient fs-4 fw-bold text-light" style="padding: 10px 15px;">
-                    <h5 class="modal-title" id="exampleModalToggleLabel2">Ubah Password</h5>
-                </div>
-                <div class="modal-body">
-                    <div>
-                        <label for="password">Password</label>
-                        <input minlength=8 type="password" class="form-control" name="password" id="password" required
-                            onkeydown="return (event.keyCode!=13);">
-                    </div>
-                    <div class="mt-2">
-                        <label for="password">Confirm Password</label>
-                        <input minlength=8 type="password" class="form-control" name="password_confirm"
-                            id="password_confirm" required onkeydown="return (event.keyCode!=13);">
-                    </div>
-                </div>
 
-                <div class="modal-footer" style="padding: 10px 15px;">
-                    <button class="btn btn-sm btn-secondary" data-bs-target="#myModal" data-bs-toggle="modal"
-                        data-bs-dismiss="modal">Kembali</button>
-                    <button type="submit" onclick="editPass(event)" class="btn btn-sm btn-success"
-                        id="btn-pass">Perbarui</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+<style>
+    .form-floating>.form-control {
+        height: 3.2rem;
+        line-height: 1.25;
+    }
+    label {
+        top: -5px;
+        height: auto;
+    }
+    label.error {
+        padding: 0;
+        top: 56px;
+        right: 0px !important;
+        height: auto;
+        opacity: 1;
+        color: #ff3b3b;
+        font-size: 15px;
+    }
+</style>

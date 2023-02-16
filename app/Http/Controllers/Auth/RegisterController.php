@@ -49,12 +49,21 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        $message = [
+            'max' => ':attribute maksimal :max karakter!',
+            'min' => ':attribute minimal :min karakter!',
+            'unique' => ':attribute sudah digunakan!',
+            'required' => ':attribute harus di isi!',
+            'numeric' => ':attribute harus berisi angka!',
+            'confirmed' => ':attribute tidak cocok!',
+            'digits_between' => ':attribute harus berisi :min dan :max digits.'
+        ];
         return Validator::make($data, [
             'nisn' => ['required', 'numeric', 'digits_between:8,10', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed', 'max:255'],
             'g-recaptcha-response' => ['required'],
-        ]);
+        ], $message);
     }
 
     /**

@@ -45,8 +45,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     // Siswa
     Route::group(['middleware' => ['role:3']], function () {
-        Route::get('/identitas-siswa', [StudentController::class, 'show']);
-        Route::put('/identitas-siswa/{id}', [StudentController::class, 'edit']);
+        Route::get('/editsiswa', [StudentController::class, 'show']);
+        Route::put('/updatesiswa/{id}', [StudentController::class, 'update']);
         Route::get('/histori', [StudentController::class, 'history']);
         Route::get('/pesan', [StudentController::class, 'pesan']);
         Route::get('/pesan/{id}', [StudentController::class, 'checkpesan']);

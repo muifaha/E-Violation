@@ -167,6 +167,8 @@ tr.table-trr td:nth-child(2){
   z-index: 996;
   background: #fb62405b;
   border: 1.5px solid #fb6240;
+  backdrop-filter: blur( 3px );
+  -webkit-backdrop-filter: blur( 3px );
   width: 40px;
   height: 40px;
   border-radius: 50px;

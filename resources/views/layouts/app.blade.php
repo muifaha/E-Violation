@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>E-Book SMK Negeri 1 Surabaya</title>
+    <title>E-Violaton SMK Negeri 1 Surabaya</title>
     @include('component.head')
     <meta content="" name="description">
     <meta content="" name="keywords">
@@ -116,7 +116,7 @@
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex align-items-center">
         <div class="container text-center">
-            <h1 class="animate__animated animate__fadeInDown animate__delay-1s"><b>Welcome to E-Book</b></h1>
+            <h1 class="animate__animated animate__fadeInDown animate__delay-1s"><b>Selamat Datang</b></h1>
             <h2 class="animate__animated animate__fadeInDown" style="animation-delay: 0.5s;">Website pencatatan
                 pelanggaran siswa SMK Negeri 1 Surabaya</h2>
             <a href="#cek-pelanggaran"

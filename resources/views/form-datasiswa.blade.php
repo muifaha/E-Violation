@@ -1,10 +1,16 @@
 @extends('layouts.data')
 @section('title', 'Data Siswa & Orang tua')
 @section('datas')
-    <div class="container mb-5">
+    <style>
+        input[type="text"],
+        input[type="date"],
+        select {
+            border-radius: 0 !important;
+        }
+    </style>
+    <div class="container mb-5" style="margin-top: 2%; margin-bottom: 2%; height:100%;">
         <div class="animate__animated animate__fadeInDown login-container-wrapper clearfix">
-            <div class="welcome"><strong>{{ Auth::user()->nisn }}</strong>, silahkan mengisi Data pelajar & Orang Tua
-                terlebih dahulu.</div>
+            <div class="welcome">Data Siswa</div>
             <form class="form-horizontal login-form" method="POST" action="{{ route('siswa') }}">
                 @csrf
 
@@ -15,23 +21,23 @@
                             name="nisn" value="{{ Auth::user()->nisn }}" required autocomplete="nisn" readonly>
 
                         @error('nisn')
-                            <span class="invalid-feedback" role="alert">
+                            <span class="invalid-feedback ps-1" role="alert">
                                 <strong
-                                    style="color: red; text-shadow: 1px 1px 2px #121212">{{ $message }}</strong>
+                                    style="color: darkred; text-shadow: 0 0 5px #fff;">{{ $message }}</strong>
                             </span>
                         @enderror
 
                         {{-- nama --}}
-                        <div class="form-group relative">
+                        <div class="form-group relative1">
                             <input id="nama" type="text"
                                 class="form-control input-lg @error('nama') is-invalid @enderror" name="nama"
                                 value="{{ old('nama') }}" required autocomplete="nama" placeholder="Nama Siswa" autofocus
                                 required>
 
                             @error('nama')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback ps-1" role="alert">
                                     <strong
-                                        style="color: red; text-shadow: 1px 1px 2px #121212">{{ $message }}</strong>
+                                        style="color: darkred; text-shadow: 0 0 5px #fff;">{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
@@ -48,9 +54,9 @@
                             </div>
 
                             @error('ttl')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback ps-1" role="alert">
                                     <strong
-                                        style="color: red; text-shadow: 1px 1px 2px #121212">{{ $message }}</strong>
+                                        style="color: darkred; text-shadow: 0 0 5px #fff;">{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
@@ -69,9 +75,9 @@
                                 </select>
 
                                 @error('jk')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="invalid-feedback ps-1" role="alert">
                                         <strong
-                                            style="color: red; text-shadow: 1px 1px 2px #121212">{{ $message }}</strong>
+                                            style="color: darkred; text-shadow: 0 0 5px #fff;">{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -98,9 +104,9 @@
                                 </select>
 
                                 @error('agama')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="invalid-feedback ps-1" role="alert">
                                         <strong
-                                            style="color: red; text-shadow: 1px 1px 2px #121212">{{ $message }}</strong>
+                                            style="color: darkred; text-shadow: 0 0 5px #fff;">{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -114,9 +120,9 @@
                                 value="{{ old('alamat') }}" required autocomplete="alamat" placeholder="Masukkan Alamat">
 
                             @error('alamat')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback ps-1" role="alert">
                                     <strong
-                                        style="color: red; text-shadow: 1px 1px 2px #121212">{{ $message }}</strong>
+                                        style="color: darkred; text-shadow: 0 0 5px #fff;">{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
@@ -130,9 +136,9 @@
                                     placeholder="Telepon Siswa">
 
                                 @error('no_telp')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="invalid-feedback ps-1" role="alert">
                                         <strong
-                                            style="color: red; text-shadow: 1px 1px 2px #121212">{{ $message }}</strong>
+                                            style="color: darkred; text-shadow: 0 0 5px #fff;">{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -152,9 +158,9 @@
                                 </select>
 
                                 @error('kelas')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="invalid-feedback ps-1" role="alert">
                                         <strong
-                                            style="color: red; text-shadow: 1px 1px 2px #121212">{{ $message }}</strong>
+                                            style="color: darkred; text-shadow: 0 0 5px #fff;">{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -170,9 +176,9 @@
                                 value="{{ old('n_ayah') }}" required autocomplete="n_ayah" placeholder="Nama Ayah">
 
                             @error('n_ayah')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback ps-1" role="alert">
                                     <strong
-                                        style="color: red; text-shadow: 1px 1px 2px #121212">{{ $message }}</strong>
+                                        style="color: darkred; text-shadow: 0 0 5px #fff;">{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
@@ -184,9 +190,9 @@
                                 value="{{ old('n_ibu') }}" required autocomplete="n_ibu" placeholder="Nama Ibu">
 
                             @error('n_ibu')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback ps-1" role="alert">
                                     <strong
-                                        style="color: red; text-shadow: 1px 1px 2px #121212">{{ $message }}</strong>
+                                        style="color: darkred; text-shadow: 0 0 5px #fff;">{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
@@ -199,9 +205,9 @@
                                 placeholder="Alamat Orang Tua">
 
                             @error('alamat_ortu')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback ps-1" role="alert">
                                     <strong
-                                        style="color: red; text-shadow: 1px 1px 2px #121212">{{ $message }}</strong>
+                                        style="color: darkred; text-shadow: 0 0 5px #fff;">{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
@@ -214,9 +220,9 @@
                                 autocomplete="no_telp_rumah" placeholder="Telepon Rumah">
 
                             @error('no_telp_rumah')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback ps-1" role="alert">
                                     <strong
-                                        style="color: red; text-shadow: 1px 1px 2px #121212">{{ $message }}</strong>
+                                        style="color: darkred; text-shadow: 0 0 5px #fff;">{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>

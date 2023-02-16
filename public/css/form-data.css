@@ -6,9 +6,10 @@ html {
 
 body {
   background-image: url("../img/smkn1-darker.jpg");
-  background-repeat: round;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
   background-size: cover;
-  object-fit: fill;
   font-family: "Poppins" , sans-serif;
   font-size: 14px;
   line-height: 1.5;
@@ -56,8 +57,9 @@ body.login {
 
 .login-container-wrapper .logo,
 .login-container-wrapper .welcome {
-  margin: 0 0 20px 0;
-  font-size: 16px;
+  margin: 0 0 30px 0;
+  font-size: 30px;
+  font-weight: 600;
   color: #fff;
   text-align: center;
   letter-spacing: .6px;
@@ -65,17 +67,15 @@ body.login {
 
 .login-container-wrapper {
   max-width: 900px;
-  margin: 40px auto 0;
-  padding: 40px 40px 20px;
+  margin: 0 auto;
+  padding: 30px 40px 20px;
   box-sizing: border-box;
-  background: #fc8905af;
-  backdrop-filter: blur( 5px );
-  -webkit-backdrop-filter: blur( 5px );
-  /* background: #393e46; */
-  /* box-shadow: 5px 5px 5px #333; */
+  background: #fc89058d;
+  backdrop-filter: blur( 7px );
+  -webkit-backdrop-filter: blur( 7px );
   position: relative;
-  /* padding-top: 60px; */
   border-radius: 8px;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
 }
 
 .logo .fa {
@@ -99,31 +99,37 @@ body.login {
   color: #93a5ab;
 }
 
-.login-form .input-lg {
+.float .input-lg {
   font-family: "Poppins" , sans-serif;
   font-size: 14px;
   height: 38px;
-  /* padding: 10px 15px; */
   border-radius: 0;
-  border-color: #fd7014;
+  width: 100%;
+  margin: 10px 0 30px;
+  outline: none;
 }
+.float .input-lg:focus ~ label,
+.float .input-lg:valid ~ label {
+  top: -43px;
+  left: -10px;
+  color: #ddd;
+  font-size: 13px;
+}
+.float label {
+  position: absolute;
+  top: -16px;
+  left: 2px;
+  padding: 20px 10px 10px;
+  font-size: 16px;
+  color: #666;
+  pointer-events: none;
+  transition: .5s;
+} 
 .form-control.input-lg:focus {
   border-color: #fd1414;
-  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25)
+  box-shadow: 0 0 0 0.5px rgba(255, 0, 0, 0.25)
 }
 
-.login input[type="text"],
-.login input[type="password"],
-.login input:focus {
-  background-color: rgba(40, 52, 67, 0.75);
-  border: 1px solid #fd1414;
-  color: #eee;
-  border-color: #fd1414;
-}
-
-.login input:focus {
-  border-left: 4px solid #ccd8da;
-}
 
 input:-webkit-autofill,
 textarea:-webkit-autofill,
@@ -175,10 +181,20 @@ select:-webkit-autofill {
 .text-center label {
   color: white;
 }
-
 div.alert.alert-error {
   color: red;
-  text-shadow: 2px 2px 2px black;
+  text-shadow: 0 0 5px #333, 0 0 10px #333;
+  width: auto;
+  position: absolute;
+  right: 0;
+  bottom: -22px;
+}
+text-small.alert.alert-error {
+  color: red;
+  text-shadow: 0 0 5px #333, 0 0 10px #333;
+  position: absolute;
+  left: 0;
+  bottom: -8px;
 }
 .btn-lg {
   padding: 0;
@@ -207,12 +223,19 @@ div.alert.alert-error {
 @media (max-width: 991px) {
     .login-form .all-data {
         display: block;
+        margin-top: 1rem !important;
     }
     .in-btn {
         justify-content: center;
     }
     .outer .form-group.one{
       margin-right: 0;
+    }
+    .inini {
+      margin-top: 1.5rem;
+    }
+    .password.two {
+      margin-bottom: 1.5rem;
     }
 }
 
@@ -231,8 +254,6 @@ div.alert.alert-error {
 
 @media (max-width: 420px) {
   body {
-    background-image: none;
-    background-color:#222831;
     padding: 0 20px;
   }
   .login-container-wrapper {
@@ -240,6 +261,8 @@ div.alert.alert-error {
     padding: 10px;
     background: transparent;
     box-shadow: none;
+    backdrop-filter: blur( 0px );
+    -webkit-backdrop-filter: blur( 0px );
   }
 
   .text-center label a {
@@ -247,7 +270,21 @@ div.alert.alert-error {
     color: #fd7014;
     text-shadow: 1px 1px 2px #111;
   }
-
+  text-small.alert.alert-error {
+    color: red;
+    text-shadow: 0 0 5px #111, 0 0 10px #111;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+  }
+  div.alert.alert-error {
+    color: red;
+    text-shadow: 0 0 5px #111, 0 0 10px #111;
+    width: auto;
+    position: absolute;
+    right: 10px;
+    bottom: 100px;
+  }
   .form-control,
   .form-select {
     font-size: 14px;
@@ -264,8 +301,8 @@ div.alert.alert-error {
   }
 
   .login-container-wrapper .welcome {
-    margin: 0 0 20px 0;
-    font-size: 16px;
+    margin: 0 0 30px 0;
+    font-size: 25px;
     color: #fff;
     text-align: center;
     letter-spacing: .6px;
@@ -273,5 +310,15 @@ div.alert.alert-error {
   .form-control,
   .form-select {
     font-size: 13px;
+  }
+}
+
+@media (max-width: 500px) {
+  div.alert.alert-error {
+    width: auto;
+    position: absolute;
+    right: 0;
+    top: auto;
+    bottom: -22px;
   }
 }

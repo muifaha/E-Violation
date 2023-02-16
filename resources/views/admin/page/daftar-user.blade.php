@@ -2,17 +2,17 @@
 @section('title', 'Master user')
 @push('css')
     <style>
-        label.error {
-            color: #a94442;
-            padding: 1px 20px 1px 2px;
-            margin-bottom: -7px !important;
+        #change_pass_form label.error {
+            opacity: 1;
+            color: #ff3b3b;
+            font-size: 13px;
         }
     </style>
 @endpush
 @section('content')
-    <div class="card shadow px-0">
+    <div class="card shadow px-0 animate__animated animate__fadeInDown">
         <div class="card-header bg-gradient bg-primary">
-            <h3 class="fw-bolder mt-2 d-inline-flex text-white">List User</h3>
+            <h3 class="fw-bolder mt-2 d-inline-flex text-white animate__animated animate__fadeInRight" style="animation-delay: 0.5s;">List User</h3>
         </div>
 
         <div class="card-body">
@@ -53,13 +53,15 @@
                                 <td class="text-secondary" style="font-weight:500;">Siswa</td>
                             @endif
                             <td>
-                                <button class="btn clickind btn-sm btn-warning btn-detail open_modal"
+                                <button class="btn clickind btn-sm btn-warning btn-detail open_modal animate__animated animate__flip"
+                                style="animation-delay: 1s;"
                                     value="{{ $user->id }}"><i class="fas fa-pen"></i></button>
                                 {{-- <form action="/master-user/" method="post" id="form"
                                     class="d-inline">
                                     @csrf --}}
                                 <button type="button" onclick="deleteUser({{ $user->id }})"
-                                    class="btn clickind btn-sm btn-danger" id="show_confirm"><i
+                                    class="btn clickind btn-sm btn-danger animate__animated animate__flip"
+                                    style="animation-delay: 2s;" id="show_confirm"><i
                                         class="fas fa-trash"></i></button>
                                 {{-- </form> --}}
                             </td>
@@ -70,6 +72,37 @@
         </div>
     </div>
     @include('admin.page.edit_user')
+    <div class="modal fade" id="exampleModalToggle2"  data-bs-keyboard="false" aria-hidden="true"
+        aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+        <div class="modal-dialog modal-md modal-dialog-centered">
+            <div class="modal-content">
+                <form action="" method="post" id="change_pass_form">
+                    <div class="modal-header bg-danger bg-gradient fs-4 fw-bold text-light" style="padding: 10px 15px;">
+                        <h5 class="modal-title" id="exampleModalToggleLabel2">Ubah Password</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <label for="password">Password</label>
+                            <input minlength=8 type="password" class="form-control" name="password" id="password" required
+                                onkeydown="return (event.keyCode!=13);">
+                        </div>
+                        <div class="mt-2">
+                            <label for="password">Confirm Password</label>
+                            <input minlength=8 type="password" class="form-control" name="password_confirm"
+                                id="password_confirm" required onkeydown="return (event.keyCode!=13);">
+                        </div>
+                    </div>
+
+                    <div class="modal-footer" style="padding: 10px 15px;">
+                        <button class="btn btn-sm btn-secondary" data-bs-target="#myModal" data-bs-toggle="modal"
+                            data-bs-dismiss="modal">Kembali</button>
+                        <button type="submit" onclick="editPass(event)" class="btn btn-sm btn-success"
+                            id="btn-pass">Perbarui</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 @push('scripts')
     <script>
@@ -163,19 +196,19 @@
                 },
                 messages: {
                     nisn: {
-                        number: "Nisn harus berupa angka!",
-                        required: "Nisn harus diisi!",
-                        minlength: "Nisn minimal 8 digit!",
-                        maxlength: "Nisn maksimal 10 digit!",
+                        number: "* Nisn harus berupa angka!",
+                        required: "* Nisn harus diisi!",
+                        minlength: "* Nisn minimal 8 digit!",
+                        maxlength: "* Nisn maksimal 10 digit!",
                     },
                     name: {
-                        required: "Nama harus diisi!",
-                        maxlength: "Nama maksimal 255 karakter!"
+                        required: "* Nama harus diisi!",
+                        maxlength: "* Nama maksimal 255 karakter!"
                     },
                     email: {
-                        required: "Email harus diisi!",
-                        maxlength: "Email maksimal 255 karakter!",
-                        email: "Masukkan Email yang valid",
+                        required: "* Email harus diisi!",
+                        maxlength: "* Email maksimal 255 karakter!",
+                        email: "* Masukkan Email yang valid",
                     }
                 },
                 submitHandler: function(form) {
@@ -252,13 +285,13 @@
                 },
                 messages: {
                     password: {
-                        required: "Password harus diisi!",
-                        minlength: "Password minimal 8 karakter!",
+                        required: "* Password harus diisi!",
+                        minlength: "* Password minimal 8 karakter!",
                     },
                     password_confirm: {
-                        required: "Confirm Password harus diisi!",
-                        minlength: "Password minimal 8 karakter!",
-                        equalTo: "Confirm password tidak valid"
+                        required: "* Confirm Password harus diisi!",
+                        minlength: "* Password minimal 8 karakter!",
+                        equalTo: "* Confirm password tidak valid"
                     }
                 },
                 submitHandler: function(form) {

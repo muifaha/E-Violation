@@ -10,7 +10,18 @@
 .cord {
   padding: 0;
 }
-
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f3f3f3;
+}
+::-webkit-scrollbar-thumb {
+  background: #fb624053; 
+  border-radius: 5px;
+  border: .5px solid #fb6340;
+  box-shadow: inset 0 0 5px #fb6340;
+}
 .linkred {
   /* text-decoration: none; */
   color: darkgray;
@@ -156,7 +167,6 @@ tr td a {
 }
 tr td a:hover {
   color: red;
-  text-shadow: 0 0 10px orange;
   text-decoration: none;
   transition: all 0.5s ease-in-out;
 }
@@ -326,9 +336,12 @@ input[type="number"]:focus,
 input[type="password"]:focus,
 .form-select:focus {
   border-color: rgb(255, 119, 0);
-  box-shadow: 0 0 0 0.2rem rgba(255, 119, 0, 0.29);
+  box-shadow: 0 0 0 1px rgba(255, 119, 0, 0.29);
 }
 
+label {
+  margin-bottom: 0 !important;
+}
 @keyframes a {
   0% {
     opacity: 1;
@@ -363,6 +376,11 @@ input[type="password"]:focus,
     padding: 0 8px 0 0;
   }
 }
+
+  .dataTables_wrapper .dataTables_length,
+  .dataTables_wrapper .dataTables_filter {
+    margin-bottom: 10px !important;
+  }
 
 @media only screen and (min-width: 992px) {
   .cord:nth-child(1) {

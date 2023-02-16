@@ -9,15 +9,46 @@ use App\Models\Penanganan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
-
+use Illuminate\Support\Facades\Validator;
 
 class StudentController extends Controller
 {
     public function show()
     {
-        return view('siswa.show', [
-            'siswa' => Student::where('user_id', auth()->user()->id)->first()
+        $siswa = Student::firstWhere('user_id', auth()->user()->id);
+        return $siswa;
+    }
+
+    public function update(Request $request, $id)
+    {
+        $siswa = Student::findOrFail($id);
+
+        $validator = Validator::make($request->all(), [
+            'no_telp' => 'unique:students,no_telp,'. $id
         ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 400,
+                'errors' => $validator->getMessageBag()
+            ]);
+        } else {
+        
+        $siswa->nama = $request->post('name');
+        $siswa->alamat = $request->post('alamat');
+        $siswa->no_telp = $request->post('no_telp');
+        $siswa->alamat = $request->post('alamat');
+        $siswa->n_ayah = $request->post('n_ayah');
+        $siswa->n_ibu = $request->post('n_ibu');
+        $siswa->no_telp_rumah = $request->post('no_telp_rumah');
+        $siswa->alamat_ortu = $request->post('alamat_ortu');
+        $siswa->save();
+
+        return response()->json([
+                'success' => true,
+                'message' => 'Data Berhasil diubah.'
+        ]);
+    }
+
     }
 
     public function history()
@@ -52,7 +83,7 @@ class StudentController extends Controller
             'n_ibu' => 'required|max:255',
             'alamat_ortu' => 'required|max:255',
             'no_telp_rumah' => 'required|numeric|digits_between:5,13',
-        ]);
+        ], $message);
 
         $ttl = $request->ttl . ', ' . $request->date;
         // $kls = $request->kelas;

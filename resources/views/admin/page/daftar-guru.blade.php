@@ -3,17 +3,17 @@
 @push('css')
     <style>
         label.error {
-            color: #a94442;
-            padding: 1px 20px 1px 2px;
-            margin-bottom: -7px !important;
+            opacity: 1;
+            color: #ff3b3b;
+            font-size: 13px;
         }
     </style>
 @endpush
 @section('content')
-    <div class="card shadow px-0">
+    <div class="card shadow px-0 animate__animated animate__fadeInDown">
         <div class="card-header bg-gradient bg-info">
-            <h3 class="fw-bolder mt-2 d-inline-flex text-white">List Walikelas</h3>
-            <button type="button" class="btn btn-md btn-light text-info float-end" data-bs-toggle="modal"
+            <h3 class="fw-bolder mt-2 d-inline-flex text-white animate__animated animate__fadeInRight" style="animation-delay: 0.5s;">List Walikelas</h3>
+            <button type="button" class="btn btn-md btn-light text-info float-end animate__animated animate__fadeInLeft" style="animation-delay: 0.5s;" data-bs-toggle="modal"
                 data-bs-target="#myModal">
                 <i class="fas fa-user-plus me-1"></i> Tambah
             </button>
@@ -41,8 +41,10 @@
                             <td>{{ $guru->name }}</td>
                             <td>{{ $guru->kelas->nama_kelas }}</td>
                             <td>
-                                <button type="submit" class="clickind btn btn-sm btn-danger" id="show_confirm"
-                                    onclick="deleteGuru({{ $guru->id }})"><i class="fas fa-trash"></i></button>
+                                <button type="submit" class="clickind btn btn-sm btn-danger animate__animated animate__flip"
+                                style="animation-delay: 1s;" id="show_confirm" onclick="deleteGuru({{ $guru->id }})">
+                                    <i class="fas fa-trash"></i>
+                                </button>
                             </td>
                         </tr>
                     @endforeach
@@ -61,13 +63,13 @@
                         @csrf
                         <div>
                             <label for="name" class="mb-0">Nama</label>
-                            <input type="text" class="form-control-sm form-control mb-2" name="name" id="name">
+                            <input type="text" class="form-control-sm form-control" name="name" id="name">
                             <div id="nameMsg"></div>
 
                         </div>
                         <div class="mt-2">
                             <label for="user_id" class="mb-0">User</label>
-                            <select class="select2 mb-2" id="user_id" name="user_id" style="width: 100%;">
+                            <select class="select2 form-select form-select-sm mb-2" id="user_id" name="user_id" style="width: 100%;">
                                 <option value="" selected>Pilih User</option>
                                 @foreach ($users as $user)
                                     <option value="{{ $user->id }}">{{ $user->email }}</option>
@@ -154,14 +156,14 @@
                 },
                 messages: {
                     name: {
-                        required: "Nama harus diisi!",
-                        maxlength: "Nama maksimal 255 karakter!"
+                        required: "* Nama harus diisi!",
+                        maxlength: "* Nama maksimal 255 karakter!"
                     },
                     kelas_id: {
-                        required: "Kelas harus dipilih!",
+                        required: "* Kelas harus dipilih!",
                     },
                     user_id: {
-                        required: "User harus dipilih!",
+                        required: "* User harus dipilih!",
                     }
                 },
                 errorPlacement: function(error, element) {
@@ -204,6 +206,7 @@
                                 console.log(res)
                             } else {
                                 console.log(res.errors)
+                    $("#tambah").attr("disabled", false);
 
                                 $.each(res.errors, function(key, val) {
 
@@ -218,6 +221,8 @@
                         },
                         error: function(xhr) {
                             console.log(xhr.responseText);
+                    $("#tambah").attr("disabled", false);
+
                             swal({
                                 title: "Data tidak valid!",
                                 icon: "warning",
