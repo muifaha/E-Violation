@@ -2,9 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\JenisPeraturan;
-use App\Models\Peraturan;
-use App\Models\TindakLanjut;
+use App\Models\GuruBk;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,6 +18,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             KelasSeeder::class,
             UserSeeder::class,
+            WaliKelasSeeder::class,
+            StudentSeeder::class,
+            GuruBkSeeder::class,
             JenisPeraturanSeeder::class,
             PeraturanSeeder::class,
             TindakLanjutSeeder::class,

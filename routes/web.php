@@ -13,6 +13,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PenangananController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\GuruBkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,5 +90,20 @@ Route::group(['middleware' => ['auth']], function () {
         // Penanganan
         Route::get('/penanganan', [PenangananController::class, 'index']);
         Route::post('/penanganan/{id}', [PenangananController::class, 'konfirmasi']);
+    });
+
+    // Bk
+    Route::group(['middleware' => ['role:4']], function () {
+
+        // Tambah Poin
+        Route::get('/bk/daftar-siswa', [GuruBkController::class, 'daftar_siswa']);
+        Route::get('/bk/pelanggaran/tambah/{siswa:nisn}', [GuruBkController::class, 'tambah_view']);
+        Route::get('/bk/pelanggaran/kurang/{siswa:nisn}', [GuruBkController::class, 'kurang_view']);
+        Route::put('/bk/pelanggaran/{id}', [GuruBkController::class, 'tambah_poin']);
+        Route::put('/bk/pelanggaran/kurang/{id}', [GuruBkController::class, 'kurang_poin']);
+
+        // Penanganan
+        Route::get('/bk/penanganan', [GuruBkController::class, 'index']);
+        Route::post('/bk/penanganan/{id}', [GuruBkController::class, 'konfirmasi']);
     });
 });

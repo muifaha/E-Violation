@@ -19,4 +19,9 @@ class Kelas extends Model
     {
         return $this->hasOne(WaliKelas::class);
     }
+
+    public function bk()
+    {
+        return $this->hasOne(GuruBk::class);
+    }
 }

@@ -5,7 +5,7 @@
         <div class="all-card">
             <div class="row">
                 {{-- Dashboard Admin --}}
-                @if (Auth::user()->role == 1)
+                @if (auth()->user()->role == 1)
                     @include('admin.view_home')
                 @endif
 
@@ -18,6 +18,11 @@
                 @if (auth()->user()->role == 3)
                     @include('siswa.view_home')
                     @include('siswa.editsiswa')
+                @endif
+
+                {{-- Dashboard BK --}}
+                @if (auth()->user()->role == 4)
+                    @include('bk.view_home')
                 @endif
             </div>
         </div>

@@ -34,6 +34,12 @@
                 @include('component.siswa.navbar')
             </div>
         @endif
+        @if (Auth::user()->role == 4)
+            <div class="sidebar-is-reduced">
+                @include('component.bk.sidebar')
+                @include('component.bk.navbar')
+            </div>
+        @endif
     @endif
 
     <main class="l-main">
@@ -49,6 +55,9 @@
                 @yield('content')
             @endif
             @if (auth()->user()->role == 3)
+                @yield('content')
+            @endif
+            @if (auth()->user()->role == 4)
                 @yield('content')
             @endif
         </div>
