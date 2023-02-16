@@ -23,7 +23,7 @@ class PoinController extends Controller
 
     public function tambah_view(Student $siswa)
     {
-        return view('admin.page.tambah-poin', [
+        return view('admin.page.poin.tambah-poin', [
             'siswa' => $siswa,
             'rules' => Peraturan::oldest()->filter(request('search'))->get()
         ]);
@@ -109,7 +109,7 @@ class PoinController extends Controller
 
     public function kurang_view(Student $siswa)
     {
-        return view('admin.page.kurang-poin', [
+        return view('admin.page.poin.kurang-poin', [
             'siswa' => $siswa,
             'rules' => Peraturan::all()
         ]);

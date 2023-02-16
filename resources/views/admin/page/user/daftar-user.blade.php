@@ -12,7 +12,8 @@
 @section('content')
     <div class="card shadow px-0 animate__animated animate__fadeInDown">
         <div class="card-header bg-gradient bg-primary">
-            <h3 class="fw-bolder mt-2 d-inline-flex text-white animate__animated animate__fadeInRight" style="animation-delay: 0.5s;">List User</h3>
+            <h3 class="fw-bolder mt-2 d-inline-flex text-white animate__animated animate__fadeInRight"
+                style="animation-delay: 0.5s;">List User</h3>
         </div>
 
         <div class="card-body">
@@ -53,16 +54,16 @@
                                 <td class="text-secondary" style="font-weight:500;">Siswa</td>
                             @endif
                             <td>
-                                <button class="btn clickind btn-sm btn-warning btn-detail open_modal animate__animated animate__flip"
-                                style="animation-delay: 1s;"
-                                    value="{{ $user->id }}"><i class="fas fa-pen"></i></button>
+                                <button
+                                    class="btn clickind btn-sm btn-warning btn-detail open_modal animate__animated animate__flip"
+                                    style="animation-delay: 1s;" value="{{ $user->id }}"><i
+                                        class="fas fa-pen"></i></button>
                                 {{-- <form action="/master-user/" method="post" id="form"
                                     class="d-inline">
                                     @csrf --}}
                                 <button type="button" onclick="deleteUser({{ $user->id }})"
                                     class="btn clickind btn-sm btn-danger animate__animated animate__flip"
-                                    style="animation-delay: 2s;" id="show_confirm"><i
-                                        class="fas fa-trash"></i></button>
+                                    style="animation-delay: 2s;" id="show_confirm"><i class="fas fa-trash"></i></button>
                                 {{-- </form> --}}
                             </td>
                         </tr>
@@ -71,8 +72,8 @@
             </table>
         </div>
     </div>
-    @include('admin.page.edit_user')
-    <div class="modal fade" id="exampleModalToggle2"  data-bs-keyboard="false" aria-hidden="true"
+    @include('admin.page.user.edit_user')
+    <div class="modal fade" id="exampleModalToggle2" data-bs-keyboard="false" aria-hidden="true"
         aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
         <div class="modal-dialog modal-md modal-dialog-centered">
             <div class="modal-content">

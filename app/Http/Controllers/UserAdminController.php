@@ -13,7 +13,7 @@ class UserAdminController extends Controller
 {
     public function daftar_user()
     {
-        return view('admin.page.daftar-user', [
+        return view('admin.page.user.daftar-user', [
             'users' => User::paginate(null)
         ]);
     }
@@ -84,7 +84,7 @@ class UserAdminController extends Controller
         $wali_kelas = WaliKelas::with('kelas')->latest()->paginate(10);
         $kelas = Kelas::doesnthave('wali')->get();
         $users = User::doesnthave('wali')->where('role', 2)->get();
-        return view('admin.page.daftar-guru', compact('wali_kelas', 'kelas', 'users'));
+        return view('admin.page.guru.daftar-guru', compact('wali_kelas', 'kelas', 'users'));
     }
 
     public function tambah_guru(Request $request)

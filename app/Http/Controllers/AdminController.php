@@ -25,13 +25,13 @@ class AdminController extends Controller
     {
         $histories = History::with('siswa')->latest()->paginate(7);
         $tanggal = $histories->unique('tanggal')->pluck('tanggal');
-        return view('admin.page.master-history', compact('histories', 'tanggal'));
+        return view('admin.page.histori.master-history', compact('histories', 'tanggal'));
     }
 
     public function histori_admin($id)
     {
         $histories = History::latest()->where('student_id', $id)->paginate(7);
         $tanggal = $histories->unique('tanggal')->pluck('tanggal');
-        return view('admin.page.history', compact('histories', 'tanggal'));
+        return view('admin.page.histori.history', compact('histories', 'tanggal'));
     }
 }
