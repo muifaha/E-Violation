@@ -21,17 +21,17 @@ class CreateStudentsTable extends Migration
             $table->foreignId('kelas_id')->references('id')->on('kelas')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->string('nama', 255);
             $table->char('nisn', 10)->unique();
-            $table->string('ttl', 255);
-            $table->string('jk', 20);
-            $table->string('agama', 20);
-            $table->string('alamat', 255);
-            $table->char('no_telp', 20)->unique();
-            $table->string('n_ayah', 255);
-            $table->string('n_ibu', 255);
-            $table->string('alamat_ortu', 255);
-            $table->char('no_telp_rumah', 20);
+            $table->string('nama', 255)->nullable();
+            $table->string('ttl', 255)->nullable();
+            $table->string('jk', 20)->nullable();
+            $table->string('agama', 20)->nullable();
+            $table->string('alamat', 255)->nullable();
+            $table->char('no_telp', 20)->unique()->nullable();
+            $table->string('n_ayah', 255)->nullable();
+            $table->string('n_ibu', 255)->nullable();
+            $table->string('alamat_ortu', 255)->nullable();
+            $table->char('no_telp_rumah', 20)->nullable();
             $table->integer('poin')->default('0');;
             $table->timestamps();
         });
