@@ -36,6 +36,7 @@
             $.get(url, function(data) {
                 //success data
                 const target = "{{ url('editsiswa/:id') }}".replace(':id', data.id);
+                const url_pass = "{{ url('ubah-pass/:id') }}".replace(':id', data.id);
                 $('input#student_id').val(data.id);
                 $('input#name').val(data.nama);
                 $('input#alamat').val(data.alamat);
@@ -44,7 +45,7 @@
                 $('input#n_ibu').val(data.n_ibu);
                 $('input#no_telp_rumah').val(data.no_telp_rumah);
                 $('input#alamat_ortu').val(data.alamat_ortu);
-                // $('#editsiswaform').attr('action', target);
+                $('#change_pass_form').attr('action', url_pass);
                 // $('#editsiswaform').attr('action', pass);
                 $('#myModal').modal('show');
             });
@@ -179,6 +180,95 @@
                             console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
                             swal({
                                 title: "Data tidak valid!",
+                                icon: "warning",
+                                dangerMode: true,
+                                button: true,
+                            });
+                        }
+                    });
+                }
+            });
+        }
+
+        function editPass(event) {
+
+            var url = $('#change_pass_form').attr('action');
+            $('form#change_pass_form').validate({ // initialize the plugin
+                rules: {
+                    old_password: {
+                        required: true,
+                        minlength: 8,
+                    },
+                    new_password: {
+                        required: true,
+                        minlength: 8,
+                    },
+                    password_confirm: {
+                        required: true,
+                        minlength: 8,
+                        equalTo: "#new_password"
+                    }
+                },
+                messages: {
+                    old_password: {
+                        required: "* Password harus diisi!",
+                        minlength: "* Password minimal 8 karakter!",
+                    },
+                    new_password: {
+                        required: "* Password harus diisi!",
+                        minlength: "* Password minimal 8 karakter!",
+                    },
+                    password_confirm: {
+                        required: "* Konfirmasi Password harus diisi!",
+                        minlength: "* Password minimal 8 karakter!",
+                        equalTo: "* Konfirmasi password tidak valid"
+                    }
+                },
+                submitHandler: function(form) {
+                    $("#btn-pass").attr("disabled", true);
+                    var old_password = $('input#old_password').val();
+                    var new_password = $('input#new_password').val();
+
+                    $.ajax({
+                        url: url,
+                        type: "PUT",
+                        data: {
+                            _token: $('meta[name=csrf-token]').attr("content"),
+                            old_password,
+                            new_password,
+                        },
+                        success: function(res) {
+                            if (res.success) {
+
+                                swal(
+                                    'Password berhasil diubah!',
+                                    "",
+                                    'success'
+                                ).then((result) => {
+
+                                    window.location.reload();
+
+                                });
+                                console.log(res)
+                            } else {
+                                $("#btn-pass").attr("disabled", false);
+
+                                // $.each(res.errors, function(key, val) {
+                                swal({
+                                    title: res.errors,
+                                    icon: "warning",
+                                    dangerMode: true,
+                                    button: true,
+                                });
+                                // });
+                            }
+                        },
+                        error: function(errors) {
+                            $("#btn-pass").attr("disabled", false);
+
+                            console.log(errors);
+                            swal({
+                                title: "Password tidak valid!",
                                 icon: "warning",
                                 dangerMode: true,
                                 button: true,

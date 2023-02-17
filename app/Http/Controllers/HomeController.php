@@ -62,9 +62,8 @@ class HomeController extends Controller
         // siswa
         if (auth()->user()->role == 3) {
             $siswas = Student::with('user')->take(10)->get()->sortByDesc('poin');
-            $siswa = Student::where('nisn', auth()->user()->nisn)->first();
-            $nama = strtok($siswa['nama'], " ");
-            return view('home', compact('siswas', 'siswa', 'nama'));
+            $siswa = Student::firstWhere('nisn', auth()->user()->nisn);
+            return view('home', compact('siswas', 'siswa'));
         }
 
         // Bk

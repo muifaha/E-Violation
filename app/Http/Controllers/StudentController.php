@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\History;
 use App\Models\User;
+use App\Models\History;
 use App\Models\Student;
 use App\Models\Penanganan;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class StudentController extends Controller
@@ -19,12 +20,17 @@ class StudentController extends Controller
         return $siswa;
     }
 
+    public function view_ubah()
+    {
+        return view('siswa.ubah_pass');
+    }
+
     public function update(Request $request, $id)
     {
         $siswa = Student::findOrFail($id);
 
         $validator = Validator::make($request->all(), [
-            'no_telp' => 'unique:students,no_telp,'. $id
+            'no_telp' => 'unique:students,no_telp,' . $id
         ]);
         if ($validator->fails()) {
             return response()->json([
@@ -32,24 +38,63 @@ class StudentController extends Controller
                 'errors' => $validator->getMessageBag()
             ]);
         } else {
-        
-        $siswa->nama = $request->post('name');
-        $siswa->alamat = $request->post('alamat');
-        $siswa->no_telp = $request->post('no_telp');
-        $siswa->alamat = $request->post('alamat');
-        $siswa->n_ayah = $request->post('n_ayah');
-        $siswa->n_ibu = $request->post('n_ibu');
-        $siswa->no_telp_rumah = $request->post('no_telp_rumah');
-        $siswa->alamat_ortu = $request->post('alamat_ortu');
-        $siswa->save();
 
-        return response()->json([
+            $siswa->nama = $request->post('name');
+            $siswa->alamat = $request->post('alamat');
+            $siswa->no_telp = $request->post('no_telp');
+            $siswa->alamat = $request->post('alamat');
+            $siswa->n_ayah = $request->post('n_ayah');
+            $siswa->n_ibu = $request->post('n_ibu');
+            $siswa->no_telp_rumah = $request->post('no_telp_rumah');
+            $siswa->alamat_ortu = $request->post('alamat_ortu');
+            $siswa->save();
+
+            return response()->json([
                 'success' => true,
                 'message' => 'Data Berhasil diubah.'
-        ]);
+            ]);
+        }
     }
 
+    public function update_pass(Request $request, $id)
+    {
+
+        $message = [
+            'max' => ':attribute maksimal :max karakter!',
+            'min' => ':attribute minimal :min karakter!',
+            'required' => ':attribute harus di isi!',
+            'confirmed' => ':attribute tidak cocok!',
+        ];
+        $request->validate([
+            'old_password' => 'required|min:8|max:255',
+            'new_password' => 'required|confirmed|min:8|max:255',
+        ], $message);
+
+
+        #Match The Old Password
+        if (!Hash::check($request->old_password, auth()->user()->password)) {
+            return back()->with("error", "Password Lama tidak cocok!");
+        }
+
+
+        #Update the new Password
+        User::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        return back()->with("success", "Password berhasil diubah!");
+
+        // if ($validator->fails()) {
+        //     return response()->json([
+        //         'status' => 422,
+        //         'errors' => "Password tidak cocok dengan yang lama!"
+        //     ]);
+        // } else {
+
+        // };
     }
+
+
 
     public function history()
     {

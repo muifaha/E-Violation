@@ -5,7 +5,7 @@
         <div class="card shadow px-0">
             <div class="card-header bg-gradient bg-danger">
                 <h3 class="fw-bolder mt-2 text-white">
-                    Penanganan
+                    Penanganan Kelas {{ $guru_bk->kelas->nama_kelas }}
                 </h3>
             </div>
             <div class="card-body">

@@ -25,12 +25,16 @@
                     href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                     v-pre>
                     <!-- <i class='bx bxs-user-circle'></i> -->
-                    <div class="text-small d-inline-flex ms-1 ">{{ $nama }}</div>
+                    <div class="text-small d-inline-flex ms-1 ">{{ strtok(auth()->user()->name, ' ') }}</div>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-end me-2" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item py-2" href="/">
                         {{ __('Kembali') }}
+                    </a>
+
+                    <a class="dropdown-item py-2" href="/ubah-pass">
+                        {{ __('Ubah Password') }}
                     </a>
 
                     <a class="dropdown-item py-2" href="{{ route('logout') }}"

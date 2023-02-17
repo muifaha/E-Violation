@@ -10,7 +10,7 @@
         <nav class="c-menu js-menu">
             <ul class="u-list">
 
-                <li class="c-menu__item {{ request()->is('home*') ? 'is-active' : '' }} has-submenu"
+                <li class="c-menu__item {{ request()->is('home*', 'ubah-pass*') ? 'is-active' : '' }} has-submenu"
                     data-toggle="tooltip" title="Dashboard">
                     <a class="c-menu__item__inner" href="/home">
                         <div class="ic">
@@ -29,26 +29,24 @@
                         <div class="c-menu-item__title"><span>Daftar Siswa</span></div>
                     </a>
                 </li>
-                @if ($siswas->count())
-                    <li class="c-menu__item {{ request()->is('guru/histori*') ? 'is-active' : '' }} has-submenu"
-                        data-toggle="tooltip" title="Histori Siswa">
-                        <a class="c-menu__item__inner" href="/guru/histori">
-                            <div class="ic">
-                                <i class="fas fa-calendar-alt"></i>
-                            </div>
-                            <div class="c-menu-item__title"><span>Histori Siswa</span></div>
-                        </a>
-                    </li>
-                    <li class="c-menu__item {{ request()->is('guru/penanganan*') ? 'is-active' : '' }} has-submenu "
-                        data-toggle="tooltip" title="Penanganan">
-                        <a class="c-menu__item__inner" href="/guru/penanganan">
-                            <div class="ic">
-                                <i class="fas fa-user-cog"></i>
-                            </div>
-                            <div class="c-menu-item__title"><span>Penanganan</span></div>
-                        </a>
-                    </li>
-                @endif
+                <li class="c-menu__item {{ request()->is('guru/histori*') ? 'is-active' : '' }} has-submenu"
+                    data-toggle="tooltip" title="Histori Siswa">
+                    <a class="c-menu__item__inner" href="/guru/histori">
+                        <div class="ic">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="c-menu-item__title"><span>Histori Siswa</span></div>
+                    </a>
+                </li>
+                <li class="c-menu__item {{ request()->is('guru/penanganan*') ? 'is-active' : '' }} has-submenu "
+                    data-toggle="tooltip" title="Penanganan">
+                    <a class="c-menu__item__inner" href="/guru/penanganan">
+                        <div class="ic">
+                            <i class="fas fa-user-cog"></i>
+                        </div>
+                        <div class="c-menu-item__title"><span>Penanganan</span></div>
+                    </a>
+                </li>
             </ul>
 
         </nav>

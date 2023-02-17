@@ -8,7 +8,7 @@
                     Histori {{ $siswa->nama }}
                 </h3>
                 @if ($histories)
-                    <form action="/master-histori/{{ $student->id }}" method="get" id="form_history" class="float-end">
+                    <form action="/master-histori/{{ $siswa->id }}" method="get" id="form_history" class="float-end">
                         <input type="date" name="tanggal" id="tanggal" onchange="history()"
                             class="form-control form-control-sm" value="{{ request('tanggal') }}">
                     </form>

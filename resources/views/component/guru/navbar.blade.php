@@ -33,6 +33,10 @@
                         {{ __('Kembali') }}
                     </a>
 
+                    <a class="dropdown-item py-2" href="/ubah-pass">
+                        {{ __('Ubah Password') }}
+                    </a>
+
                     <a class="dropdown-item py-2" href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
@@ -66,18 +70,16 @@
             Daftar Siswa
         </li>
     </a>
-    @if ($siswas->count())
-        <a href="/guru/histori">
-            <li class="{{ request()->is('guru/histori*') ? 'active' : '' }} hp-li" title="Histori Siswa">
-                <i class="fas fa-calendar-alt"></i>
-                Histori Siswa
-            </li>
-        </a>
-        <a href="/guru/penanganan">
-            <li class="{{ request()->is('guru/penanganan*') ? 'active' : '' }} hp-li" title="Penanganan">
-                <i class="fas fa-user-cog"></i>
-                Penanganan
-            </li>
-        </a>
-    @endif
+    <a href="/guru/histori">
+        <li class="{{ request()->is('guru/histori*') ? 'active' : '' }} hp-li" title="Histori Siswa">
+            <i class="fas fa-calendar-alt"></i>
+            Histori Siswa
+        </li>
+    </a>
+    <a href="/guru/penanganan">
+        <li class="{{ request()->is('guru/penanganan*') ? 'active' : '' }} hp-li" title="Penanganan">
+            <i class="fas fa-user-cog"></i>
+            Penanganan
+        </li>
+    </a>
 </ul>

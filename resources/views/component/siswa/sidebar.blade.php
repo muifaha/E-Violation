@@ -10,7 +10,7 @@
         <nav class="c-menu js-menu">
             <ul class="u-list">
 
-                <li class="c-menu__item {{ request()->is('home*') ? 'is-active' : '' }}  has-submenu"
+                <li class="c-menu__item {{ request()->is('home*', 'ubah-pass*') ? 'is-active' : '' }}  has-submenu"
                     data-toggle="tooltip" title="Dashboard">
                     <a class="c-menu__item__inner" href="/home">
                         <div class="ic">

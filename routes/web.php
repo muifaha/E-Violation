@@ -48,6 +48,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['role:3']], function () {
         Route::get('/editsiswa', [StudentController::class, 'show']);
         Route::put('/updatesiswa/{id}', [StudentController::class, 'update']);
+        Route::get('/ubah-pass', [StudentController::class, 'view_ubah']);
+        Route::put('/ubah-pass/{id}', [StudentController::class, 'update_pass']);
         Route::get('/histori', [StudentController::class, 'history']);
         Route::get('/pesan', [StudentController::class, 'pesan']);
         Route::get('/pesan/{id}', [StudentController::class, 'checkpesan']);
@@ -57,6 +59,8 @@ Route::group(['middleware' => ['auth']], function () {
     // Guru
     Route::group(['middleware' => ['role:2']], function () {
         Route::get('/guru/daftar-siswa', [GuruController::class, 'daftar_siswa']);
+        Route::get('/guru/ubah-pass', [StudentController::class, 'view_ubah']);
+        Route::put('/guru/ubah-pass/{id}', [StudentController::class, 'update_pass']);
         Route::get('/guru/histori', [GuruController::class, 'master_history']);
         Route::get('/guru/histori/{id}', [GuruController::class, 'history_siswa']);
         Route::get('/guru/penanganan', [PenangananController::class, 'guru_index']);

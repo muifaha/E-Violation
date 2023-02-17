@@ -136,8 +136,20 @@ class GuruBkController extends Controller
 
     public function index()
     {
-        $penanganan = Penanganan::with(['siswa', 'pesan'])->latest()->paginate(null);
-        return view('bk.penanganan', compact('penanganan'));
+        $guru_bk = GuruBk::firstWhere('user_id', auth()->user()->id);
+        $siswas = Student::firstWhere('kelas_id', $guru_bk->kelas_id);
+
+        $siswa = Student::whereHas('penanganan', function ($q) use ($guru_bk) {
+            $q->where('kelas_id', $guru_bk->kelas_id);
+        })->get();
+
+        $id_student = [];
+        foreach ($siswa as $item) {
+            $id_student[] = $item->id;
+        }
+
+        $penanganan = Penanganan::with(['siswa', 'pesan'])->whereIn('student_id', $id_student)->latest()->paginate(null);
+        return view('bk.penanganan', compact('penanganan', 'guru_bk'));
     }
 
     public function konfirmasi(Request $request, $id)

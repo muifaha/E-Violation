@@ -53,6 +53,9 @@
                             @if ($user->role == 3)
                                 <td class="text-secondary" style="font-weight:500;">Siswa</td>
                             @endif
+                            @if ($user->role == 4)
+                                <td class="text-success" style="font-weight:500;">BK</td>
+                            @endif
                             <td>
                                 <button
                                     class="btn clickind btn-sm btn-warning btn-detail open_modal animate__animated animate__flip"
