@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>E-Violaton SMK Negeri 1 Surabaya</title>
+    <title>E-Violaton SMAN 6 Tangerang</title>
     @include('component.head')
     <meta content="" name="description">
     <meta content="" name="keywords">
@@ -65,7 +65,7 @@
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center">
 
-            <h1 class="logo me-auto animate__animated animate__fadeInLeft"><a href="/">E-Book</a></h1>
+            <h1 class="logo me-auto animate__animated animate__fadeInLeft"><a href="/">W6D</a></h1>
 
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
@@ -118,7 +118,7 @@
         <div class="container text-center">
             <h1 class="animate__animated animate__fadeInDown animate__delay-1s"><b>Selamat Datang</b></h1>
             <h2 class="animate__animated animate__fadeInDown" style="animation-delay: 0.5s;">Website pencatatan
-                pelanggaran siswa SMK Negeri 1 Surabaya</h2>
+                pelanggaran siswa SMAN 6 Tangerang</h2>
             <a href="#cek-pelanggaran"
                 class="btn-get-started scrollto animate__animated animate__pulse fw-bold animate__infinite"
                 style="animation-delay: 1.5s;">Mulai Sekarang</a>
@@ -142,8 +142,8 @@
 
                         <div
                             class="poco col-xl-5 col-lg-5 icon-boxes d-flex flex-column align-items-stretch justify-content-center ps-lg-0 pe-lg-2 py-5">
-                            <h3 class="reveal">Apa itu E-Book ?</h3>
-                            <p class="pe reveal">E-Book adalah Website pencatatan poin pelanggaran siswa. Sebelumnya
+                            <h3 class="reveal">Apa itu W6D ?</h3>
+                            <p class="pe reveal">W6D adalah Website pencatatan poin pelanggaran siswa. Sebelumnya
                                 Orang Tua atau Wali Murid diwajibkan untuk Register Akun terlebih dahulu. Siswa juga
                                 bisa melihat Pelanggaran yang telah mereka lakukan dengan memasukkan NISN page Cek
                                 Pelanggaran.</p>
@@ -449,15 +449,15 @@
                 <div class="row">
 
                     <div class="col-lg-5 col-md-6 footer-contact">
-                        <h3 class="reveal">E-Book</h3>
+                        <h3 class="reveal">W6D</h3>
                         <p class="reveal">
-                            Jl. Smea No.4, Wonokromo, Kec. Wonokromo<br>
-                            Kota SBY, Jawa Timur 60243<br><br>
-                            <strong>Phone :</strong><a href="tel:+031 8292038"> 031 8292038</a><br>
+                            Jl. Nyimas Melati No 2, Kec. Neglasari<br>
+                            Kota Tangerang, Banten 66666<br><br>
+                            <strong>Phone :</strong><a href="tel:+031 8292038"> 0123 456789</a><br>
                             <strong>Email :</strong><a href="mailto:info@smkn1-sby.sch.id">
-                                info@smkn1-sby.sch.id</a><br>
+                                poetrahindia@gmail.com</a><br>
                             <strong>Website :</strong><a href="http://www.smkn1-sby.sch.id/">
-                                http://www.smkn1-sby.sch.id/</a><br>
+                                http://sman6tangerang.sch.id/</a><br>
                         </p>
                     </div>
 
